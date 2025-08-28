@@ -28,7 +28,11 @@
         "assets": [
           "package.json",
           "CHANGELOG.md",
-          "src/version.js"
+          "src/version.js",
+          {
+            "path": "dist/www.bin",
+            "label": "www.bin"
+          }
         ],
         "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
       }
