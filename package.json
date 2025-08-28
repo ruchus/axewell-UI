@@ -1,0 +1,56 @@
+{
+  "name": "Axewell-UI",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && node compress.js  && node only-gzip.js",
+    "preview": "vite preview",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
+    "format": "prettier --write src/",
+    "prepare": "husky"
+  },
+  "dependencies": {
+    "@quasar/extras": "^1.16.12",
+    "axios": "^1.7.3",
+    "pinia": "^3.0.3",
+    "pinia-plugin-persistedstate": "^4.2.0",
+    "quasar": "^2.16.8",
+    "typeface-nunito-sans": "^1.1.13",
+    "vue": "^3.4.29",
+    "vue-i18n": "^11.0.0-rc.1",
+    "vue-router": "^4.3.3",
+    "ws": "^8.18.0"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
+    "@quasar/vite-plugin": "^1.7.0",
+    "@rushstack/eslint-patch": "^1.8.0",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/commit-analyzer": "^13.0.1",
+    "@semantic-release/exec": "^7.1.0",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^11.0.4",
+    "@semantic-release/npm": "^12.0.2",
+    "@semantic-release/release-notes-generator": "^14.0.3",
+    "@vitejs/plugin-vue": "^5.1.4",
+    "@vue/eslint-config-prettier": "^9.0.0",
+    "eslint": "^8.57.0",
+    "eslint-plugin-vue": "^9.23.0",
+    "husky": "^9.1.7",
+    "less": "^4.2.0",
+    "prettier": "^3.2.5",
+    "sass": "^1.77.8",
+    "sass-embedded": "^1.77.8",
+    "semantic-release": "^24.2.7",
+    "vite": "^5.3.1",
+    "vite-plugin-sass-dts": "^1.3.25"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  }
+}

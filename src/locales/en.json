@@ -1,0 +1,117 @@
+{
+  "layout": {
+    "wifiStatus": "Wifi status:",
+    "notConnected": "Not Connected",
+    "uptime": "Uptime",
+    "dashboard": "Dashboard",
+    "swarm": "Swarm",
+    "settings": "Settings",
+    "network": "Network",
+    "locale": "English",
+    "restartText": "The device will be restarted. Ok?",
+    "connected": "Connected!",
+    "restartedDevice": "Device restarted"
+  },
+  "logs": {
+    "viewLogs": "View logs",
+    "realtimeLogs": "Realtime logs",
+    "description": "Check what is happening on the device."
+  },
+  "pool": {
+    "notConnected": "Not Connected",
+    "settings": "Settings"
+  },
+
+  "dashboardPage": {
+    "title": "Dashboard",
+    "subtitle": "Hello, let's look some performance data.",
+    "hashRate": {
+      "subtitle": "Network's computational power",
+      "description": "Hash rate is a metric quantifying a network's computational power and efficiency. It represents the number of hash functions a transaction processor's hardware can compute within a second. A higher hash rate signifies that a processor can perform more computations within a given time.",
+      "efficiency": "Efficiency",
+      "networkDifficulty": "Best network difficulty"
+    },
+    "shares": {
+      "title": "Shares",
+      "subtitle": "Miner’s shares proof of work",
+      "description": "A share represents a miner’s proof of work, essentially a valid solution to the cryptographic puzzle required to secure the blockchain. However, not all shares contribute to the discovery of a new block; those that do are termed ‘accepted shares,’ while their counterparts, ‘rejected shares,’ fail to make the cut due to various reasons such as timing issues or data errors.",
+      "accepted": "Accepted",
+      "rejected": "Rejected"
+    },
+    "power": {
+      "title": "Power",
+      "powerConsumption": "Power consumption",
+      "inputVoltage": "Input voltage",
+      "inputCurrent": "Input current",
+      "frequency": "Frequency",
+      "voltageRequested": "Voltage requested ",
+      "voltageMeasured": "Voltage measured",
+      "fanSpeed": "Fan speed",
+      "chipTemperature": "Chip temperature"
+    }
+  },
+  "swarmPage": {
+    "title": "Swarm",
+    "subtitle": "Performance monitor of your swarm.",
+    "device": "IP",
+    "devices": "Devices",
+    "ip": "IP",
+    "uptime": "Uptime",
+    "temp": "Temp",
+    "power": "Power",
+    "miningPower": "Mining power",
+    "miningPowerSubtitle": "Total hash rate of your swarm.",
+    "hashrate": "Hashrate",
+    "efficiency": "Efficiency",
+    "consumption": "Consumption",
+    "consumptionSubtitle": "Total electrical consumption of your swarm.",
+    "addDevice": "Add device",
+    "add": "Add",
+    "ipAddress": "IP address",
+    "restartDevice": "Restart device",
+    "restartedDevice": "Device restarted",
+    "deleteDevice": "Delete device",
+    "deletedDevice": "Device deleted",
+    "noDeviceInfo": "You need to add a device to check the total values of your swarm",
+    "duplicateDevice": "IP already added. Avoid duplicates",
+    "restartDialog": "The device will be restarted. Ok?",
+    "deleteDialog": "The device will be deleted. Ok?",
+    "cancel": "Cancel",
+    "cantConnect": "Can't connect"
+  },
+  "settingsPage": {
+    "title": "Settings",
+    "subtitle": "Take control of your ASIC",
+    "network": "Network",
+    "hostname": "Hostname",
+    "pool": "Pool",
+    "poolText": "Main pool",
+    "fallbackPoolText": "Secondary pool (used only if main fails)",
+    "stratumURL": "Stratum URL",
+    "stratumPort": "Stratum port",
+    "stratumUser": "Stratum user",
+    "stratumPassword": "Stratum Password",
+    "fallbackStratumURL": "Fallback stratum URL",
+    "fallbackStratumPort": "Fallback stratum port",
+    "fallbackStratumUser": "Fallback stratum user",
+    "fallbackStratumPassword": "Fallback stratum Password",
+    "frequency": "Frequency",
+    "coreVoltage": "Core voltage",
+    "update": "Update",
+    "updateFirmware": "Update Firmware",
+    "updateWebsite": "Update Axewell UI",
+    "restartText": "The device will be restarted. Ok?",
+    "updateOk": "Successful download. The page will refresh to apply the changes.",
+    "updateErr": "Oops... something went wrong."
+  },
+  "networkPage": {
+    "title": "Network",
+    "asicTitle": "ASIC name",
+    "subtitle": "ASIC conection network",
+    "network": "Network",
+    "hostname": "Hostname (optional)",
+    "password": "WiFi password",
+    "update": "Update",
+    "restartText": "The device will be restarted. Ok?"
+  }
+}

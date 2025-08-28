@@ -1,0 +1,21 @@
+@import './base.css';
+@import '../app.scss';
+#app {
+  margin: 0 auto;
+  padding: 0;
+  font-weight: normal;
+}
+
+@media (hover: hover) {
+  a:hover {
+    background-color: hsla(160, 100%, 37%, 0.2);
+  }
+}
+
+@media (max-width: 1024px) {
+
+}
+.full-width-layout {
+  width: 100vw; /* Use full viewport width */
+}
+

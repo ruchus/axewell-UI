@@ -1,0 +1,116 @@
+{
+  "layout": {
+    "wifiStatus": "Estado WiFi:",
+    "notConnected": "No conectado",
+    "uptime": "Activo",
+    "dashboard": "Panel de control",
+    "swarm": "Enjambre",
+    "settings": "Ajustes",
+    "network": "Red",
+    "locale": "Español",
+    "restartText": "El dispositivo se reiniciará. ¿Ok?",
+    "connected": "¡Conectado!",
+    "restartedDevice": "Dispositivo reiniciado"
+  },
+  "logs": {
+    "viewLogs": "Ver logs",
+    "realtimeLogs": "Logs en tiempo real",
+    "description": "Chequea que ocurre en el dispositivo."
+  },
+  "pool": {
+    "notConnected": "No connectado",
+    "settings": "Ajustes"
+  },
+  "dashboardPage": {
+    "title": "Panel de control",
+    "subtitle": "Hola, observa algunos datos de rendimiento.",
+    "hashRate": {
+      "subtitle": "Potencia computacional de la red",
+      "description": "La tasa de hash es una métrica que cuantifica la potencia y la eficiencia computacional de una red. Representa la cantidad de funciones hash que el hardware de un procesador de transacciones puede calcular en un segundo. Una tasa de hash más alta significa que un procesador puede realizar más cálculos en un tiempo determinado.",
+      "efficiency": "Eficiencia",
+      "networkDifficulty": "Mejor dificultad de red"
+    },
+    "shares": {
+      "title": "Prueba de trabajo",
+      "subtitle": "Prueba de trabajo de las acciones de los mineros",
+      "description": "Una acción representa la prueba de trabajo de un minero, esencialmente una solución válida al rompecabezas criptográfico necesario para proteger la cadena de bloques. Sin embargo, no todas las acciones contribuyen al descubrimiento de un nuevo bloque; las que lo hacen se denominan 'acciones aceptadas', mientras que sus contrapartes, las 'acciones rechazadas', no logran pasar el corte debido a varias razones, como problemas de tiempo o errores de datos.",
+      "accepted": "Aceptadas",
+      "rejected": "Rechazadas"
+    },
+    "power": {
+      "title": "Consumo",
+      "powerConsumption": "Consumo eléctrico",
+      "inputVoltage": "Voltaje de entrada",
+      "inputCurrent": "Corriente de entrada",
+      "frequency": "Frecuencia",
+      "voltageRequested": "Voltage solicitado ",
+      "voltageMeasured": "Voltaje medido",
+      "fanSpeed": "Velocidad ventilador",
+      "chipTemperature": "Temperatura del chip"
+    }
+  },
+  "swarmPage": {
+    "title": "Enjambre",
+    "subtitle": "Monitor de rendimiento del enjambre.",
+    "device": "IP",
+    "devices": "Dispositivos",
+    "ip": "IP",
+    "uptime": "Activo",
+    "temp": "Temp.",
+    "power": "Consumo",
+    "miningPower": "Poder de minado",
+    "miningPowerSubtitle": "Tasa de hash total de tu enjambre.",
+    "efficiency": "Eficiencia",
+    "hashrate": "Hashrate",
+    "consumption": "Consumo",
+    "consumptionSubtitle": "Electricidad total consumida por tu enjambre.",
+    "addDevice": "Añadir dispositivo",
+    "add": "Añadir",
+    "ipAddress": "Dirección IP",
+    "restartDevice": "Reiniciar dispositivo",
+    "restartedDevice": "Dispositivo reiniciado",
+    "deleteDevice": "Eliminar dispositivo",
+    "deletedDevice": "Dispositivo eliminado",
+    "noDeviceInfo": "Necesitas agregar un dispositivo para verificar los valores totales de tu enjambre.",
+    "duplicateDevice": "IP ya añadida. Evita duplicados",
+    "restartDialog": "El dispositivo se reiniciará. ¿OK?",
+    "deleteDialog": "El dispositivo será eliminado. ¿OK?",
+    "cancel": "Cancelar",
+    "cantConnect": "No se puede conectar"
+  },
+  "settingsPage": {
+    "title": "Configuración",
+    "subtitle": "Toma el control de tu ASIC",
+    "network": "Red",
+    "hostname": "Nombre de host",
+    "pool": "Pool",
+    "poolText": "Pool principal",
+    "fallbackPoolText": "Pool secundaria (usada solo si la principal falla)",
+    "stratumURL": "URL Stratum",
+    "stratumPort": "Puerto Stratum ",
+    "stratumUser": "Usuario Stratum",
+    "stratumPassword": "Stratum password",
+    "fallbackStratumURL": "URL Fallback stratum",
+    "fallbackStratumPort": "Puerto Fallback stratum",
+    "fallbackStratumUser": "Usuario Fallback stratum",
+    "fallbackStratumPassword": "Fallback stratum password",
+    "frequency": "Frecuencia",
+    "coreVoltage": "Voltaje",
+    "update": "Actualizar",
+    "updateFirmware": "Actualizar firmware",
+    "updateWebsite": "Actualizar Axewell UI",
+    "restartText": "El dispositivo se reiniciará. ¿Ok?",
+    "updateOk": "Descarga exitosa, se va a refrescar la página para aplicar los cambios.",
+    "updateErr": "Ups... algo ha ido mal."
+  },
+  "networkPage": {
+    "title": "Red",
+    "asicTitle": "Nombre del ASIC",
+    "subtitle": "Red de conexión ASIC",
+    "network": "Red",
+    "hostname": "Nombre de host (opcional)",
+    "password": "contrasña WiFi",
+    "update": "Actualizar",
+    "restartText": "El dispositivo se reiniciará. ¿Ok?"
+  }
+}

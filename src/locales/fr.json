@@ -1,0 +1,116 @@
+{
+  "layout": {
+    "wifiStatus": "État du Wifi :",
+    "notConnected": "Non connecté",
+    "uptime": "Actif",
+    "dashboard": "Tableau de bord",
+    "swarm": "Essaim",
+    "settings": "Paramètres",
+    "network": "Réseau",
+    "locale": "Français",
+    "restartText": "L'appareil va redémarrer. Ok?",
+    "connected": "Connecté !",
+    "restartedDevice": "Appareil redémarré"
+  },
+  "logs": {
+    "viewLogs": "Voir les journaux",
+    "realtimeLogs": "Journaux en temps réel",
+    "description": "Voir ce qui se passe sur l'appareil."
+  },
+  "pool": {
+    "notConnected": "Non connecté",
+    "settings": "Paramètres"
+  },
+  "dashboardPage": {
+    "title": "Tableau de bord",
+    "subtitle": "Bonjour, voyons quelques données de performance.",
+    "hashRate": {
+      "subtitle": "Puissance de calcul du réseau",
+      "description": "Le taux de hachage est une métrique qui quantifie la puissance de calcul et l'efficacité d'un réseau. Il représente le nombre de fonctions de hachage que le matériel d'un processeur de transactions peut calculer par seconde. Un taux de hachage plus élevé signifie qu'un processeur peut effectuer plus de calculs dans un temps donné.",
+      "efficiency": "Efficacité",
+      "networkDifficulty": "Meilleure difficulté du réseau"
+    },
+    "shares": {
+      "title": "Parts",
+      "subtitle": "Preuve de travail des parts du mineur",
+      "description": "Une part représente la preuve de travail d'un mineur, essentiellement une solution valide au casse-tête cryptographique nécessaire pour sécuriser la blockchain. Cependant, toutes les parts ne contribuent pas à la découverte d'un nouveau bloc ; celles qui le font sont appelées 'parts acceptées', tandis que leurs contreparties, 'parts rejetées', échouent pour diverses raisons comme des problèmes de timing ou des erreurs de données.",
+      "accepted": "Acceptées",
+      "rejected": "Rejetées"
+    },
+    "power": {
+      "title": "Puissance",
+      "powerConsumption": "Consommation d'énergie",
+      "inputVoltage": "Tension d'entrée",
+      "inputCurrent": "Courant d'entrée",
+      "frequency": "Fréquence",
+      "voltageRequested": "Tension demandée",
+      "voltageMeasured": "Tension mesurée",
+      "fanSpeed": "Vitesse du ventilateur",
+      "chipTemperature": "Température du chip"
+    }
+  },
+  "swarmPage": {
+    "title": "Essaim",
+    "subtitle": "Moniteur de performance de votre essaim.",
+    "device": "IP",
+    "devices": "Appareils",
+    "ip": "IP",
+    "uptime": "Active",
+    "temp": "Temp.",
+    "power": "Puissance",
+    "miningPower": "Puissance de minage",
+    "miningPowerSubtitle": "Taux de hachage total de votre essaim.",
+    "efficiency": "Efficacité",
+    "hashrate": "Hashrate",
+    "consumption": "Consommation",
+    "consumptionSubtitle": "Consommation électrique totale de votre essaim.",
+    "addDevice": "Ajouter un appareil",
+    "add": "Ajouter",
+    "ipAddress": "Adresse IP",
+    "restartDevice": "Redémarrer l'appareil",
+    "restartedDevice": "Appareil redémarré",
+    "deleteDevice": "Supprimer l'appareil",
+    "deletedDevice": "Appareil retiré",
+    "noDeviceInfo": "Vous devez ajouter un appareil pour vérifier les valeurs totales de votre essaim",
+    "duplicateDevice": "IP déjà ajoutée. Évitez les doublons",
+    "restartDialog": "L'appareil va redémarrer. D'accord ?",
+    "deleteDialog": "L'appareil sera supprimé. D'accord ?",
+    "cancel": "Annuler",
+    "cantConnect": "Impossible de se connecter"
+  },
+  "settingsPage": {
+    "title": "Paramètres",
+    "subtitle": "Prenez le contrôle de votre ASIC",
+    "network": "Réseau",
+    "hostname": "Nom de l'hôte",
+    "pool": "Pool",
+    "poolText": "Pool principal",
+    "fallbackPoolText": "Pool secondaire (utilisé uniquement si le principal échoue)",
+    "stratumURL": "URL du Stratum",
+    "stratumPort": "Port du Stratum",
+    "stratumUser": "Utilisateur du Stratum",
+    "stratumPassword": "Mot de passe du Stratum",
+    "fallbackStratumURL": "URL Stratum de secours",
+    "fallbackStratumPort": "Port Stratum de secours",
+    "fallbackStratumUser": "Utilisateur Stratum de secours",
+    "fallbackStratumPassword": "Mot de passe Stratum de secours",
+    "frequency": "Fréquence",
+    "coreVoltage": "Tension",
+    "update": "Mettre à jour",
+    "updateFirmware": "Mettre à jour le firmware",
+    "updateWebsite": "Mettre à jour Axewell UI",
+    "restartText": "L'appareil va redémarrer. Ok?",
+    "updateOk": "Téléchargement réussi. La page va se rafraîchir pour appliquer les modifications.",
+    "updateErr": "Oups... quelque chose s'est mal passé."
+  },
+  "networkPage": {
+    "title": "Réseau",
+    "asicTitle": "Nom de l'ASIC",
+    "subtitle": "Réseau de connexion ASIC",
+    "network": "Réseau",
+    "hostname": "Nom d'hôte (facultatif)",
+    "password": "mot de passe WiFi",
+    "update": "Mettre à jour",
+    "restartText": "L'appareil va redémarrer. Ok?"
+  }
+}
