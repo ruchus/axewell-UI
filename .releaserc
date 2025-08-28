@@ -30,7 +30,7 @@
           "CHANGELOG.md",
           "src/version.js",
           {
-            "path": "dist/www.bin",
+            "path": "www.bin",
             "label": "www.bin"
           }
         ],
