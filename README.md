@@ -1,5 +1,7 @@
 # Axewell UI
 
+Download latest version: https://drive.google.com/file/d/1B9zDMFfeLrgoTa9sUsfYgCUzstdTxXWn/view?usp=sharing
+
 This template should help get you started developing with Vue 3 in Vite.
 
 ## Recommended IDE Setup
