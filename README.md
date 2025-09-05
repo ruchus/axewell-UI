@@ -2,7 +2,8 @@
 
 Axewell UI is a project focused on creating a completely new VUE-based frontend that integrates with the existing Bitaxe firmware as altertative to Axe OS.
 
-Download latest version from https://drive.google.com/file/d/1B9zDMFfeLrgoTa9sUsfYgCUzstdTxXWn/view?usp=sharing
+Download latest version:
+https://drive.google.com/file/d/1waHGnL6TfCTzFJa9sYgyOHvhj7IoUK3E/view?usp=sharing
 
 Just upload the file above to your Bitaxe. Don't worry about updating your bitaxe interface with Axewell UI, if you don't like it you can go back to Axe OS from the settings page by re-uploading the Axe OS www.bin!
 
