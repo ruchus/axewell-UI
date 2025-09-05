@@ -96,7 +96,8 @@
       <div class="q-py-lg q-px-lg" :class="quasar.screen.gt.xs ? 'power-card' : 'power-card-mobile'">
         <div class="card-title">{{ t("settingsPage.updateFirmware") }}</div>
         <q-file class="q-mt-xl" color="deep-purple" filled v-model="binaryfileFirmware" :dark="axeStore.darkmode"
-          counter @update:model-value="handleFileChangeFirmware">
+          counter @update:model-value="handleFileChangeFirmware"
+          :rules="[val => !val || val.name === 'esp-miner.bin' || t('settingsPage.espFileError')]">
           <template v-slot:prepend>
             <q-icon name="cloud_upload" />
           </template>
@@ -107,7 +108,8 @@
       <div class="q-ml-lg q-py-lg q-px-lg" :class="quasar.screen.gt.xs ? 'power-card' : 'power-card-mobile'">
         <div class="card-title">{{ t("settingsPage.updateWebsite") }}</div>
         <q-file class="q-mt-xl" color="deep-purple" filled v-model="binaryfileWebsite" :dark="axeStore.darkmode" counter
-          @update:model-value="handleFileChangeWebsite">
+          @update:model-value="handleFileChangeWebsite"
+          :rules="[val => !val || val.name === 'www.bin' || t('settingsPage.wwwFileError')]">
           <template v-slot:prepend>
             <q-icon name="cloud_upload" />
           </template>
@@ -200,26 +202,30 @@ export default defineComponent({
     });
 
     onMounted(async () => {
-      asicSettings.value = await axeStore.getAsicSettings();
-      ASICModel.value = axeStore.infoData.ASICModel;
-      frequencyOptions.value = asicSettings.value.frequencyOptions;
-      voltageOptions.value = asicSettings.value.voltageOptions;
+      try {
+        // Cargar datos primero
+        asicSettings.value = await axeStore.getAsicSettings();
+        ASICModel.value = axeStore.infoData.ASICModel;
+        frequencyOptions.value = asicSettings.value.frequencyOptions;
+        voltageOptions.value = asicSettings.value.voltageOptions;
 
-      const index = optionsFrequencies.value.findIndex(
-        option => option.value === axeStore.infoData?.frequency
-      );
+        // Ahora buscar el índice
+        const index = optionsFrequencies.value.findIndex(
+          option => option.value === (axeStore.infoData?.frequency ?? defaultFrequencies[ASICModel.value])
+        );
 
-      if (index !== -1) {
-        model.value = index;
-      } else {
-        model.value = 0;
+        // Establecer el modelo después de asegurar que las opciones están cargadas
+        model.value = index !== -1 ? index : 0;
+
+        // Actualizar el formulario
+        form.value.frequency = axeStore.infoData?.frequency ?? defaultFrequencies[ASICModel.value];
+        form.value.coreVoltage = axeStore.infoData?.coreVoltage ?? defaultVoltages[ASICModel.value];
+
+      } catch (error) {
+        console.error('Error loading settings:', error);
+        // Manejar el error apropiadamente
       }
-
-
-      form.value.frequency = axeStore.infoData?.frequency ?? defaultFrequencies[ASICModel.value];
-      form.value.coreVoltage = axeStore.infoData?.coreVoltage ?? defaultVoltages[ASICModel.value];
-
-    })
+    });
     // const optionsFrequencies = ref([ { label: '400', value: 400, voltage: 1100 }, { label: '425', value: 425, voltage: 1100 }, { label: '450', value: 450, voltage: 1150 }, { label: '475', value: 475, voltage: 1150 }, { label: '485 (default)', value: 485, voltage: 1200 }, { label: '500', value: 500, voltage: 1250 }, { label: '525', value: 525, voltage: 1250 }, { label: '550', value: 550, voltage: 1300 }, { label: '575', value: 575, voltage: 1300 } ]);
     const optionsFrequencies = computed(() => {
       if (!frequencyOptions?.value?.length) return [];
@@ -314,14 +320,14 @@ export default defineComponent({
     }
 
     const uploadFirmwareFile = () => {
-      if (!binaryfileWebsite.value) {
+      if (!binaryfileFirmware.value) {
         console.error('No file selected')
         return
       }
       Loading.show({
         message: "Subiendo el archivo",
       });
-      const file = binaryfileWebsite.value
+      const file = binaryfileFirmware.value
       return axios
         .post(`/api/system/OTA `, file, {
           headers: { 'Content-Type': 'application/octet-stream' }
@@ -343,6 +349,8 @@ export default defineComponent({
           Loading.hide();
         })
     }
+
+
     const handleFileChangeWebsite = (file) => {
       binaryfileWebsite.value = file
       uploadBinaryFile()

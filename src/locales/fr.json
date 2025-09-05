@@ -101,7 +101,9 @@
     "updateWebsite": "Mettre à jour Axewell UI",
     "restartText": "L'appareil va redémarrer. Ok?",
     "updateOk": "Téléchargement réussi. La page va se rafraîchir pour appliquer les modifications.",
-    "updateErr": "Oups... quelque chose s'est mal passé."
+    "updateErr": "Oups... quelque chose s'est mal passé.",
+    "wwwFileError": "Le fichier doit s'appeler www.bin",
+    "espFileError": "Le fichier doit s'appeler esp-miner.bin"
   },
   "networkPage": {
     "title": "Réseau",
