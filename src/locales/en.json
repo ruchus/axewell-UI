@@ -102,7 +102,9 @@
     "updateWebsite": "Update Axewell UI",
     "restartText": "The device will be restarted. Ok?",
     "updateOk": "Successful download. The page will refresh to apply the changes.",
-    "updateErr": "Oops... something went wrong."
+    "updateErr": "Oops... something went wrong.",
+    "wwwFileError": "The file must be named www.bin",
+    "espFileError": "The file must be named esp-miner.bin"
   },
   "networkPage": {
     "title": "Network",
