@@ -1,3 +1,11 @@
+## [1.0.2](https://github.com/ruchus/Axewell-UI/compare/v1.0.1...v1.0.2) (2025-09-05)
+
+
+### Bug Fixes
+
+* add file names validations on upload binary files ([900bff8](https://github.com/ruchus/Axewell-UI/commit/900bff8c10c8c4bb372aa3118bc01ba2d8085e46))
+* fixed firmware error upload ([8c02b10](https://github.com/ruchus/Axewell-UI/commit/8c02b104aeb40131baeac2c780c47c79ec57f359))
+
 ## [1.0.1](https://github.com/ruchus/Axewell-UI/compare/v1.0.0...v1.0.1) (2025-08-28)
 
 
