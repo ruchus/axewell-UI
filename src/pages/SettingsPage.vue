@@ -327,7 +327,7 @@ export default defineComponent({
       Loading.show({
         message: "Subiendo el archivo",
       });
-      const file = binaryfileWebsite.value
+      const file = binaryfileFirmware.value
       return axios
         .post(`/api/system/OTA `, file, {
           headers: { 'Content-Type': 'application/octet-stream' }
@@ -349,6 +349,8 @@ export default defineComponent({
           Loading.hide();
         })
     }
+
+
     const handleFileChangeWebsite = (file) => {
       binaryfileWebsite.value = file
       uploadBinaryFile()
