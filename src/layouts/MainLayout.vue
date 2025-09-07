@@ -115,7 +115,19 @@
     </q-drawer>
     <q-footer class="bg-layout footer text-center">
       <q-toolbar>
-        <q-toolbar-title>Axewell UI v{{ version }}, running on Bitaxe </q-toolbar-title>
+        <q-toolbar-title>Axewell UI v{{ version }}, running on Bitaxe
+          <q-icon name="info" size="xs" color="grey-7" class="q-mr-sm cursor-pointer" style="color: #629C44">
+            <q-tooltip anchor="top middle" self="center middle">
+              ASIC Model: {{ axeStore?.infoData?.ASICModel }} <br />
+              MAC Address: {{ axeStore?.infoData?.macAddr }} <br />
+              Free Heap Memory: {{ axeStore?.infoData?.freeHeap }} <br />
+              Firmware Version: {{ axeStore?.infoData?.version }} <br />
+              Axewell UI Version: v{{ version }} <br />
+              ESP-IDF Version: {{ axeStore?.infoData?.idfVersion }} <br />
+              Board Version: {{ axeStore?.infoData?.boardVersion }}
+            </q-tooltip>
+          </q-icon>
+        </q-toolbar-title>
       </q-toolbar>
     </q-footer>
 
