@@ -12,6 +12,7 @@
         <HashRateCardComponent :hashRateData="axeStore?.infoData"></HashRateCardComponent>
       </div>
 
+
       <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-xs-12"
         :class="quasar.screen.gt.xs ? 'q-mx-md q-mb-md' : ''">
         <q-card flat class="card" :class="quasar.screen.gt.xs ? 'q-mb-md q-px-md q-py-sm' : 'q-my-md q-px-md q-py-sm'">

@@ -88,7 +88,7 @@
                         </div>
                         <div class="col-4">
                             <div class="small-container data-fields rounded-borders text-right">
-                                {{ powerData?.fanspeed }} RPM
+                                ({{ powerData?.fanspeed }}%) {{ powerData?.fanrpm }} RPM
                             </div>
                         </div>
                     </div>
@@ -191,12 +191,12 @@
                 <div class="row justify-evenly q-mt-md">
                     <div class="col-6">
                         <div class="small-container data-label rounded-borders text-left">
-                            {{ t("dashboardPage.power.fanSpeed") }}
+                            ({{ powerData?.fanspeed }}%) {{ powerData?.fanrpm }} RPM
                         </div>
                     </div>
                     <div class="col-4">
                         <div class="small-container data-fields rounded-borders text-right">
-                            {{ powerData?.fanspeed }} RPM
+                            ({{ powerData?.fanspeed }}%) RPM
                         </div>
                     </div>
                 </div>
