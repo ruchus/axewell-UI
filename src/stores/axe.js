@@ -49,6 +49,9 @@ export const useAxeStore = defineStore('axe', {
       }
       return this.maxHashRateLocalStorage // Calcula el max
     },
+    expectedHashRate() {
+      return this.infoData?.expectedHashrate
+    },
     getPercentageSharesAccepted() {
       var percentageSharesAccepted = (this.infoData?.sharesAccepted / this.totalShares) * 100
       return percentageSharesAccepted?.toFixed(2)
