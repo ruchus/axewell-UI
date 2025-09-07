@@ -1,0 +1,121 @@
+{
+  "layout": {
+    "wifiStatus": "Status do Wi-Fi:",
+    "notConnected": "Não Conectado",
+    "uptime": "Tempo de atividade",
+    "dashboard": "Dashboard",
+    "swarm": "Swarm",
+    "settings": "Configurações",
+    "network": "Rede",
+    "locale": "Português",
+    "restartText": "O dispositivo será reiniciado. Ok?",
+    "connected": "Conectado!",
+    "restartedDevice": "Dispositivo reiniciado"
+  },
+  "logs": {
+    "viewLogs": "Ver logs",
+    "realtimeLogs": "Logs em tempo real",
+    "description": "Verifique o que está acontecendo no dispositivo."
+  },
+  "pool": {
+    "notConnected": "Não Conectado",
+    "settings": "Configurações"
+  },
+
+  "dashboardPage": {
+    "title": "Dashboard",
+    "subtitle": "Olá, vamos ver alguns dados de desempenho.",
+    "hashRate": {
+      "subtitle": "Poder computacional da rede",
+      "description": "A taxa de hash é uma métrica que quantifica o poder computacional e a eficiência de uma rede. Ela representa o número de funções hash que o hardware de um processador de transações pode calcular em um segundo. Uma taxa de hash mais alta significa que um processador pode realizar mais cálculos dentro de um determinado tempo.",
+      "efficiency": "Eficiência",
+      "networkDifficulty": "Melhor dificuldade de rede",
+      "expected": "Esperado",
+      "expHasRateHelp": "Taxa de hash teórica que o dispositivo deve alcançar nas condições atuais de configuração (frequência e tensão)."
+    },
+    "shares": {
+      "title": "Shares",
+      "subtitle": "Prova de trabalho das ações (shares) do minerador",
+      "description": "A ação (share) representa a prova de trabalho de um minerador, essencialmente uma solução válida para o quebra-cabeça criptográfico necessário para garantir a blockchain. No entanto, nem todas as shares contribuem para a descoberta de um novo bloco; aquelas que o fazem são chamadas de ‘shares aceitas’, enquanto suas contrapartes, ‘shares rejeitadas’, não conseguem passar devido a vários motivos, como problemas de tempo ou erros de dados.",
+      "accepted": "Aceitas",
+      "rejected": "Rejeitadas"
+    },
+    "power": {
+      "title": "Energia",
+      "powerConsumption": "Consumo de energia",
+      "inputVoltage": "Tensão de entrada",
+      "inputCurrent": "Corrente de entrada",
+      "frequency": "Frequência",
+      "voltageRequested": "Tensão solicitada",
+      "voltageMeasured": "Tensão medida",
+      "fanSpeed": "Velocidade do ventilador",
+      "chipTemperature": "Temperatura do chip"
+    }
+  },
+  "swarmPage": {
+    "title": "Swarm",
+    "subtitle": "Monitor de desempenho do seu swarm.",
+    "device": "IP",
+    "devices": "Dispositivos",
+    "ip": "IP",
+    "uptime": "Tempo de atividade",
+    "temp": "Temperatura",
+    "power": "Energia",
+    "miningPower": "Poder de mineração",
+    "miningPowerSubtitle": "Taxa de hash total do seu swarm.",
+    "hashrate": "Taxa de hash",
+    "efficiency": "Eficiência",
+    "consumption": "Consumo",
+    "consumptionSubtitle": "Consumo elétrico total do seu swarm.",
+    "addDevice": "Adicionar dispositivo",
+    "add": "Adicionar",
+    "ipAddress": "Endereço IP",
+    "restartDevice": "Reiniciar dispositivo",
+    "restartedDevice": "Dispositivo reiniciado",
+    "deleteDevice": "Excluir dispositivo",
+    "deletedDevice": "Dispositivo excluído",
+    "noDeviceInfo": "Você precisa adicionar um dispositivo para verificar os valores totais do seu swarm",
+    "duplicateDevice": "IP já adicionado. Evite duplicados",
+    "restartDialog": "O dispositivo será reiniciado. Ok?",
+    "deleteDialog": "O dispositivo será excluído. Ok?",
+    "cancel": "Cancelar",
+    "cantConnect": "Não foi possível conectar"
+  },
+  "settingsPage": {
+    "title": "Configurações",
+    "subtitle": "Assuma o controle do seu ASIC",
+    "network": "Rede",
+    "hostname": "Nome do host",
+    "pool": "Pool",
+    "poolText": "Pool principal",
+    "fallbackPoolText": "Pool secundário (usado apenas se o principal falhar)",
+    "stratumURL": "URL do Stratum",
+    "stratumPort": "Porta do Stratum",
+    "stratumUser": "Usuário do Stratum",
+    "stratumPassword": "Senha do Stratum",
+    "fallbackStratumURL": "URL do Stratum secundário",
+    "fallbackStratumPort": "Porta do Stratum secundário",
+    "fallbackStratumUser": "Usuário do Stratum secundário",
+    "fallbackStratumPassword": "Senha do Stratum secundário",
+    "frequency": "Frequência",
+    "coreVoltage": "Tensão do núcleo",
+    "update": "Atualizar",
+    "updateFirmware": "Atualizar Firmware",
+    "updateWebsite": "Atualizar Axewell UI",
+    "restartText": "O dispositivo será reiniciado. Ok?",
+    "updateOk": "Download realizado com sucesso. A página será atualizada para aplicar as mudanças.",
+    "updateErr": "Ops... algo deu errado.",
+    "wwwFileError": "O arquivo deve ser nomeado www.bin",
+    "espFileError": "O arquivo deve ser nomeado esp-miner.bin"
+  },
+  "networkPage": {
+    "title": "Rede",
+    "asicTitle": "Nome do ASIC",
+    "subtitle": "Rede de conexão do ASIC",
+    "network": "Rede",
+    "hostname": "Nome do host (opcional)",
+    "password": "Senha do WiFi",
+    "update": "Atualizar",
+    "restartText": "O dispositivo será reiniciado. Ok?"
+  }
+}
