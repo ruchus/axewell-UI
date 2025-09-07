@@ -14,7 +14,14 @@
                 }}
               <span class="secondary-fields" style="font-size: 24px;">Gh/s</span>
             </div>
-            <div class="text-center text-grey-6">Expected: {{ axeStore?.expectedHashRate }} Gh/s</div>
+            <div class="text-center text-body2 text-grey-6">
+              {{ t("dashboardPage.hashRate.expected") }}: {{ axeStore?.expectedHashRate }} Gh/s
+              <q-icon name="info" size="xs" color="grey-7" class="q-mr-sm cursor-pointer" style="color: #629C44">
+                <q-tooltip anchor="bottom middle" self="center middle">
+                  {{ t("dashboardPage.hashRate.expHasRateHelp") }}
+                </q-tooltip>
+              </q-icon>
+            </div>
             <div class="row text-center q-mt-md">
               <div class="col-6">
                 <q-badge color="orange-2" rounded class="q-mr-sm parpadea" /> Max
@@ -70,7 +77,14 @@
               axeStore?.getHashRateRounded
             }}
             <span style="color: #d4d4d4;font-size: 32px;">Gh/s</span>
-            <div class="text-center text-body2 text-grey-6">Expected: {{ axeStore?.expectedHashRate }} Gh/s</div>
+            <div class="text-center text-body2 text-grey-6">
+              {{ t("dashboardPage.hashRate.expected") }}: {{ axeStore?.expectedHashRate }} Gh/s
+              <q-icon name="info" size="xs" color="grey-7" class="q-mr-sm cursor-pointer" style="color: #629C44">
+                <q-tooltip anchor="bottom middle" self="center middle">
+                  {{ t("dashboardPage.hashRate.expHasRateHelp") }}
+                </q-tooltip>
+              </q-icon>
+            </div>
           </div>
           <div class="row text-center q-mt-md">
             <div class="col-6">
