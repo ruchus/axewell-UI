@@ -15,7 +15,7 @@
               <span class="secondary-fields" style="font-size: 24px;">Gh/s</span>
             </div>
             <div class="text-center text-body2 text-grey-6">
-              {{ t("dashboardPage.hashRate.expected") }}: {{ axeStore?.expectedHashRate }} Gh/s
+              {{ t("dashboardPage.hashRate.expected") }}: {{ Math.round(axeStore?.expectedHashRate) }} Gh/s
               <q-icon name="info" size="xs" color="grey-7" class="q-mr-sm cursor-pointer" style="color: #629C44">
                 <q-tooltip anchor="bottom middle" self="center middle">
                   {{ t("dashboardPage.hashRate.expHasRateHelp") }}
