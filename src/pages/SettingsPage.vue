@@ -48,7 +48,7 @@
           </div>
           <div class="col-12 col-lg-4 col-md-4 col-sm-12 col-xs-12" style="width: 300px">
             <div class="col-12 col-lg-4 col-md-3 col-sm-12 col-xs-12" style="max-width: 300px">
-              <div class="card-title q-mb-lg">Hardware</div>
+              <div class="card-title q-mb-lg">{{ t("settingsPage.miningPower") }}</div>
               <div>
                 <q-slider v-model="model" :min="0" :max="optionsFrequencies.length - 1" step="1" track-size="10px"
                   color="deep-purple-11" markers :dark="axeStore.darkmode ? true : false" class="gradient-slider" />
@@ -291,7 +291,7 @@ export default defineComponent({
         return
       }
       Loading.show({
-        message: "Subiendo el archivo",
+        message: t("settingsPage.uploadingFile"),
       });
       const file = binaryfileWebsite.value
       return axios
@@ -301,7 +301,7 @@ export default defineComponent({
         .then((res) => {
           console.log('upload successful')
           Notify.create({
-            message: "upload successful",
+            message: t("settingsPage.uploadSuccessful"),
             position: "top",
             timeout: 4000,
             type: 'positive',
@@ -335,7 +335,7 @@ export default defineComponent({
         .then((res) => {
           console.log('upload successful')
           Notify.create({
-            message: "upload successful",
+            message: t("settingsPage.uploadSuccessful"),
             position: "top",
             timeout: 4000,
             type: 'positive',
