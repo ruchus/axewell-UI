@@ -125,7 +125,8 @@
                         </div>
                       </div>
                       <template v-if="device?.IP !== currentDeviceIP">
-                        <q-btn flat round color="deep-purple-11" icon="restart_alt" @click="openDialogRestart(device.IP)">
+                        <q-btn flat round color="deep-purple-11" icon="restart_alt"
+                          @click="openDialogRestart(device.IP)">
                           <q-tooltip>
                             {{ t("swarmPage.restartDevice") }}
                           </q-tooltip>
@@ -139,7 +140,8 @@
                       </template>
                     </template>
                     <template v-else>
-                      <div class="col-9 small-container q-my-sm rounded-borders" style="color:#B70F0A !important; border-radius: 5px;">
+                      <div class="col-9 small-container q-my-sm rounded-borders"
+                        style="color:#B70F0A !important; border-radius: 5px;">
                         {{ device?.IP }} <q-icon name="sensors_off"></q-icon> {{ t("swarmPage.cantConnect") }}
                       </div>
                     </template>
@@ -312,12 +314,13 @@
                     </q-card-section>
                   </q-card>
                 </template>
-                <template v-else>                    
-                      <div class="col-9 q-my-sm small-container rounded-borders" style="color:#B70F0A !important;border-radius: 5px; ">
-                        {{ device?.IP }} <q-icon name="sensors_off"></q-icon> {{ t("swarmPage.cantConnect") }}
-                      </div>              
+                <template v-else>
+                  <div class="col-9 q-my-sm small-container rounded-borders"
+                    style="color:#B70F0A !important;border-radius: 5px; ">
+                    {{ device?.IP }} <q-icon name="sensors_off"></q-icon> {{ t("swarmPage.cantConnect") }}
+                  </div>
                 </template>
-  
+
               </Transition>
             </div>
           </q-tab-panel>
@@ -334,7 +337,8 @@
                 <q-card-section>
                   <div class="text-center">
                     <div>
-                      <span class="yellowData q-mx-sm text-h6">{{ totalHashRate?.totalValue.toFixed(2) }} {{ totalHashRate?.unit
+                      <span class="yellowData q-mx-sm text-h6">{{ totalHashRate?.totalValue.toFixed(2) }} {{
+                        totalHashRate?.unit
                       }}</span>
                       <span> Hashrate</span>
                     </div>
@@ -458,13 +462,13 @@ export default defineComponent({
       });
     };
     const totalPowerConsumption = computed(() => {
-       var total = SWARM_DATA.value.reduce((accumulated, device) => {
-          if (device?.isActive) {
-            return accumulated + device?.power;
-          }
-          return accumulated;
-        }, 0);
-        return total;
+      var total = SWARM_DATA.value.reduce((accumulated, device) => {
+        if (device?.isActive) {
+          return accumulated + device?.power;
+        }
+        return accumulated;
+      }, 0);
+      return total;
     })
     const totalHashRate = computed(() => {
       var total = SWARM_DATA.value.reduce((accumulated, device) => {
@@ -483,18 +487,24 @@ export default defineComponent({
     });
 
     const totalEfficiency = computed(() => {
-      var totalEfficiency = totalPowerConsumption?.value / totalHashRate?.value?.totalValue
+      var divisor;
+      if (totalHashRate?.value?.unit === 'TH/s')
+        divisor = 1;
+      else// GH/s
+        divisor = 1000;
+
+      var totalEfficiency = totalPowerConsumption?.value / (totalHashRate?.value?.totalValue / divisor)
       return totalEfficiency.toFixed(2);
     })
 
-    const uptimeFormatted = (uptimeSeconds) =>{
-      var d = Number(uptimeSeconds)     
+    const uptimeFormatted = (uptimeSeconds) => {
+      var d = Number(uptimeSeconds)
       var days = Math.floor(d / 86400);
-      var h = Math.floor((d % 86400) / 3600); 
+      var h = Math.floor((d % 86400) / 3600);
       var m = Math.floor((d % 3600) / 60);
       var s = Math.floor((d % 3600) % 60);
-    
-      return `${days}d:${h}h:${m}m`;  
+
+      return `${days}d:${h}h:${m}m`;
     }
     const validateIPAddress = (value) => {
       const ipRegex = /^((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])\.){3}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])$/;
@@ -570,20 +580,20 @@ export default defineComponent({
 
         return;
       }
-      
-       try{
-          return axios.get(`http://${newIp}/api/system/info`, { timeout: 5000 }).then(res => {
-            if (res?.data) {
-              SWARM_DATA.value.push({ IP: newIp,isActive: true, ...res.data });
-              localStorage.setItem('SWARM_DATA', JSON.stringify(SWARM_DATA.value));
-            }
-          }).catch(err=>{
-            SWARM_DATA.value.push({ IP: newIp,isActive: false});
+
+      try {
+        return axios.get(`http://${newIp}/api/system/info`, { timeout: 5000 }).then(res => {
+          if (res?.data) {
+            SWARM_DATA.value.push({ IP: newIp, isActive: true, ...res.data });
             localStorage.setItem('SWARM_DATA', JSON.stringify(SWARM_DATA.value));
-          });
-      }catch{
-         SWARM_DATA.value.push({ IP: newIp,isActive: false});
+          }
+        }).catch(err => {
+          SWARM_DATA.value.push({ IP: newIp, isActive: false });
           localStorage.setItem('SWARM_DATA', JSON.stringify(SWARM_DATA.value));
+        });
+      } catch {
+        SWARM_DATA.value.push({ IP: newIp, isActive: false });
+        localStorage.setItem('SWARM_DATA', JSON.stringify(SWARM_DATA.value));
       }
     };
 
@@ -596,7 +606,7 @@ export default defineComponent({
             addNewDevice(newIp),
             getSwarmDeviceInfo(newIp)
           ]);
-            
+
           if (newSwarmInfo && existingSwarmInfo) {
             const swarmUpdatePromises = SWARM_DATA.value?.map(({ IP }) => {
               return updateSwarm(IP, [{ ip: newIp }, ...newSwarmInfo, existingSwarmInfo]);
@@ -611,12 +621,12 @@ export default defineComponent({
               ip: newIp
             });
 
-          
+
           } else {
-            return{IP: ip, isActive: false };
+            return { IP: ip, isActive: false };
           }
-        }catch{
-          return{IP: ip, isActive: false };
+        } catch {
+          return { IP: ip, isActive: false };
         } finally {
 
         }
@@ -655,7 +665,7 @@ export default defineComponent({
     const getCurrentDevice = async () => {
       return axios.get(`/api/system/info`).then(res => {
         if (res?.data) {
-          SWARM_DATA.value.push({ IP: currentDeviceIP.value,isActive: true, ...res.data });
+          SWARM_DATA.value.push({ IP: currentDeviceIP.value, isActive: true, ...res.data });
           localStorage.setItem('SWARM_DATA', JSON.stringify(SWARM_DATA.value));
         }
       });
@@ -670,9 +680,9 @@ export default defineComponent({
       currentDeviceIP.value = getIpOfDevice();
       console.log(currentDeviceIP.value)
 
-        intervalId = setInterval(() => {
-          loadDevicesFromLocalStorage(currentDeviceIP.value);
-        }, 5000);
+      intervalId = setInterval(() => {
+        loadDevicesFromLocalStorage(currentDeviceIP.value);
+      }, 5000);
     })
     onUnmounted(() => {
       clearInterval(intervalId);

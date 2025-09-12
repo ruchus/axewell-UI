@@ -105,7 +105,10 @@
     "updateOk": "Descarga exitosa, se va a refrescar la página para aplicar los cambios.",
     "updateErr": "Ups... algo ha ido mal.",
     "wwwFileError": "El archivo debe llamarse www.bin",
-    "espFileError": "El archivo debe llamarse esp-miner.bin"
+    "espFileError": "El archivo debe llamarse esp-miner.bin",
+    "uploadingFile": "Subiendo el archivo",
+    "uploadSuccessful": "Subida exitosa",
+    "miningPower": "Potencia de minado"
   },
   "networkPage": {
     "title": "Red",

@@ -105,7 +105,10 @@
     "updateOk": "Загрузка прошла успешно. Страница будет обновлена для применения изменений.",
     "updateErr": "Упс... что-то пошло не так.",
     "wwwFileError": "Файл должен иметь название www.bin",
-    "espFileError": "Файл должен иметь название esp-miner.bin"
+    "espFileError": "Файл должен иметь название esp-miner.bin",
+    "uploadingFile": "Загрузка файла",
+    "uploadSuccessful": "Успешная загрузка",
+    "miningPower": "Мощность добычи"
   },
   "networkPage": {
     "title": "Сеть",

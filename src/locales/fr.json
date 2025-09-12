@@ -105,7 +105,10 @@
     "updateOk": "Téléchargement réussi. La page va se rafraîchir pour appliquer les modifications.",
     "updateErr": "Oups... quelque chose s'est mal passé.",
     "wwwFileError": "Le fichier doit s'appeler www.bin",
-    "espFileError": "Le fichier doit s'appeler esp-miner.bin"
+    "espFileError": "Le fichier doit s'appeler esp-miner.bin",
+    "uploadingFile": "Téléchargement du fichier",
+    "uploadSuccessful": "Téléchargement réussi",
+    "miningPower": "Puissance minière"
   },
   "networkPage": {
     "title": "Réseau",
