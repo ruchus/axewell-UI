@@ -257,34 +257,6 @@ export default defineComponent({
       return options;
     })
 
-    // const markerLabels = {};
-    // optionsFrequencies.value.forEach((option, index) => {
-    //   markerLabels[index] = option.label;
-    // });
-
-    // const optionsVoltages = computed(() => {
-    //   if (!voltageOptions.value.length) return [];
-    //   const options = voltageOptions.value.map(voltage => {
-    //     const isDefault = defaultVoltages[ASICModel.value] === voltage;
-    //     return {
-    //       label: isDefault ? `${voltage} (default)` : `${voltage}`,
-    //       value: voltage
-    //     }
-    //   });
-
-    //   const currentVoltage = form.value.coreVoltage;
-    //   if (currentVoltage && !options.some(opt => opt.value === currentVoltage)) {
-    //     options.push({
-    //       label: `${currentVoltage} (Custom)`,
-    //       value: currentVoltage
-    //     });
-    //     options.sort((a, b) => a.value - b.value)
-    //   }
-
-    //   return options;
-
-    // })
-
     const uploadBinaryFile = () => {
       if (!binaryfileWebsite.value) {
         console.error('No file selected')
