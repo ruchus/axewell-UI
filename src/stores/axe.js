@@ -23,8 +23,6 @@ export const useAxeStore = defineStore('axe', {
     firstLoading: false,
     isFirstRequest: true,
     darkmode: true,
-    //axeVer: "1.0",
-    //downloadedAxeVer: "",
     isSystemUpdating: false
   }),
   getters: {
@@ -155,27 +153,7 @@ export const useAxeStore = defineStore('axe', {
         return res.data
       })
     },
-    downloadFile(url) {
-      return axios({
-        method: 'post',
-        url: url,
-        responseType: 'blob',
-        data: {
-          boardVersion: this.infoData?.boardVersion
-        }
-      }).then((response) => {
-        return response.data
-      })
-    },
 
-    uploadFile(fileBlob, url, filename) {
-      const file = new File([fileBlob], filename, { type: 'application/octet-stream' })
-      return axios.post(url, file, {
-        headers: {
-          'Content-Type': 'application/octet-stream'
-        }
-      })
-    },
     formatearFecha(fecha) {
       const ahora = new Date()
       const f = new Date(fecha)
@@ -203,31 +181,8 @@ export const useAxeStore = defineStore('axe', {
         return `${dia}/${mes}/${año}, ${horaFormateada}`
       }
     },
-    searchUpdates(apiUrl) {
-      return axios
-        .post(`${apiUrl}/api/version`, {
-          macAddr: this.infoData?.macAddr,
-          ASICModel: this.infoData?.ASICModel,
-          version: this.infoData?.version,
-          idfVersion: this.infoData?.idfVersion,
-          boardVersion: this.infoData?.boardVersion,
-          axeVer: this.axeVer
-        })
-        .then((res) => {
-          this.downloadedAxeVer = res?.data?.axeVerRemote
-          return res.data
-        })
-    },
-    restartSystemForUpdates() {
-      return axios
-        .post(`/api/system/restart`)
-        .then((res) => {
-          return res.data
-        })
-        .finally(() => {})
-    }
   },
   persist: {
-    paths: ['minHashRateLocalStorage', 'maxHashRateLocalStorage', 'darkmode', 'axeVer']
+    paths: ['minHashRateLocalStorage', 'maxHashRateLocalStorage', 'darkmode']
   }
 })
