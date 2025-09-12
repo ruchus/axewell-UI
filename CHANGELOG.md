@@ -1,3 +1,13 @@
+## [1.1.1](https://github.com/ruchus/Axewell-UI-for-Bitaxe/compare/v1.1.0...v1.1.1) (2025-09-12)
+
+
+### Bug Fixes
+
+* changed git PAT token for semantic access to main ([9c29d4d](https://github.com/ruchus/Axewell-UI-for-Bitaxe/commit/9c29d4dabd8266a8c14ed1c34a9c7cdebada836e))
+* computed value for efficiency value on swarm page ([2b88a56](https://github.com/ruchus/Axewell-UI-for-Bitaxe/commit/2b88a56a9cc126cb8fb707d27f4980700edb499c)), closes [#15](https://github.com/ruchus/Axewell-UI-for-Bitaxe/issues/15)
+* minor problems in text translations ([060b83f](https://github.com/ruchus/Axewell-UI-for-Bitaxe/commit/060b83fdcd56c21ff75072bd10028bd4d6ed34f3)), closes [#20](https://github.com/ruchus/Axewell-UI-for-Bitaxe/issues/20)
+* rounded expected hasrate on dashboard ([35de851](https://github.com/ruchus/Axewell-UI-for-Bitaxe/commit/35de851e02a29468d709ac1332381a62b9ce374c)), closes [#17](https://github.com/ruchus/Axewell-UI-for-Bitaxe/issues/17)
+
 # [1.1.0](https://github.com/ruchus/Axewell-UI-for-Bitaxe/compare/v1.0.2...v1.1.0) (2025-09-07)
 
 
