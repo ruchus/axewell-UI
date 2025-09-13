@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/ruchus/axewell-UI/compare/v1.1.1...v1.2.0) (2025-09-13)
+
+
+### Features
+
+* added actions for www.bin build by @WantClue ([8b0eb26](https://github.com/ruchus/axewell-UI/commit/8b0eb26414a92511d632efdc52034f2c9ae9986c))
+
 ## [1.1.1](https://github.com/ruchus/Axewell-UI-for-Bitaxe/compare/v1.1.0...v1.1.1) (2025-09-12)
 
 
