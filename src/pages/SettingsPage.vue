@@ -71,9 +71,10 @@
                 </div>
               </div>
             </div>
-
+            <!--
             <div class="card-title q-mt-lg">{{ t("settingsPage.tempTarget") }}</div>
             <span class="card-text">{{ t("settingsPage.tempTargetDesc") }}</span>
+-->
             <div>
             </div>
           </div>
