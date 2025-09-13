@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/ruchus/axewell-UI/compare/v1.2.0...v1.2.1) (2025-09-13)
+
+
+### Bug Fixes
+
+* small changes to sync actions ([39956d3](https://github.com/ruchus/axewell-UI/commit/39956d379438666cea8dcc46e121732543eb3d4d))
+
 # [1.2.0](https://github.com/ruchus/axewell-UI/compare/v1.1.1...v1.2.0) (2025-09-13)
 
 
