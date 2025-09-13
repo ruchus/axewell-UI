@@ -109,7 +109,10 @@
     "espFileError": "The file must be named esp-miner.bin",
     "uploadingFile": "Uploading file",
     "uploadSuccessful": "Upload successful",
-    "miningPower": "Mining power"
+    "miningPower": "Mining power",
+    "miningPowerDesc": "More power, more Gh/s, but also more consumption and higher temperature.",
+    "tempTarget": "Temperatura objetivo del chip",
+    "tempTargetDesc": "La velocidad del ventilador se ajustará hasta intentar alcanzar la temperatura indicada."
   },
   "networkPage": {
     "title": "Network",
