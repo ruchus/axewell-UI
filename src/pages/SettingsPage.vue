@@ -47,37 +47,34 @@
             </q-input>
           </div>
           <div class="col-12 col-lg-4 col-md-4 col-sm-12 col-xs-12" style="width: 300px">
-            <div class="col-12 col-lg-4 col-md-3 col-sm-12 col-xs-12" style="max-width: 300px">
-              <div class="card-title q-mb-lg">{{ t("settingsPage.miningPower") }}</div>
+            <div class="card-title">{{ t("settingsPage.miningPower") }}</div>
+            <span class="card-text">{{ t("settingsPage.miningPowerDesc") }}</span>
+            <div>
+              <q-slider v-model="model" :min="0" :max="optionsFrequencies.length - 1" step="1" track-size="10px"
+                color="deep-purple-11" markers :dark="axeStore.darkmode ? true : false" class="gradient-slider" />
               <div>
-                <q-slider v-model="model" :min="0" :max="optionsFrequencies.length - 1" step="1" track-size="10px"
-                  color="deep-purple-11" markers :dark="axeStore.darkmode ? true : false" class="gradient-slider" />
-
-                <div>
-                  <div class="row ">
-                    <q-icon name="speed" color="darkgrey" size="sm" class="q-mr-xs q-mt-xs" />
-                    <span class="small-container rounded-borders text-left q-mr-sm" style="width: 100px;">{{
-                      t('settingsPage.frequency') }}</span>
-                    <span class="small-container rounded-borders text-left" style="width: 100px;">
-                      {{ optionsFrequencies[model]?.label }}
-                    </span>
-                  </div>
-                  <div class="row q-mt-sm">
-                    <q-icon name="bolt" color="darkgrey" size="sm" class="q-mr-xs q-mt-xs" />
-                    <span class="small-container rounded-borders text-left q-mr-sm" style="width: 100px;">{{
-                      t('settingsPage.coreVoltage') }}</span>
-                    <span class="small-container rounded-borders text-left" style="width: 100px;">
-                      {{ optionsFrequencies[model]?.voltage }}
-                    </span>
-                  </div>
+                <div class="row ">
+                  <q-icon name="speed" color="darkgrey" size="sm" class="q-mr-xs q-mt-xs" />
+                  <span class="small-container rounded-borders text-left q-mr-sm" style="width: 100px;">{{
+                    t('settingsPage.frequency') }}</span>
+                  <span class="small-container rounded-borders text-left" style="width: 100px;">
+                    {{ optionsFrequencies[model]?.label }}
+                  </span>
+                </div>
+                <div class="row q-mt-sm">
+                  <q-icon name="bolt" color="darkgrey" size="sm" class="q-mr-xs q-mt-xs" />
+                  <span class="small-container rounded-borders text-left q-mr-sm" style="width: 100px;">{{
+                    t('settingsPage.coreVoltage') }}</span>
+                  <span class="small-container rounded-borders text-left" style="width: 100px;">
+                    {{ optionsFrequencies[model]?.voltage }}
+                  </span>
                 </div>
               </div>
-              <!-- <q-select emit-value class="q-mb-md" color="deep-purple" filled stack-label v-model="form.frequency"
-                :options="optionsFrequencies" :label="t('settingsPage.frequency')"
-                :dark="axeStore.darkmode ? true : false" />
-              <q-select emit-value class="q-mb-md" color="deep-purple" filled stack-label v-model="form.coreVoltage"
-                :options="optionsVoltages" :label="t('settingsPage.coreVoltage')"
-                :dark="axeStore.darkmode ? true : false" /> -->
+            </div>
+
+            <div class="card-title q-mt-lg">{{ t("settingsPage.tempTarget") }}</div>
+            <span class="card-text">{{ t("settingsPage.tempTargetDesc") }}</span>
+            <div>
             </div>
           </div>
         </div>
@@ -156,6 +153,8 @@ export default defineComponent({
     const ASICModel = ref(axeStore.infoData.ASICModel);
     const frequencyOptions = ref([]);
     const voltageOptions = ref([]);
+    const valorTemp = ref(50);
+
     const model = ref(0)
     const form = ref({
       autofanspeed: true,
