@@ -4,12 +4,12 @@
       <div class="header-container card-text">
         <div class="row left-aligned items-center q-pl-lg q-pt-md" v-if="quasar.screen.gt.sm">
           <template v-if="axeStore.darkmode">
-            <img src="@/assets/logo.png" alt="" width="26">
+            <img src="@/assets/logo.png" alt="" width="30">
           </template>
           <template v-else>
-            <img src="@/assets/logod.png" alt="" width="26">
+            <img src="@/assets/logod.png" alt="" width="30">
           </template>
-          <span class="axe-title q-pl-sm">AXEWELL</span>
+          <span class="axe-title q-pl-sm">axewell</span>
         </div>
 
         <div class="right-aligned" v-if="quasar.screen.gt.sm">
@@ -82,8 +82,8 @@
       </div>
       <div class="q-ma-md text-center" v-if="!quasar.screen.gt.sm">
         <q-toolbar-title shrink class="row items-center no-wrap">
-          <img src="@/assets/logo.png" alt="" width="33">
-          <span class="axe-title">AXEWELL</span>
+          <img src="@/assets/logo.png" alt="" width="30">
+          <span class="axe-title q-ml-sm">axewell</span>
         </q-toolbar-title>
 
       </div>
@@ -115,7 +115,10 @@
     </q-drawer>
     <q-footer class="bg-layout footer text-center">
       <q-toolbar>
-        <q-toolbar-title>Axewell UI v{{ version }}, running on Bitaxe
+        <q-toolbar-title>
+          <a href="https://github.com/ruchus/axewell-UI" target="_blank" rel="noopener noreferrer"
+            style="color: var(--text-primary)">axewell UI</a>
+          v{{ version }}, running on Bitaxe
           <q-icon name="info" size="xs" color="grey-7" class="q-mr-sm cursor-pointer" style="color: #629C44">
             <q-tooltip anchor="top middle" self="center middle">
               ASIC Model: {{ axeStore?.infoData?.ASICModel }} <br />
