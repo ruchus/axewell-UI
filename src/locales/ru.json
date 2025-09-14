@@ -110,8 +110,9 @@
     "uploadSuccessful": "Успешная загрузка",
     "miningPower": "Мощность добычи",
     "miningPowerDesc": "Больше мощности, больше Gh/s, но также больше потребление и выше температура.",
-    "tempTarget": "Temperatura objetivo del chip",
-    "tempTargetDesc": "La velocidad del ventilador se ajustará hasta intentar alcanzar la temperatura indicada."
+    "tempTarget": "Температура чипа",
+    "tempTargetDesc": "Скорость вентилятора будет регулироваться до тех пор, пока он не попытается достичь указанной температуры.",
+    "tempTargetInfo": "Температура микросхемы ASIC считается безопасной при температуре ниже 21 градуса Цельсия. Более низкие температуры продлят срок службы ASIC. Убедитесь, что ваш вентилятор Bitaxe поддерживает регулировку. В противном случае он всегда будет работать на полной скорости."
   },
   "networkPage": {
     "title": "Сеть",

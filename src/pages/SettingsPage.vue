@@ -48,9 +48,11 @@
           </div>
           <div class="col-12 col-lg-4 col-md-4 col-sm-12 col-xs-12" style="width: 300px">
             <div class="card-title">{{ t("settingsPage.miningPower") }}</div>
-            <span class="card-text">{{ t("settingsPage.miningPowerDesc") }}</span>
-            <div>
-              <q-slider v-model="model" :min="0" :max="optionsFrequencies.length - 1" step="1" track-size="10px"
+            <q-item>
+              <span class="card-text">{{ t("settingsPage.miningPowerDesc") }}</span>
+            </q-item>
+            <div class="q-pa-md">
+              <q-slider v-model="model" :min="0" :max="optionsFrequencies.length - 1" step="1" track-size="6px"
                 color="deep-purple-11" markers :dark="axeStore.darkmode ? true : false" class="gradient-slider" />
               <div>
                 <div class="row ">
@@ -71,11 +73,23 @@
                 </div>
               </div>
             </div>
-            <!--
+
             <div class="card-title q-mt-lg">{{ t("settingsPage.tempTarget") }}</div>
-            <span class="card-text">{{ t("settingsPage.tempTargetDesc") }}</span>
--->
-            <div>
+            <q-item>
+              <span class="card-text">{{ t("settingsPage.tempTargetDesc") }}
+                <q-icon name="info" size="xs" color="grey-7" class="q-mr-sm cursor-pointer" style="color: #629C44">
+                  <q-tooltip anchor="top middle" self="center middle">
+                    {{ t("settingsPage.tempTargetInfo") }}
+                  </q-tooltip>
+                </q-icon>
+              </span>
+            </q-item>
+
+            <div class="q-pa-md">
+
+              <q-slider v-model="temperatureValue" :min="50" :max="70" :step="5" track-size="6px" color="deep-purple-11"
+                class="gradient-slider" markers :marker-labels="markerLabels" label
+                :label-value="`${temperatureValue}°C`" />
             </div>
           </div>
         </div>
@@ -154,7 +168,14 @@ export default defineComponent({
     const ASICModel = ref(axeStore.infoData.ASICModel);
     const frequencyOptions = ref([]);
     const voltageOptions = ref([]);
-    const valorTemp = ref(50);
+    const temperatureValue = ref(axeStore.infoData?.temptarget); // Valor inicial del slider de temperatura
+    const markerLabels = {
+      50: '50°C',
+      55: '55°C',
+      60: '60°C',
+      65: '65°C',
+      70: '70°C'
+    }
 
     const model = ref(0)
     const form = ref({
@@ -197,8 +218,6 @@ export default defineComponent({
     onBeforeMount(() => {
       const lang = route.query.lang || 'es';
       locale.value = lang;
-
-
     });
 
     onMounted(async () => {
@@ -333,13 +352,12 @@ export default defineComponent({
     }
 
     const submitForm = async (e) => {
-      console.log(form.value.stratumPort);
+      //console.log(temperatureValue.value);
       e.preventDefault();
       return axios
         .patch(
           `/api/system`,
           {
-            autofanspeed: form.value.autofanspeed,
             coreVoltage: form.value.coreVoltage,
             fanspeed: form.value.fanspeed,
             flipscreen: form.value.flipscreen,
@@ -355,6 +373,8 @@ export default defineComponent({
             fallbackStratumURL: form.value.fallbackStratumURL,
             fallbackStratumPassword: form.value.fallbackStratumPassword,
             fallbackStratumUser: form.value.fallbackStratumUser,
+            autofanspeed: form.value.autofanspeed,
+            tempTarget: temperatureValue.value,
           },
           {
             headers: { 'Content-Type': 'application/json' }
@@ -384,6 +404,8 @@ export default defineComponent({
       optionsFrequencies,
       //markerLabels,
       model,
+      temperatureValue,
+      markerLabels
     }
   }
 })
