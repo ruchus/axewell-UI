@@ -277,9 +277,9 @@ export default defineComponent({
     })
 
     const uploadBinaryFile = () => {
-      if (!binaryfileWebsite.value) {
-        console.error('No file selected')
-        return
+      if (!binaryfileWebsite.value || binaryfileWebsite.value.name !== 'www.bin') {
+        console.error('Invalid file selected');
+        return;
       }
       Loading.show({
         message: t("settingsPage.uploadingFile"),
@@ -311,9 +311,9 @@ export default defineComponent({
     }
 
     const uploadFirmwareFile = () => {
-      if (!binaryfileFirmware.value) {
-        console.error('No file selected')
-        return
+      if (!binaryfileFirmware.value || binaryfileFirmware.value.name !== 'esp-miner.bin') {
+        console.error('Invalid file selected');
+        return;
       }
       Loading.show({
         message: "Subiendo el archivo",
@@ -343,12 +343,19 @@ export default defineComponent({
 
 
     const handleFileChangeWebsite = (file) => {
-      binaryfileWebsite.value = file
-      uploadBinaryFile()
+      binaryfileWebsite.value = file;
+      // Solo proceder con la carga si el archivo es válido
+      if (file && file.name === 'www.bin') {
+        uploadBinaryFile();
+      }
     }
+    
     const handleFileChangeFirmware = (file) => {
-      binaryfileFirmware.value = file
-      uploadFirmwareFile()
+      binaryfileFirmware.value = file;
+      // Solo proceder con la carga si el archivo es válido
+      if (file && file.name === 'esp-miner.bin') {
+        uploadFirmwareFile();
+      }
     }
 
     const submitForm = async (e) => {
@@ -416,8 +423,4 @@ export default defineComponent({
   height: 10px;
   border-radius: 5px;
 }
-
-/* .gradient-slider .q-slider__track-container .q-slider__track  .q-slider__selection {
-    background-color: transparent;
-  } */
 </style>
