@@ -42,11 +42,11 @@
     "power": {
       "title": "Consumo",
       "powerConsumption": "Consumo eléctrico",
-      "inputVoltage": "Voltaje de entrada",
+      "inputVoltage": "Voltaje de entrada/amperios",
       "inputCurrent": "Corriente de entrada",
-      "frequency": "Frecuencia",
+      "frequency": "Frecuencia ASIC",
       "voltageRequested": "Voltage solicitado ",
-      "voltageMeasured": "Voltaje medido",
+      "voltageMeasured": "Voltaje ASIC",
       "fanSpeed": "Velocidad ventilador",
       "chipTemperature": "Temperatura del chip"
     }
@@ -100,7 +100,7 @@
     "coreVoltage": "Voltaje",
     "update": "Actualizar",
     "updateFirmware": "Actualizar firmware",
-    "updateWebsite": "Actualizar Axewell UI",
+    "updateWebsite": "Actualizar axewell UI",
     "restartText": "El dispositivo se reiniciará. ¿Ok?",
     "updateOk": "Descarga exitosa, se va a refrescar la página para aplicar los cambios.",
     "updateErr": "Ups... algo ha ido mal.",
@@ -110,9 +110,9 @@
     "uploadSuccessful": "Subida exitosa",
     "miningPower": "Potencia de minado",
     "miningPowerDesc": "A más potencia más Gh/s, pero también más consumo y más temperatura.",
-    "tempTarget": "Temperatura del chip",
+    "tempTarget": "Temperatura chip ASIC",
     "tempTargetDesc": "La velocidad del ventilador se ajustará hasta intentar alcanzar la temperatura indicada.",
-    "tempTargetInfo": "La temperatura del chip ASIC se considera segura por debajo de 70 grados. Temperaturas más bajas prolongarán la vida útil del ASIC. Asegúrese de que su ventilador bitax sea compatible con la regulación. De lo contrario, siempre funcionará a máxima velocidad."
+    "tempTargetInfo": "La temperatura del chip ASIC se considera segura por debajo de 70 grados. Temperaturas más bajas prolongarán la vida útil del ASIC. Asegúrate de que tu ventilador bitaxe sea compatible con la regulación. De lo contrario, siempre funcionará a máxima velocidad."
   },
   "networkPage": {
     "title": "Red",

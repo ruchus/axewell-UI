@@ -162,15 +162,14 @@
                       <div>
                         <span class="q-mx-sm  yellowData" style="font-size: 20px; font-weight: 600;">
                           {{ totalHashRate?.totalValue.toFixed(2) }} {{ totalHashRate?.unit }} </span>
-                        <span> {{
-                          t("swarmPage.hashrate")
-                        }}</span>
+                        <span>
+                          {{ t("swarmPage.hashrate") }}
+                        </span>
                       </div>
-                      <div><span class="q-xl-sm yellowData" style="font-size: 20px; font-weight: 600;">{{
-                        totalEfficiency }}
-                          W/Th</span> <span> {{
-                            t("swarmPage.efficiency")
-                          }}</span></div>
+                      <div><span class="q-xl-sm yellowData" style="font-size: 20px; font-weight: 600;">
+                        {{ totalEfficiency }} J/Th</span> 
+                        <span>&nbsp;{{ t("swarmPage.efficiency") }} <small>(≈ {{ efficiency }} W/Th)</small></span>
+                      </div>
                     </div>
                   </q-card-section>
                 </q-card>
@@ -183,8 +182,8 @@
                   </q-card-section>
                   <q-card-section class="text-center">
                     <q-icon name="bolt" color="darkgrey" size="lg" class="q-mr-sm" />
-                    <span class="yellowData text-h6 q-mx-sm">{{ totalPowerConsumption.toFixed(2) }} </span>
-                    <span>W/h</span>
+                    <span class="yellowData text-h5 q-mx-sm text-bold">{{ Math.round(totalPowerConsumption) }} </span>
+                    <span>Watts</span>
                   </q-card-section>
                 </q-card>
               </div>
@@ -337,16 +336,16 @@
                 <q-card-section>
                   <div class="text-center">
                     <div>
-                      <span class="yellowData q-mx-sm text-h6">{{ totalHashRate?.totalValue.toFixed(2) }} {{
-                        totalHashRate?.unit
-                      }}</span>
-                      <span> Hashrate</span>
-                    </div>
-                    <div><span class="q-mx-sm yellowData" style="font-size: 20px; font-weight: 600;">{{
-                      totalEfficiency }}
-                        W/Th</span> <span> {{
-                          t("swarmPage.efficiency")
-                        }}</span></div>
+                        <span class="q-mx-sm  yellowData" style="font-size: 20px; font-weight: 600;">
+                          {{ totalHashRate?.totalValue.toFixed(2) }} {{ totalHashRate?.unit }} </span>
+                        <span>
+                          {{ t("swarmPage.hashrate") }}
+                        </span>
+                      </div>
+                      <div><span class="q-xl-sm yellowData" style="font-size: 20px; font-weight: 600;">
+                        {{ totalEfficiency }} J/Th</span> 
+                        <span>&nbsp;{{ t("swarmPage.efficiency") }} <small>(≈ {{ efficiency }} W/Th)</small></span>
+                      </div>
                   </div>
                 </q-card-section>
               </q-card>
@@ -360,8 +359,8 @@
 
                 <q-card-section class="text-center">
                   <q-icon name="flash_on" color="darkgrey" size="lg" />
-                  <span class="yellowData q-mx-sm text-h6">{{ totalPowerConsumption.toFixed(2) }}</span>
-                  <span> W/h</span>
+                  <span class="yellowData q-mx-sm text-h5">{{ Math.round(totalPowerConsumption) }}</span>
+                  <span> Watts</span>
                 </q-card-section>
               </q-card>
             </template>
@@ -481,20 +480,20 @@ export default defineComponent({
       var totalHashRateRounded = parseFloat(total.toFixed(2));
       if (totalHashRateRounded >= 1000) {
         const thzValue = (totalHashRateRounded / 1000);
-        return { totalValue: thzValue, unit: 'TH/s' };
+        return { totalValue: thzValue, unit: 'Th/s' };
       }
-      return { totalValue: totalHashRateRounded, unit: 'GH/s' };
+      return { totalValue: totalHashRateRounded, unit: 'Gh/s' };
     });
 
     const totalEfficiency = computed(() => {
       var divisor;
-      if (totalHashRate?.value?.unit === 'TH/s')
+      if (totalHashRate?.value?.unit === 'Th/s')
         divisor = 1;
       else// GH/s
         divisor = 1000;
 
       var totalEfficiency = totalPowerConsumption?.value / (totalHashRate?.value?.totalValue / divisor)
-      return totalEfficiency.toFixed(2);
+      return Math.round(totalEfficiency);
     })
 
     const uptimeFormatted = (uptimeSeconds) => {
