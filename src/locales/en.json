@@ -43,11 +43,11 @@
     "power": {
       "title": "Power",
       "powerConsumption": "Power consumption",
-      "inputVoltage": "Input voltage",
+      "inputVoltage": "Input voltage/current",
       "inputCurrent": "Input current",
-      "frequency": "Frequency",
+      "frequency": "ASIC frequency",
       "voltageRequested": "Voltage requested ",
-      "voltageMeasured": "Voltage measured",
+      "voltageMeasured": "ASIC voltage",
       "fanSpeed": "Fan speed",
       "chipTemperature": "Chip temperature"
     }
@@ -101,7 +101,7 @@
     "coreVoltage": "Core voltage",
     "update": "Update",
     "updateFirmware": "Update Firmware",
-    "updateWebsite": "Update Axewell UI",
+    "updateWebsite": "Update axewell UI",
     "restartText": "The device will be restarted. Ok?",
     "updateOk": "Successful download. The page will refresh to apply the changes.",
     "updateErr": "Oops... something went wrong.",
@@ -111,8 +111,9 @@
     "uploadSuccessful": "Upload successful",
     "miningPower": "Mining power",
     "miningPowerDesc": "More power, more Gh/s, but also more consumption and higher temperature.",
-    "tempTarget": "Temperatura objetivo del chip",
-    "tempTargetDesc": "La velocidad del ventilador se ajustará hasta intentar alcanzar la temperatura indicada."
+    "tempTarget": "Temperature",
+    "tempTargetDesc": "The fan speed will adjust until it attempts to reach the indicated temperature.",
+    "tempTargetInfo": "ASIC chip temperature is considered safe below 70 degrees. Lower temperatures will prolong the ASIC lifespan. Please make you sure your bitaxe fan supports regulation. If not, always will run at full speed."
   },
   "networkPage": {
     "title": "Network",

@@ -42,11 +42,11 @@
     "power": {
       "title": "Puissance",
       "powerConsumption": "Consommation d'énergie",
-      "inputVoltage": "Tension d'entrée",
+      "inputVoltage": "Tension d'entrée/ampères",
       "inputCurrent": "Courant d'entrée",
-      "frequency": "Fréquence",
+      "frequency": "Fréquence ASIC",
       "voltageRequested": "Tension demandée",
-      "voltageMeasured": "Tension mesurée",
+      "voltageMeasured": "Tension ASIC",
       "fanSpeed": "Vitesse du ventilateur",
       "chipTemperature": "Température du chip"
     }
@@ -100,7 +100,7 @@
     "coreVoltage": "Tension",
     "update": "Mettre à jour",
     "updateFirmware": "Mettre à jour le firmware",
-    "updateWebsite": "Mettre à jour Axewell UI",
+    "updateWebsite": "Mettre à jour axewell UI",
     "restartText": "L'appareil va redémarrer. Ok?",
     "updateOk": "Téléchargement réussi. La page va se rafraîchir pour appliquer les modifications.",
     "updateErr": "Oups... quelque chose s'est mal passé.",
@@ -110,8 +110,9 @@
     "uploadSuccessful": "Téléchargement réussi",
     "miningPower": "Puissance minière",
     "miningPowerDesc": "Plus de puissance, plus de Gh/s, mais aussi plus de consommation et une température plus élevée.",
-    "tempTarget": "Temperatura objetivo del chip",
-    "tempTargetDesc": "La velocidad del ventilador se ajustará hasta intentar alcanzar la temperatura indicada."
+    "tempTarget": "Température",
+    "tempTargetDesc": "La vitesse du ventilateur s'ajustera jusqu'à ce qu'il tente d'atteindre la température indiquée.",
+    "tempTargetInfo": "La température des puces ASIC est considérée comme sûre en dessous de 70 degrés. Des températures plus basses prolongeront la durée de vie des ASIC. Assurez-vous que votre ventilateur Bitaxe est compatible avec la régulation. Sinon, il fonctionnera toujours à pleine vitesse."
   },
   "networkPage": {
     "title": "Réseau",

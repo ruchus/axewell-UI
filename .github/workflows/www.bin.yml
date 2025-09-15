@@ -1,9 +1,8 @@
 name: Build & Release WebUI
 
 on:
-  push:
-    tags:
-      - 'v*'
+  release:
+    types: [released]
 
 permissions:
   checks: write

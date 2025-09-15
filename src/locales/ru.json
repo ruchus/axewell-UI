@@ -42,11 +42,11 @@
     "power": {
       "title": "Власть",
       "powerConsumption": "Потребляемая мощность",
-      "inputVoltage": "Входное напряжение",
+      "inputVoltage": "Входное напряжение/амперы",
       "inputCurrent": "Входной ток",
-      "frequency": "Частота",
+      "frequency": "Частота ASIC",
       "voltageRequested": "Запрошенное напряжение",
-      "voltageMeasured": "Измеренное напряжение",
+      "voltageMeasured": "Напряжение ASIC",
       "fanSpeed": "Скорость вентилятора",
       "chipTemperature": "Температура чипа"
     }
@@ -100,7 +100,7 @@
     "coreVoltage": "Напряжение ядра",
     "update": "Обновлять",
     "updateFirmware": "Обновить прошивку",
-    "updateWebsite": "Обновить Axewell UI",
+    "updateWebsite": "Обновить axewell UI",
     "restartText": "Устройство будет перезагружено. Ок?",
     "updateOk": "Загрузка прошла успешно. Страница будет обновлена для применения изменений.",
     "updateErr": "Упс... что-то пошло не так.",
@@ -110,8 +110,9 @@
     "uploadSuccessful": "Успешная загрузка",
     "miningPower": "Мощность добычи",
     "miningPowerDesc": "Больше мощности, больше Gh/s, но также больше потребление и выше температура.",
-    "tempTarget": "Temperatura objetivo del chip",
-    "tempTargetDesc": "La velocidad del ventilador se ajustará hasta intentar alcanzar la temperatura indicada."
+    "tempTarget": "Температура",
+    "tempTargetDesc": "Скорость вентилятора будет регулироваться до тех пор, пока он не попытается достичь указанной температуры.",
+    "tempTargetInfo": "Температура микросхемы ASIC считается безопасной при температуре ниже 21 градуса Цельсия. Более низкие температуры продлят срок службы ASIC. Убедитесь, что ваш вентилятор Bitaxe поддерживает регулировку. В противном случае он всегда будет работать на полной скорости."
   },
   "networkPage": {
     "title": "Сеть",

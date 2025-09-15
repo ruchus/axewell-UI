@@ -24,10 +24,11 @@
                         </div>
                         <div class="col-4">
                             <div class="small-container data-fields rounded-borders text-right">
-                                {{ powerData?.voltage }} V
+                                {{ inputVoltage }} V / {{ inputCurrent }} A
                             </div>
                         </div>
                     </div>
+                    <!--
                     <div class="row justify-evenly q-mt-md">
                         <div class="col-6">
                             <div class="small-container data-label rounded-borders text-left">
@@ -40,6 +41,7 @@
                             </div>
                         </div>
                     </div>
+                    -->
                 </div>
                 <div class="col-lg-4 col-md-4">
                     <div class="row justify-evenly q-mt-md">
@@ -54,6 +56,7 @@
                             </div>
                         </div>
                     </div>
+                    <!--
                     <div class="row justify-evenly q-mt-md">
                         <div class="col-6">
                             <div class="small-container data-label rounded-borders text-left">
@@ -66,6 +69,7 @@
                             </div>
                         </div>
                     </div>
+                    -->
                     <div class="row justify-evenly q-mt-md">
                         <div class="col-6">
                             <div class="small-container data-label rounded-borders text-left">
@@ -74,7 +78,7 @@
                         </div>
                         <div class="col-4">
                             <div class="small-container data-fields rounded-borders text-right">
-                                {{ powerData?.coreVoltageActual }} V
+                                {{ ASICvoltage }} V
                             </div>
                         </div>
                     </div>
@@ -133,10 +137,11 @@
                     </div>
                     <div class="col-4">
                         <div class="small-container data-fields rounded-borders text-right">
-                            {{ powerData?.voltage }} V
+                            {{ inputVoltage }} V / {{ inputCurrent }} A
                         </div>
                     </div>
                 </div>
+                <!--
                 <div class="row justify-evenly q-mt-md">
                     <div class="col-6">
                         <div class="small-container data-label rounded-borders text-left">
@@ -149,6 +154,7 @@
                         </div>
                     </div>
                 </div>
+                -->
                 <div class="row justify-evenly q-mt-md">
                     <div class="col-6">
                         <div class="small-container data-label rounded-borders text-left">
@@ -164,6 +170,7 @@
 
             </div>
             <div class="col-sm-6 col-xs-6">
+                <!--
                 <div class="row justify-evenly q-mt-md">
                     <div class="col-6">
                         <div class="small-container data-label rounded-borders text-left">
@@ -176,6 +183,7 @@
                         </div>
                     </div>
                 </div>
+                -->
                 <div class="row justify-evenly q-mt-md">
                     <div class="col-6">
                         <div class="small-container data-label rounded-borders text-left">
@@ -184,14 +192,14 @@
                     </div>
                     <div class="col-4">
                         <div class="small-container data-fields rounded-borders text-right">
-                            {{ powerData?.coreVoltageActual }} V
+                            {{ ASICvoltage }} V
                         </div>
                     </div>
                 </div>
                 <div class="row justify-evenly q-mt-md">
                     <div class="col-6">
                         <div class="small-container data-label rounded-borders text-left">
-                            ({{ powerData?.fanspeed }}%) {{ powerData?.fanrpm }} RPM
+                            {{ t("dashboardPage.power.fanSpeed") }}
                         </div>
                     </div>
                     <div class="col-4">
@@ -233,10 +241,16 @@ export default defineComponent({
         const quasar = useQuasar();
         const { powerData } = toRefs(props);
         const powerConsumption = computed(() => Math.round(powerData?.value?.power))
+        const ASICvoltage = computed(() => (powerData?.value?.coreVoltageActual/1000).toFixed(2))
+        const inputVoltage = computed(() => (powerData?.value.voltage/1000).toFixed(2))
+        const inputCurrent = computed(() => (powerData?.value.current/1000).toFixed(2))
         const { t } = useI18n();
         return {
             quasar,
             powerConsumption,
+            ASICvoltage,
+            inputVoltage,
+            inputCurrent,
             t
         }
     }
