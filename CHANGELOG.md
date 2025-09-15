@@ -1,3 +1,23 @@
+# [1.3.0](https://github.com/ruchus/axewell-UI/compare/v1.2.0...v1.3.0) (2025-09-15)
+
+
+### Bug Fixes
+
+* error rules validation from q-inputs didn't shown propoerly ([2a83f49](https://github.com/ruchus/axewell-UI/commit/2a83f494493fc262fd91c4e5ec401d2f6a69eabd))
+* measurement labels incorrect #Closes 29 ([2ae1ba0](https://github.com/ruchus/axewell-UI/commit/2ae1ba011ed44387a889c7be44942013e6e97c6f))
+* round expected hash rate value en dashboard mobile ([711b8ed](https://github.com/ruchus/axewell-UI/commit/711b8ed20c5c57a9738308928783dc9d5b0420e6))
+* small changes to sync actions ([39956d3](https://github.com/ruchus/axewell-UI/commit/39956d379438666cea8dcc46e121732543eb3d4d))
+
+
+### Features
+
+* added fan speed regulation selecting target temperature ([2555b34](https://github.com/ruchus/axewell-UI/commit/2555b34f58836c973eb269d5bca2f966f5646507))
+
+
+### Reverts
+
+* roll back las change. not necessary ([9f1762c](https://github.com/ruchus/axewell-UI/commit/9f1762ce76fe8232afbdc8f839b70fa9ff9740bd))
+
 ## [1.2.1](https://github.com/ruchus/axewell-UI/compare/v1.2.0...v1.2.1) (2025-09-13)
 
 
