@@ -14,7 +14,7 @@ Discuss about the project on [Discord](https://discord.gg/6XYuqTXR)
 
 <img width="1623" height="786" alt="imagen" src="https://github.com/user-attachments/assets/abc4341c-b2fd-47c2-9456-481f0b131b94" />
 
-<img width="1589" height="846" alt="imagen" src="https://github.com/user-attachments/assets/e59fd15a-3121-4079-a9de-f1514efa64d0" />
+<img width="1653" height="888" alt="imagen" src="https://github.com/user-attachments/assets/a3531975-4fec-4dbd-9b45-7d52d6a77362" />
 
 
 
