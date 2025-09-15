@@ -110,7 +110,7 @@
     "uploadSuccessful": "Téléchargement réussi",
     "miningPower": "Puissance minière",
     "miningPowerDesc": "Plus de puissance, plus de Gh/s, mais aussi plus de consommation et une température plus élevée.",
-    "tempTarget": "Température ASIC",
+    "tempTarget": "Température",
     "tempTargetDesc": "La vitesse du ventilateur s'ajustera jusqu'à ce qu'il tente d'atteindre la température indiquée.",
     "tempTargetInfo": "La température des puces ASIC est considérée comme sûre en dessous de 70 degrés. Des températures plus basses prolongeront la durée de vie des ASIC. Assurez-vous que votre ventilateur Bitaxe est compatible avec la régulation. Sinon, il fonctionnera toujours à pleine vitesse."
   },
