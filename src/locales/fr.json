@@ -114,6 +114,15 @@
     "tempTargetDesc": "La vitesse du ventilateur s'ajustera jusqu'à ce qu'il tente d'atteindre la température indiquée.",
     "tempTargetInfo": "La température des puces ASIC est considérée comme sûre en dessous de 70 degrés. Des températures plus basses prolongeront la durée de vie des ASIC. Assurez-vous que votre ventilateur Bitaxe est compatible avec la régulation. Sinon, il fonctionnera toujours à pleine vitesse."
   },
+  "poolPage": {
+    "title": "Pool configuration",
+    "subtitle": "",
+    "advanced": "Avancé",
+    "advancedDesc": "Options avancées du pool",
+    "stratumSuggestedDifficulty": "Difficulté suggérée",
+    "extraNounce": "Activer Extranonce",
+    "extraNounceInfo": "Option recommandée si vous avez plusieurs mineurs connectés au même pool."
+  },
   "networkPage": {
     "title": "Réseau",
     "asicTitle": "Nom de l'ASIC",

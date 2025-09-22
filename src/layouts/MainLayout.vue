@@ -17,7 +17,7 @@
             <div class=" q-mt-sm">
               <span class="secondary-fields  q-mr-sm">{{ t("layout.wifiStatus") }}</span>
               <span v-if="axeStore?.infoData?.wifiStatus == 'Connected!'" style="color:green">{{ t("layout.connected")
-              }}</span>
+                }}</span>
               <span v-else style="color:red">{{ t("layout.notConnected") }}</span>
             </div>
             <span class="secondary-fields">{{ t("layout.uptime") }}: {{ axeStore.secondsToHms }}</span>
@@ -243,6 +243,11 @@ export default defineComponent({
         title: t('layout.swarm'),
         icon: 'leak_add',
         link: 'Swarm'
+      },
+      {
+        title: 'Pool',
+        icon: 'currency_bitcoin',
+        link: 'Pool'
       },
       {
         title: t('layout.settings'),

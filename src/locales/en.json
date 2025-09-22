@@ -115,6 +115,15 @@
     "tempTargetDesc": "The fan speed will adjust until it attempts to reach the indicated temperature.",
     "tempTargetInfo": "ASIC chip temperature is considered safe below 70 degrees. Lower temperatures will prolong the ASIC lifespan. Please make you sure your bitaxe fan supports regulation. If not, always will run at full speed."
   },
+  "poolPage": {
+    "title": "Pool settings",
+    "subtitle": "",
+    "advanced": "Advanced",
+    "advancedDesc": "Advanced pool options",
+    "stratumSuggestedDifficulty": "Difficulty suggested",
+    "extraNounce": "Enable Extranonce",
+    "extraNounceInfo": "Recommended option if you have multiple miners connected to the same pool."
+  },
   "networkPage": {
     "title": "Network",
     "asicTitle": "ASIC name",
