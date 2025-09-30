@@ -2,14 +2,13 @@
   <div class="page-wrapper q-pa-md">
     <div :class="quasar.screen.gt.xs ? 'dashboard-info' : 'dashboard-info-mobile'" class="q-mb-lg">
       <div class="card-title" style="font-size: 34px">{{ t("settingsPage.title") }}</div>
-      <span class="card-text">{{ t("settingsPage.subtitle") }}</span>
     </div>
 
     <div class="q-px-lg" :class="quasar.screen.gt.xs ? 'q-py-xl power-card' : 'q-py-md power-card-mobile'">
       <q-form @submit="confirm = !confirm">
         <div class="row q-col-gutter-md" :class="quasar.screen.gt.sm ? 'justify-start' : 'justify-evenly'">
           <!-- Mining Power Card -->
-          <div class="col-12 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+          <div class="col-12 col-lg-4 col-md-6 col-sm-12 col-xs-12">
             <div class="card-title">{{ t("settingsPage.miningPower") }}</div>
             <q-item>
               <span class="card-text">{{ t("settingsPage.miningPowerDesc") }}</span>
@@ -41,7 +40,7 @@
           </div>
 
           <!-- Temperature Target Card -->
-          <div class="col-12 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+          <div class="col-12 col-lg-4 col-md-6 col-sm-12 col-xs-12">
             <div class="card-title">{{ t("settingsPage.tempTarget") }}</div>
             <q-item>
               <span class="card-text">
@@ -59,12 +58,39 @@
                 :label-value="`${temperatureValue}°C`" />
             </div>
           </div>
+
+          <!-- Configuración Avanzada -->
+          <div class="col-12 col-lg-4 col-md-6 col-sm-12 col-xs-12">
+            <div class="card-title">{{ t("settingsPage.display") }}</div>
+            <q-item>
+              <span class="card-text">
+                {{ t("settingsPage.displayDesc") }}
+              </span>
+            </q-item>
+            <div class="q-pa-md">
+                <q-toggle v-model="form.displayTimeout"
+                            :label="t('settingsPage.poweroffScreen')"
+                            color="deep-purple" />
+                            <br />
+               <q-toggle
+                v-model="form.rotation"
+                checked-icon="arrow_downward"
+                color="deep-purple"
+                :label="t('settingsPage.flipScreen')"
+              />
+            </div>
+          </div>
         </div>
 
-        <div class="row justify-center">
-          <q-btn class="q-px-xl btn-background btn-titles" no-caps type="submit"
-            :style="quasar.screen.gt.sm ? '' : 'margin-top: 30%;'">{{
-              t("settingsPage.update") }}</q-btn>
+        <div class="row justify-center q-mt-md">
+          <q-btn 
+            class="q-px-xl btn-background btn-titles" 
+            no-caps 
+            type="submit"
+            :style="quasar.screen.gt.sm ? '' : 'margin-top: 30%;'"
+          >
+            {{ t("settingsPage.update") }}
+          </q-btn>
         </div>
 
       </q-form>
@@ -149,10 +175,10 @@ export default defineComponent({
       autofanspeed: true,
       coreVoltage: axeStore.infoData?.coreVoltage,
       fanspeed: axeStore.infoData?.fanspeed ?? 0,
-      flipscreen: true,
+      rotation: axeStore.infoData?.rotation ? true : false,
+      displayTimeout: axeStore.infoData?.displayTimeout === -1 ? false : true,
       frequency: axeStore.infoData?.frequency ?? 0,
       invertfanpolarity: true,
-      invertscreen: false,
       overheat_mode: axeStore.infoData?.overheat_mode ?? '',
       stratumPort: parseInt(axeStore.infoData?.stratumPort) ?? 0,
       stratumURL: axeStore.infoData?.stratumURL ?? '',
@@ -334,10 +360,10 @@ export default defineComponent({
           {
             coreVoltage: form.value.coreVoltage,
             fanspeed: form.value.fanspeed,
-            flipscreen: form.value.flipscreen,
+            rotation: parseInt(form.value.rotation ? 180 : 0),
+            displayTimeout: parseInt(form.value.rotation ? 10 : -1),
             frequency: form.value.frequency,
             invertfanpolarity: form.value.invertfanpolarity,
-            invertscreen: form.value.invertscreen,
             overheat_mode: form.value.overheat_mode,
             stratumPort: parseInt(form.value.stratumPort),
             stratumURL: form.value.stratumURL,

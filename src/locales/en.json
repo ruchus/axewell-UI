@@ -113,7 +113,11 @@
     "miningPowerDesc": "More power, more Gh/s, but also more consumption and higher temperature.",
     "tempTarget": "Temperature",
     "tempTargetDesc": "The fan speed will adjust until it attempts to reach the indicated temperature.",
-    "tempTargetInfo": "ASIC chip temperature is considered safe below 70 degrees. Lower temperatures will prolong the ASIC lifespan. Please make you sure your bitaxe fan supports regulation. If not, always will run at full speed."
+    "tempTargetInfo": "ASIC chip temperature is considered safe below 70 degrees. Lower temperatures will prolong the ASIC lifespan. Please make you sure your bitaxe fan supports regulation. If not, always will run at full speed.",
+    "display": "Display",
+    "displayDesc": "Customize the behavior of the device's display",
+    "poweroffScreen": "Turn off the screen after 10 minutes",
+    "flipScreen": "Flip screen"
   },
   "poolPage": {
     "title": "Pool settings",

@@ -112,7 +112,11 @@
     "miningPowerDesc": "Plus de puissance, plus de Gh/s, mais aussi plus de consommation et une température plus élevée.",
     "tempTarget": "Température",
     "tempTargetDesc": "La vitesse du ventilateur s'ajustera jusqu'à ce qu'il tente d'atteindre la température indiquée.",
-    "tempTargetInfo": "La température des puces ASIC est considérée comme sûre en dessous de 70 degrés. Des températures plus basses prolongeront la durée de vie des ASIC. Assurez-vous que votre ventilateur Bitaxe est compatible avec la régulation. Sinon, il fonctionnera toujours à pleine vitesse."
+    "tempTargetInfo": "La température des puces ASIC est considérée comme sûre en dessous de 70 degrés. Des températures plus basses prolongeront la durée de vie des ASIC. Assurez-vous que votre ventilateur Bitaxe est compatible avec la régulation. Sinon, il fonctionnera toujours à pleine vitesse.",
+    "display": "Afficher",
+    "displayDesc": "Personnaliser le comportement de l'affichage de l'appareil",
+    "poweroffScreen": "Éteignez l'écran après 10 minutes",
+    "flipScreen": "Inverser l'écran"
   },
   "poolPage": {
     "title": "Pool configuration",
