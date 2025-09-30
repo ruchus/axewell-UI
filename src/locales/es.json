@@ -121,7 +121,7 @@
     "advancedDesc": "Opciones avanzadas del pool",
     "stratumSuggestedDifficulty": "Dificultad sugerida",
     "extraNounce": "Habilitar Extranonce",
-    "extraNounceInfo": "Opción recomendada si tienes varios mineros conectados al mismo pool."
+    "extraNounceInfo": "Opción recomendada, sobretodo si tienes varios mineros conectados al mismo pool."
   },
   "networkPage": {
     "title": "Red",

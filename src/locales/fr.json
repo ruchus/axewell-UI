@@ -121,7 +121,7 @@
     "advancedDesc": "Options avancées du pool",
     "stratumSuggestedDifficulty": "Difficulté suggérée",
     "extraNounce": "Activer Extranonce",
-    "extraNounceInfo": "Option recommandée si vous avez plusieurs mineurs connectés au même pool."
+    "extraNounceInfo": "Option recommandée, surtout si vous avez plusieurs mineurs connectés au même pool."
   },
   "networkPage": {
     "title": "Réseau",

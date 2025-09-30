@@ -122,7 +122,7 @@
     "advancedDesc": "Advanced pool options",
     "stratumSuggestedDifficulty": "Difficulty suggested",
     "extraNounce": "Enable Extranonce",
-    "extraNounceInfo": "Recommended option if you have multiple miners connected to the same pool."
+    "extraNounceInfo": "Recommended option, especially if you have multiple miners connected to the same pool."
   },
   "networkPage": {
     "title": "Network",
