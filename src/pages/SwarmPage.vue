@@ -363,6 +363,55 @@
                   <span> Watts</span>
                 </q-card-section>
               </q-card>
+
+
+              <q-card flat class="swarmCardsMobile q-pa-sm card q-my-md">
+                <q-card-section>
+                  <span class="card-title">{{ t("swarmPage.electricalCost") }}</span>
+                  <div>
+                    <span class="card-text">{{ t("swarmPage.electricalSubtitle") }}</span>
+                  </div>
+                  <div>
+                    <q-item>
+                    <q-input class="q-my-md q-mr-xs" filled color="deep-purple" stack-label
+                    @keydown="(e) => !/^[0-9.]+$/.test(e.key) && e.key !== 'Backspace' && e.key !== 'Delete' && e.key !== 'ArrowLeft' && e.key !== 'ArrowRight' && e.key !== 'Tab' && e.preventDefault()"
+                            label="Price Kw/h" :dark="axeStore.darkmode ? true : false" v-model="costKwh" />
+
+                            <q-select 
+                            class="q-my-md" 
+                            filled 
+                            color="deep-purple" 
+                            stack-label
+                            :dark="axeStore.darkmode" 
+                            v-model="currency"
+                            :options="currencyOptions"
+                            option-label="label"
+                            option-value="symbol"
+                            emit-value
+                            map-options
+                              />
+                      </q-item>
+                      </div>
+                </q-card-section>
+
+                <q-card-section class="text-center">
+                <div class="row q-col-gutter-md">
+                  <div class="col-6">
+                    <div class="text-caption text-grey-7">{{ t('swarmPage.daily') }}</div>
+                    <div class="text-h6">{{ currency.symbol }} {{ Math.round(dailyCost,2) }}</div>
+                  </div>
+                  <div class="col-6">
+                    <div class="text-caption text-grey-7">{{ t('swarmPage.monthly') }}</div>
+                    <div class="text-h6">{{ currency.symbol }} {{ Math.round(monthlyCost) }}</div>
+                  </div>
+                  <div class="col-12">
+                    <div class="text-caption text-grey-7">{{ t('swarmPage.yearly') }}</div>
+                    <div class="text-h6">{{ currency.symbol }} {{ Math.round(yearlyCost) }}</div>
+                  </div>
+                </div>
+              </q-card-section>
+              </q-card>
+              
             </template>
 
 
@@ -408,7 +457,7 @@
 </template>
 
 <script>
-import { defineComponent, computed, ref, reactive, nextTick, onBeforeMount, onMounted, onUnmounted } from 'vue'
+import { defineComponent, computed, ref, reactive, nextTick, onBeforeMount, onMounted, onUnmounted, watch } from 'vue'
 import { useRoute } from "vue-router";
 import { useQuasar, Notify, Dialog } from "quasar"
 import { useAxeStore } from '@/stores/axe';
@@ -425,7 +474,6 @@ export default defineComponent({
     const axeStore = useAxeStore();
     const openDialog = ref(false);
     const ipInputRef = ref(null)
-    const newDeviceAdded = ref(null);
     const SWARM_DATA = ref([]);
     const tab = ref("swarmDevices");
     const { t } = useI18n();
@@ -440,6 +488,39 @@ export default defineComponent({
     const confirmRestart = ref(false);
     const confirmDelete = ref(false);
     const deviceSelected = ref(null);
+
+    const costKwh = ref(parseFloat(localStorage.getItem('costKwh')) || 0.25);
+    const currency = ref(JSON.parse(localStorage.getItem('currency')) || { symbol: '€' });
+    const currencyOptions = ref([
+      { label: '$ (USD)', symbol: '$' },
+      { label: '€ (EUR)', symbol: '€' },
+      { label: '£ (GBP)', symbol: '£' },
+      { label: '₽ (RUB)', symbol: '₽' },
+      { label: '¥ (CNY)', symbol: '¥' },
+      { label: '₹ (INR)', symbol: '₹' },
+      { label: 'C$ (CAD)', symbol: 'C$' },
+      { label: 'A$ (AUD)', symbol: 'A$' },
+      { label: '(CHF)', symbol: 'CHF' },
+      { label: '₿ (BTC)', symbol: '₿' },
+      { label: 'Ξ (ETH)', symbol: 'Ξ' }
+    ]);
+
+    const dailyCost = computed(() => {
+      return costKwh.value * totalPowerConsumption.value * 24;
+    });
+    const monthlyCost = computed(() => {
+      return costKwh.value * totalPowerConsumption.value * 24 * 30;
+    });
+    const yearlyCost = computed(() => {
+      return costKwh.value * totalPowerConsumption.value * 24 * 365;
+    });
+
+    watch(costKwh, () => {
+      localStorage.setItem('costKwh', costKwh.value);
+    });
+    watch(currency, () => {
+      localStorage.setItem('currency', JSON.stringify(currency.value.symbol));
+    }, { deep: true });
 
     const columns = [
       { name: 'ip', label: t("swarmPage.ip"), align: 'left', field: 'ip' },
@@ -675,6 +756,7 @@ export default defineComponent({
       return ip ? ip[0] : null;
     };
     let intervalId = 0;
+
     onMounted(() => {
       currentDeviceIP.value = getIpOfDevice();
       console.log(currentDeviceIP.value)
@@ -683,9 +765,11 @@ export default defineComponent({
         loadDevicesFromLocalStorage(currentDeviceIP.value);
       }, 5000);
     })
+
     onUnmounted(() => {
       clearInterval(intervalId);
     });
+
     return {
       quasar,
       openDialog,
@@ -712,7 +796,14 @@ export default defineComponent({
       showMenu,
       currentDeviceIP,
       isLoadingDevices,
-      isFirstLoad
+      isFirstLoad,
+      costKwh,
+      currency,
+      currencyOptions,
+      axeStore,
+      dailyCost,
+      monthlyCost,
+      yearlyCost
     }
   }
 })

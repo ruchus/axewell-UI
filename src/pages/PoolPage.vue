@@ -52,7 +52,7 @@
                     <div class="col-12 col-lg-4 col-md-4 col-sm-12 col-xs-12">
                         <div class="card-title">{{ t("poolPage.advanced") }}</div>
                         <span class="card-text">{{ t("poolPage.advancedDesc") }}</span>
-                        <q-input class="q-my-md" filled color="deep-purple" stack-label type="number" step="1"
+                        <q-input class="q-my-md" filled color="deep-purple" stack-label 
                             @keydown="(e) => !/^[0-9]$/.test(e.key) && e.key !== 'Backspace' && e.key !== 'Delete' && e.key !== 'ArrowLeft' && e.key !== 'ArrowRight' && e.key !== 'Tab' && e.preventDefault()"
                             v-model.number="form.stratumSuggestedDifficulty"
                             :label="t('poolPage.stratumSuggestedDifficulty')"
