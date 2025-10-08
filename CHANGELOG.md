@@ -1,3 +1,12 @@
+# [1.4.0](https://github.com/ruchus/axewell-UI/compare/v1.3.0...v1.4.0) (2025-10-08)
+
+
+### Features
+
+* add electrical consumption card on swarm page ([efe2d6a](https://github.com/ruchus/axewell-UI/commit/efe2d6ad9246d3a7625aa86bb1cf42d89b39452d)), closes [#30](https://github.com/ruchus/axewell-UI/issues/30)
+* added advanced pool options. Entranonce and suggested diff ([22a93b5](https://github.com/ruchus/axewell-UI/commit/22a93b5ceb1ee2c525f7cdeef6dfc5078eb7029c)), closes [#19](https://github.com/ruchus/axewell-UI/issues/19)
+* added option to poweroff and flip screen ([48825d2](https://github.com/ruchus/axewell-UI/commit/48825d26a13d16697111882f0ad4fb356a9a9984)), closes [#14](https://github.com/ruchus/axewell-UI/issues/14)
+
 # [1.3.0](https://github.com/ruchus/axewell-UI/compare/v1.2.0...v1.3.0) (2025-09-15)
 
 
