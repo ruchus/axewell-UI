@@ -78,7 +78,13 @@
     "restartDialog": "L'appareil va redémarrer. D'accord ?",
     "deleteDialog": "L'appareil sera supprimé. D'accord ?",
     "cancel": "Annuler",
-    "cantConnect": "Impossible de se connecter"
+    "cantConnect": "Impossible de se connecter",
+    "electricalCost": "Coût électrique",
+    "electricalSubtitle": "Coût électrique total de votre essaim.",
+    "price": "Prix",
+    "daily": "Journalier",
+    "monthly": "Mensuel",
+    "yearly": "Annuel"
   },
   "settingsPage": {
     "title": "Paramètres",

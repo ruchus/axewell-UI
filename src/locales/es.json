@@ -78,7 +78,13 @@
     "restartDialog": "El dispositivo se reiniciará. ¿OK?",
     "deleteDialog": "El dispositivo será eliminado. ¿OK?",
     "cancel": "Cancelar",
-    "cantConnect": "No se puede conectar"
+    "cantConnect": "No se puede conectar",
+    "electricalCost": "Coste eléctrico",
+    "electricalSubtitle": "Coste eléctrico total de tu enjambre.",
+    "price": "Precio",
+    "daily": "Diario",
+    "monthly": "Mensual",
+    "yearly": "Anual"
   },
   "settingsPage": {
     "title": "Configuración",

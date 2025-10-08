@@ -79,7 +79,13 @@
     "restartDialog": "The device will be restarted. Ok?",
     "deleteDialog": "The device will be deleted. Ok?",
     "cancel": "Cancel",
-    "cantConnect": "Can't connect"
+    "cantConnect": "Can't connect",
+    "electricalCost": "Electrical cost",
+    "electricalSubtitle": "Total electrical consumption of your swarm.",
+    "price": "Price",
+    "daily": "Daily",
+    "monthly": "Monthly",
+    "yearly": "Yearly"
   },
   "settingsPage": {
     "title": "Settings",
