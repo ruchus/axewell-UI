@@ -78,7 +78,13 @@
     "restartDialog": "L'appareil va redémarrer. D'accord ?",
     "deleteDialog": "L'appareil sera supprimé. D'accord ?",
     "cancel": "Annuler",
-    "cantConnect": "Impossible de se connecter"
+    "cantConnect": "Impossible de se connecter",
+    "electricalCost": "Coût électrique",
+    "electricalSubtitle": "Coût électrique total de votre essaim.",
+    "price": "Prix",
+    "daily": "Journalier",
+    "monthly": "Mensuel",
+    "yearly": "Annuel"
   },
   "settingsPage": {
     "title": "Paramètres",
@@ -112,7 +118,20 @@
     "miningPowerDesc": "Plus de puissance, plus de Gh/s, mais aussi plus de consommation et une température plus élevée.",
     "tempTarget": "Température",
     "tempTargetDesc": "La vitesse du ventilateur s'ajustera jusqu'à ce qu'il tente d'atteindre la température indiquée.",
-    "tempTargetInfo": "La température des puces ASIC est considérée comme sûre en dessous de 70 degrés. Des températures plus basses prolongeront la durée de vie des ASIC. Assurez-vous que votre ventilateur Bitaxe est compatible avec la régulation. Sinon, il fonctionnera toujours à pleine vitesse."
+    "tempTargetInfo": "La température des puces ASIC est considérée comme sûre en dessous de 70 degrés. Des températures plus basses prolongeront la durée de vie des ASIC. Assurez-vous que votre ventilateur Bitaxe est compatible avec la régulation. Sinon, il fonctionnera toujours à pleine vitesse.",
+    "display": "Afficher",
+    "displayDesc": "Personnaliser le comportement de l'affichage de l'appareil",
+    "poweroffScreen": "Éteignez l'écran après 10 minutes",
+    "flipScreen": "Inverser l'écran"
+  },
+  "poolPage": {
+    "title": "Pool configuration",
+    "subtitle": "",
+    "advanced": "Avancé",
+    "advancedDesc": "Options avancées du pool",
+    "stratumSuggestedDifficulty": "Difficulté suggérée",
+    "extraNounce": "Activer Extranonce",
+    "extraNounceInfo": "Option recommandée, surtout si vous avez plusieurs mineurs connectés au même pool."
   },
   "networkPage": {
     "title": "Réseau",

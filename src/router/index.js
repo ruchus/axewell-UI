@@ -1,6 +1,7 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import IndexPage from '../pages/IndexPage.vue'
 import MainLayout from '../layouts/MainLayout.vue'
+import PoolPage from '../pages/PoolPage.vue'
 import SettingsPage from '../pages/SettingsPage.vue'
 import NetworkPage from '../pages/NetworkPage.vue'
 import SwarmPage from '../pages/SwarmPage.vue'
@@ -15,6 +16,7 @@ const router = createRouter({
       children: [
         { path: '', name: 'Dashboard', component: IndexPage },
         { path: 'settings', name: 'Settings', component: SettingsPage },
+        { path: 'pool', name: 'Pool', component: PoolPage },
         { path: 'network', name: 'Network', component: NetworkPage },
         { path: 'swarm', name: 'Swarm', component: SwarmPage }
       ]

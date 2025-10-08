@@ -79,7 +79,13 @@
     "restartDialog": "The device will be restarted. Ok?",
     "deleteDialog": "The device will be deleted. Ok?",
     "cancel": "Cancel",
-    "cantConnect": "Can't connect"
+    "cantConnect": "Can't connect",
+    "electricalCost": "Electrical cost",
+    "electricalSubtitle": "Total electrical consumption of your swarm.",
+    "price": "Price",
+    "daily": "Daily",
+    "monthly": "Monthly",
+    "yearly": "Yearly"
   },
   "settingsPage": {
     "title": "Settings",
@@ -113,7 +119,20 @@
     "miningPowerDesc": "More power, more Gh/s, but also more consumption and higher temperature.",
     "tempTarget": "Temperature",
     "tempTargetDesc": "The fan speed will adjust until it attempts to reach the indicated temperature.",
-    "tempTargetInfo": "ASIC chip temperature is considered safe below 70 degrees. Lower temperatures will prolong the ASIC lifespan. Please make you sure your bitaxe fan supports regulation. If not, always will run at full speed."
+    "tempTargetInfo": "ASIC chip temperature is considered safe below 70 degrees. Lower temperatures will prolong the ASIC lifespan. Please make you sure your bitaxe fan supports regulation. If not, always will run at full speed.",
+    "display": "Display",
+    "displayDesc": "Customize the behavior of the device's display",
+    "poweroffScreen": "Turn off the screen after 10 minutes",
+    "flipScreen": "Flip screen"
+  },
+  "poolPage": {
+    "title": "Pool settings",
+    "subtitle": "",
+    "advanced": "Advanced",
+    "advancedDesc": "Advanced pool options",
+    "stratumSuggestedDifficulty": "Difficulty suggested",
+    "extraNounce": "Enable Extranonce",
+    "extraNounceInfo": "Recommended option, especially if you have multiple miners connected to the same pool."
   },
   "networkPage": {
     "title": "Network",

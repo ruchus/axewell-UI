@@ -2,51 +2,13 @@
   <div class="page-wrapper q-pa-md">
     <div :class="quasar.screen.gt.xs ? 'dashboard-info' : 'dashboard-info-mobile'" class="q-mb-lg">
       <div class="card-title" style="font-size: 34px">{{ t("settingsPage.title") }}</div>
-      <span class="card-text">{{ t("settingsPage.subtitle") }}</span>
     </div>
+
     <div class="q-px-lg" :class="quasar.screen.gt.xs ? 'q-py-xl power-card' : 'q-py-md power-card-mobile'">
       <q-form @submit="confirm = !confirm">
-        <div class="row" :class="quasar.screen.gt.sm ? 'justify-between' : 'justify-evenly'">
-          <div class="col-12 col-lg-4 col-md-4 col-sm-12 col-xs-12"
-            :class="quasar.screen.gt.md ? 'column-width-settings-big' : 'column-mobile-tablet'">
-            <div class="card-title">{{ t("settingsPage.pool") }}</div>
-            <span class="card-text">{{ t("settingsPage.poolText") }}</span>
-            <q-input class="q-my-md" filled color="deep-purple" stack-label v-model="form.stratumURL"
-              :label="t('settingsPage.stratumURL')" :dark="axeStore.darkmode ? true : false" />
-            <q-input class="q-mb-md" filled color="deep-purple" stack-label v-model="form.stratumPort"
-              :label="t('settingsPage.stratumPort')" :dark="axeStore.darkmode ? true : false" />
-            <q-input class="q-mb-md" filled color="deep-purple" stack-label v-model="form.stratumUser"
-              :label="t('settingsPage.stratumUser')" :dark="axeStore.darkmode ? true : false" />
-            <q-input class="q-mb-md" v-model="form.stratumPass" filled color="deep-purple" stack-label
-              :type="isPwd ? 'password' : 'text'" :label="t('settingsPage.stratumPassword')"
-              :dark="axeStore.darkmode ? true : false">
-
-              <template v-slot:append>
-                <q-icon :name="isPwd ? 'visibility_off' : 'visibility'" class="cursor-pointer"
-                  @click="isPwd = !isPwd" />
-              </template>
-            </q-input>
-          </div>
-          <div class="col-12 col-lg-4 col-md-4 col-sm-12 col-xs-12"
-            :class="quasar.screen.gt.md ? 'column-width-settings-big' : 'column-mobile-tablet'">
-            <div class="card-title">Fallback Pool</div>
-            <span class="card-text">{{ t("settingsPage.fallbackPoolText") }}</span>
-            <q-input class="q-my-md" filled color="deep-purple" stack-label v-model="form.fallbackStratumURL"
-              :label="t('settingsPage.fallbackStratumURL')" :dark="axeStore.darkmode ? true : false" />
-            <q-input class="q-mb-md" filled color="deep-purple" stack-label v-model="form.fallbackStratumPort"
-              :label="t('settingsPage.fallbackStratumPort')" :dark="axeStore.darkmode ? true : false" />
-            <q-input class="q-mb-md" filled color="deep-purple" stack-label v-model="form.fallbackStratumUser"
-              :label="t('settingsPage.fallbackStratumUser')" :dark="axeStore.darkmode ? true : false" />
-            <q-input class="q-mb-md" v-model="form.fallbackStratumPassword" filled color="deep-purple" stack-label
-              :type="isPwd ? 'password' : 'text'" :label="t('settingsPage.fallbackStratumPassword')"
-              :dark="axeStore.darkmode ? true : false">
-              <template v-slot:append>
-                <q-icon :name="isPwd ? 'visibility_off' : 'visibility'" class="cursor-pointer"
-                  @click="isPwd = !isPwd" />
-              </template>
-            </q-input>
-          </div>
-          <div class="col-12 col-lg-4 col-md-4 col-sm-12 col-xs-12" style="width: 300px">
+        <div class="row q-col-gutter-md" :class="quasar.screen.gt.sm ? 'justify-start' : 'justify-evenly'">
+          <!-- Mining Power Card -->
+          <div class="col-12 col-lg-4 col-md-6 col-sm-12 col-xs-12">
             <div class="card-title">{{ t("settingsPage.miningPower") }}</div>
             <q-item>
               <span class="card-text">{{ t("settingsPage.miningPowerDesc") }}</span>
@@ -55,28 +17,34 @@
               <q-slider v-model="model" :min="0" :max="optionsFrequencies.length - 1" step="1" track-size="6px"
                 color="deep-purple-11" markers :dark="axeStore.darkmode ? true : false" class="gradient-slider" />
               <div>
-                <div class="row ">
+                <div class="row">
                   <q-icon name="speed" color="darkgrey" size="sm" class="q-mr-xs q-mt-xs" />
-                  <span class="small-container rounded-borders text-left q-mr-sm" style="width: 100px;">{{
-                    t('settingsPage.frequency') }}</span>
+                  <span class="small-container rounded-borders text-left q-mr-sm" style="width: 100px;">
+                    {{ t('settingsPage.frequency') }}
+                  </span>
                   <span class="small-container rounded-borders text-left" style="width: 100px;">
                     {{ optionsFrequencies[model]?.label }}
                   </span>
                 </div>
                 <div class="row q-mt-sm">
                   <q-icon name="bolt" color="darkgrey" size="sm" class="q-mr-xs q-mt-xs" />
-                  <span class="small-container rounded-borders text-left q-mr-sm" style="width: 100px;">{{
-                    t('settingsPage.coreVoltage') }}</span>
+                  <span class="small-container rounded-borders text-left q-mr-sm" style="width: 100px;">
+                    {{ t('settingsPage.coreVoltage') }}
+                  </span>
                   <span class="small-container rounded-borders text-left" style="width: 100px;">
                     {{ optionsFrequencies[model]?.voltage }}
                   </span>
                 </div>
               </div>
             </div>
+          </div>
 
-            <div class="card-title q-mt-lg">{{ t("settingsPage.tempTarget") }}</div>
+          <!-- Temperature Target Card -->
+          <div class="col-12 col-lg-4 col-md-6 col-sm-12 col-xs-12">
+            <div class="card-title">{{ t("settingsPage.tempTarget") }}</div>
             <q-item>
-              <span class="card-text">{{ t("settingsPage.tempTargetDesc") }}
+              <span class="card-text">
+                {{ t("settingsPage.tempTargetDesc") }}
                 <q-icon name="info" size="xs" color="grey-7" class="q-mr-sm cursor-pointer" style="color: #629C44">
                   <q-tooltip anchor="top middle" self="center middle">
                     {{ t("settingsPage.tempTargetInfo") }}
@@ -84,20 +52,45 @@
                 </q-icon>
               </span>
             </q-item>
-
             <div class="q-pa-md">
-
               <q-slider v-model="temperatureValue" :min="50" :max="70" :step="5" track-size="6px" color="deep-purple-11"
                 class="gradient-slider" markers :marker-labels="markerLabels" label
                 :label-value="`${temperatureValue}°C`" />
             </div>
           </div>
+
+          <!-- Configuración Avanzada -->
+          <div class="col-12 col-lg-4 col-md-6 col-sm-12 col-xs-12">
+            <div class="card-title">{{ t("settingsPage.display") }}</div>
+            <q-item>
+              <span class="card-text">
+                {{ t("settingsPage.displayDesc") }}
+              </span>
+            </q-item>
+            <div class="q-pa-md">
+                <q-toggle v-model="form.displayTimeout"
+                            :label="t('settingsPage.poweroffScreen')"
+                            color="deep-purple" />
+                            <br />
+               <q-toggle
+                v-model="form.rotation"
+                checked-icon="arrow_downward"
+                color="deep-purple"
+                :label="t('settingsPage.flipScreen')"
+              />
+            </div>
+          </div>
         </div>
 
-        <div class="row justify-center">
-          <q-btn class="q-px-xl btn-background btn-titles" no-caps type="submit"
-            :style="quasar.screen.gt.sm ? '' : 'margin-top: 30%;'">{{
-              t("settingsPage.update") }}</q-btn>
+        <div class="row justify-center q-mt-md">
+          <q-btn 
+            class="q-px-xl btn-background btn-titles" 
+            no-caps 
+            type="submit"
+            :style="quasar.screen.gt.sm ? '' : 'margin-top: 30%;'"
+          >
+            {{ t("settingsPage.update") }}
+          </q-btn>
         </div>
 
       </q-form>
@@ -182,11 +175,10 @@ export default defineComponent({
       autofanspeed: true,
       coreVoltage: axeStore.infoData?.coreVoltage,
       fanspeed: axeStore.infoData?.fanspeed ?? 0,
-      flipscreen: true,
+      rotation: axeStore.infoData?.rotation ? true : false,
+      displayTimeout: axeStore.infoData?.displayTimeout === -1 ? false : true,
       frequency: axeStore.infoData?.frequency ?? 0,
       invertfanpolarity: true,
-      invertscreen: false,
-      overheat_mode: axeStore.infoData?.overheat_mode ?? '',
       stratumPort: parseInt(axeStore.infoData?.stratumPort) ?? 0,
       stratumURL: axeStore.infoData?.stratumURL ?? '',
       stratumUser: axeStore.infoData?.stratumUser ?? '',
@@ -349,7 +341,7 @@ export default defineComponent({
         uploadBinaryFile();
       }
     }
-    
+
     const handleFileChangeFirmware = (file) => {
       binaryfileFirmware.value = file;
       // Solo proceder con la carga si el archivo es válido
@@ -367,11 +359,10 @@ export default defineComponent({
           {
             coreVoltage: form.value.coreVoltage,
             fanspeed: form.value.fanspeed,
-            flipscreen: form.value.flipscreen,
+            rotation: parseInt(form.value.rotation ? 180 : 0),
+            displayTimeout: parseInt(form.value.rotation ? 10 : -1),
             frequency: form.value.frequency,
             invertfanpolarity: form.value.invertfanpolarity,
-            invertscreen: form.value.invertscreen,
-            overheat_mode: form.value.overheat_mode,
             stratumPort: parseInt(form.value.stratumPort),
             stratumURL: form.value.stratumURL,
             stratumUser: form.value.stratumUser,
