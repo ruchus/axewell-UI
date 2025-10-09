@@ -1,3 +1,10 @@
+## [1.4.1](https://github.com/ruchus/axewell-UI/compare/v1.4.0...v1.4.1) (2025-10-09)
+
+
+### Bug Fixes
+
+* power off toogle display don't get correct values ([f47c1ca](https://github.com/ruchus/axewell-UI/commit/f47c1ca5459fb8e9261604d60735cfc5ef8e87c4))
+
 # [1.4.0](https://github.com/ruchus/axewell-UI/compare/v1.3.0...v1.4.0) (2025-10-08)
 
 
