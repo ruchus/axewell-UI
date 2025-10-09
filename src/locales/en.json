@@ -54,6 +54,7 @@
   },
   "swarmPage": {
     "title": "Swarm",
+    "totalValues": "Total values",
     "subtitle": "Performance monitor of your swarm.",
     "device": "IP",
     "devices": "Devices",

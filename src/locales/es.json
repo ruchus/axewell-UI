@@ -53,6 +53,7 @@
   },
   "swarmPage": {
     "title": "Enjambre",
+    "totalValues": "Valores totales",
     "subtitle": "Monitor de rendimiento del enjambre.",
     "device": "IP",
     "devices": "Dispositivos",

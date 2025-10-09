@@ -188,7 +188,7 @@
                   </q-card-section>
                 </q-card>
 
-                <q-card flat class="swarmCards q-pa-sm card">
+                <q-card flat class="swarmCards q-pa-sm card col-12" :class="quasar.screen.gt.lg ? 'q-mt-md' : ''">
                   <q-card-section>
                     <span class="card-title">{{ t("swarmPage.electricalCost") }}</span>
                     <div>
@@ -211,17 +211,17 @@
                   <q-card-section class="text-center">
                     <div class="row q-col-gutter-md">
                       <div class="col-4">
-                        <div class="text-caption text-grey-7">{{ t('swarmPage.daily') }}</div>
+                        <div class="card-text text-grey-7">{{ t('swarmPage.daily') }}</div>
                         <div class="text-h6 yellowData">{{ currency.symbol ?? currency }} {{ dailyCost.toFixed(2) }}
                         </div>
                       </div>
                       <div class="col-4">
-                        <div class="text-caption text-grey-7">{{ t('swarmPage.monthly') }}</div>
+                        <div class="card-text text-grey-7">{{ t('swarmPage.monthly') }}</div>
                         <div class="text-h6 yellowData">{{ currency.symbol ?? currency }} {{ Math.round(monthlyCost) }}
                         </div>
                       </div>
                       <div class="col-4">
-                        <div class="text-caption text-grey-7">{{ t('swarmPage.yearly') }}</div>
+                        <div class="card-text text-grey-7">{{ t('swarmPage.yearly') }}</div>
                         <div class="text-h6 yellowData">{{ currency.symbol ?? currency }} {{ Math.round(yearlyCost) }}
                         </div>
                       </div>
@@ -240,9 +240,9 @@
         <q-spinner-puff color="primary" size="4em" />
       </template>
       <template v-else>
-        <q-tabs no-caps v-model="tab" indicator-color="" active-color="deep-purple-5" class=" shadow-container">
-          <q-tab class="q-mx-sm" label="Swarm" name="swarmDevices" />
-          <q-tab class="q-mx-sm" label="Total values" name="totalValues" />
+        <q-tabs no-caps inline-label v-model="tab" active-color="deep-purple-5" class="text-grey shadow-container">
+          <q-tab class="q-mx-sm" icon="device_hub" :label="t('swarmPage.title')" name="swarmDevices" />
+          <q-tab class="q-mx-sm" icon="speed" :label="t('swarmPage.totalValues')" name="totalValues" />
         </q-tabs>
         <q-tab-panels v-model="tab" animated class="bg-transparent">
           <q-tab-panel name="swarmDevices">
