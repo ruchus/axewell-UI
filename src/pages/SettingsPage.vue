@@ -68,9 +68,10 @@
               </span>
             </q-item>
             <div class="q-pa-md">
-              <q-toggle v-model="form.displayTimeout" :label="t('settingsPage.poweroffScreen')" color="deep-purple" />
+              <q-toggle v-model="form.displayTimeout" checked-icon="tv_off" :label="t('settingsPage.poweroffScreen')"
+                color="deep-purple" />
               <br />
-              <q-toggle v-model="form.rotation" checked-icon="arrow_downward" color="deep-purple"
+              <q-toggle v-model="form.rotation" checked-icon="flip_camera_android" color="deep-purple"
                 :label="t('settingsPage.flipScreen')" />
             </div>
           </div>
