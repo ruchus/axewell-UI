@@ -53,6 +53,7 @@
   },
   "swarmPage": {
     "title": "Essaim",
+    "totalValues": "Valeurs totales",
     "subtitle": "Moniteur de performance de votre essaim.",
     "device": "IP",
     "devices": "Appareils",

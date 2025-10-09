@@ -68,27 +68,18 @@
               </span>
             </q-item>
             <div class="q-pa-md">
-                <q-toggle v-model="form.displayTimeout"
-                            :label="t('settingsPage.poweroffScreen')"
-                            color="deep-purple" />
-                            <br />
-               <q-toggle
-                v-model="form.rotation"
-                checked-icon="arrow_downward"
-                color="deep-purple"
-                :label="t('settingsPage.flipScreen')"
-              />
+              <q-toggle v-model="form.displayTimeout" checked-icon="tv_off" :label="t('settingsPage.poweroffScreen')"
+                color="deep-purple" />
+              <br />
+              <q-toggle v-model="form.rotation" checked-icon="flip_camera_android" color="deep-purple"
+                :label="t('settingsPage.flipScreen')" />
             </div>
           </div>
         </div>
 
         <div class="row justify-center q-mt-md">
-          <q-btn 
-            class="q-px-xl btn-background btn-titles" 
-            no-caps 
-            type="submit"
-            :style="quasar.screen.gt.sm ? '' : 'margin-top: 30%;'"
-          >
+          <q-btn class="q-px-xl btn-background btn-titles" no-caps type="submit"
+            :style="quasar.screen.gt.sm ? '' : 'margin-top: 30%;'">
             {{ t("settingsPage.update") }}
           </q-btn>
         </div>
@@ -360,7 +351,7 @@ export default defineComponent({
             coreVoltage: form.value.coreVoltage,
             fanspeed: form.value.fanspeed,
             rotation: parseInt(form.value.rotation ? 180 : 0),
-            displayTimeout: parseInt(form.value.rotation ? 10 : -1),
+            displayTimeout: form.value.displayTimeout ? 10 : -1,
             frequency: form.value.frequency,
             invertfanpolarity: form.value.invertfanpolarity,
             stratumPort: parseInt(form.value.stratumPort),
