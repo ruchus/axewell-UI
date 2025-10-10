@@ -10,12 +10,11 @@ Discuss about the project on [Discord](https://discord.gg/6XYuqTXR)
 
 # Some screenshots
 
-<img width="1614" height="888" alt="imagen" src="https://github.com/user-attachments/assets/1007c29b-dbcb-4bc6-a70e-15b87ece978d" />
+<img width="1634" height="887" alt="imagen" src="https://github.com/user-attachments/assets/7e9edcf9-ef73-41af-8eff-1a2a7b4a8053" />
 
-<img width="1623" height="786" alt="imagen" src="https://github.com/user-attachments/assets/abc4341c-b2fd-47c2-9456-481f0b131b94" />
+<img width="1632" height="889" alt="imagen" src="https://github.com/user-attachments/assets/b09ecede-de02-46f3-81f1-d9daba40288d" />
 
-<img width="1653" height="888" alt="imagen" src="https://github.com/user-attachments/assets/a3531975-4fec-4dbd-9b45-7d52d6a77362" />
-
+<img width="1631" height="890" alt="imagen" src="https://github.com/user-attachments/assets/82bf5d09-0355-4020-ab56-d3ec08b5fbf9" />
 
 
 
