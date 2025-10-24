@@ -12,7 +12,7 @@ Discuss about the project on [Discord](https://discord.gg/6XYuqTXR)
 
 <img width="1634" height="887" alt="imagen" src="https://github.com/user-attachments/assets/7e9edcf9-ef73-41af-8eff-1a2a7b4a8053" />
 
-<img width="1632" height="889" alt="imagen" src="https://github.com/user-attachments/assets/b09ecede-de02-46f3-81f1-d9daba40288d" />
+<img width="1620" height="894" alt="imagen" src="https://github.com/user-attachments/assets/0b6287d5-86e1-43b6-9acc-6cc954e48e9e" />
 
 <img width="1631" height="890" alt="imagen" src="https://github.com/user-attachments/assets/82bf5d09-0355-4020-ab56-d3ec08b5fbf9" />
 
