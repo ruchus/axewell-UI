@@ -111,7 +111,6 @@
                   <div class="card-title">Pool info</div>
                   <div class="card-text ">{{ t("pool.notConnected") }}</div>
                 </div>
-                <BtnLogsComponent></BtnLogsComponent>
 
               </div>
               <q-btn no-caps dense flat class="q-px-md btn-ajustes" :to="{ name: 'Settings' }">
