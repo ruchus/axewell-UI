@@ -123,7 +123,8 @@
     "display": "Pantalla",
     "displayDesc": "Personaliza el comportamiento de la pantalla del dispositivo",
     "poweroffScreen": "Apagar la pantalla tras 10 minutos",
-    "flipScreen": "Girar pantalla"
+    "flipScreen": "Girar pantalla",
+    "defaultValue": "Valor por defecto"
   },
   "poolPage": {
     "title": "Configuración del Pool",

@@ -23,7 +23,13 @@
                     {{ t('settingsPage.frequency') }}
                   </span>
                   <span class="small-container rounded-borders text-left" style="width: 100px;">
-                    {{ optionsFrequencies[model]?.label }}
+                    {{ frequencyDisplay.text }}
+                    <q-icon v-if="frequencyDisplay.isDefault" name="check_circle" size="xs" color="grey"
+                      class="q-ml-xs">
+                      <q-tooltip anchor="top middle" self="center middle">
+                        {{ t('settingsPage.defaultValue') }}
+                      </q-tooltip>
+                    </q-icon>
                   </span>
                 </div>
                 <div class="row q-mt-sm">
@@ -32,7 +38,12 @@
                     {{ t('settingsPage.coreVoltage') }}
                   </span>
                   <span class="small-container rounded-borders text-left" style="width: 100px;">
-                    {{ form.coreVoltage }}
+                    {{ voltageDisplay.text }}
+                    <q-icon v-if="voltageDisplay.isDefault" name="check_circle" size="xs" color="grey" class="q-ml-xs">
+                      <q-tooltip anchor="top middle" self="center middle">
+                        {{ t('settingsPage.defaultValue') }}
+                      </q-tooltip>
+                    </q-icon>
                   </span>
                   <q-btn flat dense round icon="remove" size="md" color="deep-purple" class="q-ml-xs"
                     @click="decreaseVoltage" :disable="!canDecreaseVoltage" />
@@ -197,13 +208,13 @@ export default defineComponent({
       const selectedIndex = optionsFrequencies.value[val];
       if (selectedIndex) {
         form.value.frequency = optionsFrequencies.value[val].value;
-        
+
         // Limitar el voltage entre la segunda (índice 1) y penúltima (length-2) posición del array voltageOptions
         let selectedVoltage = optionsFrequencies.value[val].voltage;
         if (voltageOptions.value?.length > 2) {
           const minVoltage = voltageOptions.value[1]; // Segunda posición
           const maxVoltage = voltageOptions.value[voltageOptions.value.length - 2]; // Penúltima posición
-          
+
           if (selectedVoltage < minVoltage) {
             selectedVoltage = minVoltage;
           } else if (selectedVoltage > maxVoltage) {
@@ -252,7 +263,6 @@ export default defineComponent({
       const voltageStep = voltageOptions.value.length / frequencyOptions?.value?.length;
       for (let i = 0; i < frequencyOptions?.value?.length; i++) {
         const freq = frequencyOptions?.value[i];
-        const isDefault = defaultFrequencies[ASICModel.value] === freq;
 
         let voltageIndex;
         if (i > 0 && i % 2 !== 0 && frequencyOptions?.value[i] > defaultFrequencies[ASICModel.value]) {
@@ -265,16 +275,69 @@ export default defineComponent({
         }
 
         const voltage = voltageOptions.value[voltageIndex];
-        const label = freq === isDefault ? `${freq} (default)` : `${freq}`;
 
         options.push({
-          label: label,
+          label: freq,
           value: freq,
           voltage: voltage
         });
       }
       return options;
     })
+
+
+    const canIncreaseVoltage = computed(() => {
+      if (!voltageOptions.value?.length || form.value.coreVoltage === undefined) return false;
+      const currentIndex = voltageOptions.value.indexOf(form.value.coreVoltage);
+      return currentIndex !== -1 && currentIndex < voltageOptions.value.length - 1;
+    });
+
+    const canDecreaseVoltage = computed(() => {
+      if (!voltageOptions.value?.length || form.value.coreVoltage === undefined) return false;
+      const currentIndex = voltageOptions.value.indexOf(form.value.coreVoltage);
+      return currentIndex !== -1 && currentIndex > 0;
+    });
+
+    const increaseVoltage = () => {
+      if (!canIncreaseVoltage.value) return;
+      const currentIndex = voltageOptions.value.indexOf(form.value.coreVoltage);
+      if (currentIndex !== -1 && currentIndex < voltageOptions.value.length - 1) {
+        form.value.coreVoltage = voltageOptions.value[currentIndex + 1];
+      }
+    };
+
+    const decreaseVoltage = () => {
+      if (!canDecreaseVoltage.value) return;
+      const currentIndex = voltageOptions.value.indexOf(form.value.coreVoltage);
+      if (currentIndex !== -1 && currentIndex > 0) {
+        form.value.coreVoltage = voltageOptions.value[currentIndex - 1];
+      }
+    };
+
+    const frequencyDisplay = computed(() => {
+      const baseResult = { text: '-', isDefault: false };
+      const options = optionsFrequencies.value;
+      if (!options?.length) return baseResult;
+      const option = options[model.value];
+      if (!option) return baseResult;
+      const value = option.value ?? option.label;
+      const text = typeof value === 'number' ? `${value}` : `${value}`;
+      const defaultFrequency = defaultFrequencies[ASICModel.value];
+      const isDefault = defaultFrequency !== undefined && option.value === defaultFrequency;
+      return { text, isDefault };
+    });
+
+    const voltageDisplay = computed(() => {
+      const currentVoltage = form.value.coreVoltage;
+      if (currentVoltage === undefined || currentVoltage === null) {
+        return { text: '-', isDefault: false };
+      }
+      const text = `${currentVoltage}`;
+      const defaultVoltage = defaultVoltages[ASICModel.value];
+      const isDefault = defaultVoltage !== undefined && currentVoltage === defaultVoltage;
+      return { text, isDefault };
+    });
+
 
     const uploadBinaryFile = () => {
       if (!binaryfileWebsite.value || binaryfileWebsite.value.name !== 'www.bin') {
@@ -358,34 +421,6 @@ export default defineComponent({
       }
     }
 
-    const canIncreaseVoltage = computed(() => {
-      if (!voltageOptions.value?.length || form.value.coreVoltage === undefined) return false;
-      const currentIndex = voltageOptions.value.indexOf(form.value.coreVoltage);
-      return currentIndex !== -1 && currentIndex < voltageOptions.value.length - 1;
-    });
-
-    const canDecreaseVoltage = computed(() => {
-      if (!voltageOptions.value?.length || form.value.coreVoltage === undefined) return false;
-      const currentIndex = voltageOptions.value.indexOf(form.value.coreVoltage);
-      return currentIndex !== -1 && currentIndex > 0;
-    });
-
-    const increaseVoltage = () => {
-      if (!canIncreaseVoltage.value) return;
-      const currentIndex = voltageOptions.value.indexOf(form.value.coreVoltage);
-      if (currentIndex !== -1 && currentIndex < voltageOptions.value.length - 1) {
-        form.value.coreVoltage = voltageOptions.value[currentIndex + 1];
-      }
-    };
-
-    const decreaseVoltage = () => {
-      if (!canDecreaseVoltage.value) return;
-      const currentIndex = voltageOptions.value.indexOf(form.value.coreVoltage);
-      if (currentIndex !== -1 && currentIndex > 0) {
-        form.value.coreVoltage = voltageOptions.value[currentIndex - 1];
-      }
-    };
-
     const submitForm = async (e) => {
       //console.log(temperatureValue.value);
       e.preventDefault();
@@ -443,7 +478,9 @@ export default defineComponent({
       increaseVoltage,
       decreaseVoltage,
       canIncreaseVoltage,
-      canDecreaseVoltage
+      canDecreaseVoltage,
+      frequencyDisplay,
+      voltageDisplay
     }
   }
 })

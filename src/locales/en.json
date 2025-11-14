@@ -124,7 +124,8 @@
     "display": "Display",
     "displayDesc": "Customize the behavior of the device's display",
     "poweroffScreen": "Turn off the screen after 10 minutes",
-    "flipScreen": "Flip screen"
+    "flipScreen": "Flip screen",
+    "defaultValue": "Default value"
   },
   "poolPage": {
     "title": "Pool settings",

@@ -123,7 +123,8 @@
     "display": "Afficher",
     "displayDesc": "Personnaliser le comportement de l'affichage de l'appareil",
     "poweroffScreen": "Éteignez l'écran après 10 minutes",
-    "flipScreen": "Inverser l'écran"
+    "flipScreen": "Inverser l'écran",
+    "defaultValue": "Valeur par défaut"
   },
   "poolPage": {
     "title": "Pool configuration",
