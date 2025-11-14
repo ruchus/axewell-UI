@@ -1,3 +1,18 @@
+# [1.5.0](https://github.com/ruchus/axewell-UI/compare/v1.4.1...v1.5.0) (2025-11-14)
+
+
+### Bug Fixes
+
+* some minor fixes ([66b560e](https://github.com/ruchus/axewell-UI/commit/66b560e9db4aa4e320de9f2e56df80bd5a82a91d))
+
+
+### Features
+
+* add 3 colors UI for response time on dashboard ([ad4d14c](https://github.com/ruchus/axewell-UI/commit/ad4d14c7fe8f147ce91ac36d168a5af011ac57d2)), closes [#31](https://github.com/ruchus/axewell-UI/issues/31)
+* add custom controls to set voltage ([20a12b2](https://github.com/ruchus/axewell-UI/commit/20a12b24fbfbc5aaa22b4e18eec6c7f778c946ed))
+* add icons and better UI for selected freq and voltage settings ([f3c3dde](https://github.com/ruchus/axewell-UI/commit/f3c3dde389938613aa382b22ffe2d577f5ddc73b))
+* limit implemented on slider to set voltage values, set free on custom controls ([ec48788](https://github.com/ruchus/axewell-UI/commit/ec4878842d4fcb038cf92570a4e82aeb10a1e9d0))
+
 ## [1.4.1](https://github.com/ruchus/axewell-UI/compare/v1.4.0...v1.4.1) (2025-10-09)
 
 
