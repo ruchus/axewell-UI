@@ -36,10 +36,6 @@
                     </span>
                   </div>
                 </div>
-
-                <div class="col-auto">
-                  <BtnLogsComponent />
-                </div>
               </div>
             </q-card-section>
             <q-card-section v-else class="pool-info-container items-center">
@@ -50,7 +46,6 @@
                   <q-icon left size="sm" name="cloud_off" class="cloud-off parpadea" />
                   <div> {{ t("pool.settings") }}</div>
                 </q-btn>
-                <BtnLogsComponent></BtnLogsComponent>
               </div>
             </q-card-section>
             <q-card-section v-if="axeStore?.infoData?.fallbackStratumURL" class="pool-info-container items-center">
@@ -93,7 +88,6 @@
                 {{ axeStore?.infoData?.stratumURL }} : {{ axeStore?.infoData?.stratumPort }} <br />
                 {{ mainStratumUser }}
               </div>
-              <BtnLogsComponent></BtnLogsComponent>
             </div>
             <div v-if="axeStore?.infoData?.fallbackStratumURL" class="pool-info-container items-center">
               <div class="card-title" style="font-size: 16px;">Fallback pool info</div>
@@ -146,7 +140,6 @@ import HashRateCardComponent from '@/components/HashRateCardComponent.vue'
 import SharesCardComponent from '@/components/SharesCardComponent.vue'
 import PowerInfoCardComponent from '@/components/PowerInfoCardComponent.vue'
 import { useAxeStore } from '@/stores/axe'
-import BtnLogsComponent from '@/components/BtnLogsComponent.vue'
 import { useI18n } from 'vue-i18n';
 import { useRoute } from "vue-router";
 export default defineComponent({
@@ -154,8 +147,7 @@ export default defineComponent({
   components: {
     HashRateCardComponent,
     SharesCardComponent,
-    PowerInfoCardComponent,
-    BtnLogsComponent
+    PowerInfoCardComponent
   },
 
   setup() {
