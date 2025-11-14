@@ -1,10 +1,6 @@
 <template>
-  <q-btn flat icon="app_registration" no-caps stack @click="openLog = !openLog" style="color:#A8C6FA">
-    <span style="margin-top: -5px;">logs</span>
-    <q-tooltip>
-      {{ t("logs.viewLogs") }}
-    </q-tooltip>
-  </q-btn>
+  <q-btn icon="manage_history" size="sm" no-caps @click="openLog = !openLog" style="color:#A8C6FA"
+    :label="quasar.screen.gt.sm ? t('logs.viewLogs') : undefined" />
 
   <q-dialog v-model="openLog" persistent backdrop-filter="brightness(60%)" full-width full-height>
     <q-card class="dialogBg">

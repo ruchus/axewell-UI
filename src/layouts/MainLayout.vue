@@ -131,6 +131,8 @@
             </q-tooltip>
           </q-icon>
         </q-toolbar-title>
+
+        <BtnLogsComponent></BtnLogsComponent>
       </q-toolbar>
     </q-footer>
 
@@ -163,12 +165,14 @@ import { useI18n } from 'vue-i18n';
 import { availableLocales } from '@/locales/index.js'
 import { useRouter } from 'vue-router';
 import '@quasar/extras/material-icons/material-icons.css';
+import BtnLogsComponent from '@/components/BtnLogsComponent.vue'
 
 export default defineComponent({
   name: 'MainLayout',
 
   components: {
-    EssentialLink
+    EssentialLink,
+    BtnLogsComponent
   },
 
   setup() {

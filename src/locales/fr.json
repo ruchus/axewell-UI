@@ -19,7 +19,8 @@
   },
   "pool": {
     "notConnected": "Non connecté",
-    "settings": "Paramètres"
+    "settings": "Aller au réseau",
+    "responseTime": "Temps de réponse"
   },
   "dashboardPage": {
     "title": "Tableau de bord",
@@ -28,7 +29,7 @@
       "subtitle": "Puissance de calcul du réseau",
       "description": "Le taux de hachage est une métrique qui quantifie la puissance de calcul et l'efficacité d'un réseau. Il représente le nombre de fonctions de hachage que le matériel d'un processeur de transactions peut calculer par seconde. Un taux de hachage plus élevé signifie qu'un processeur peut effectuer plus de calculs dans un temps donné.",
       "efficiency": "Efficacité",
-      "networkDifficulty": "Meilleure difficulté du réseau",
+      "networkDifficulty": "Meilleure difficulté",
       "expected": "Attendu",
       "expHasRateHelp": "Taux de hachage théorique que l'appareil devrait réaliser dans les conditions de configuration actuelles (fréquence et tension)."
     },
@@ -123,7 +124,8 @@
     "display": "Afficher",
     "displayDesc": "Personnaliser le comportement de l'affichage de l'appareil",
     "poweroffScreen": "Éteignez l'écran après 10 minutes",
-    "flipScreen": "Inverser l'écran"
+    "flipScreen": "Inverser l'écran",
+    "defaultValue": "Valeur par défaut"
   },
   "poolPage": {
     "title": "Pool configuration",

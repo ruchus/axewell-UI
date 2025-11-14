@@ -242,8 +242,8 @@ export default defineComponent({
         const { powerData } = toRefs(props);
         const powerConsumption = computed(() => Math.round(powerData?.value?.power))
         const ASICvoltage = computed(() => (powerData?.value?.coreVoltageActual/1000).toFixed(2))
-        const inputVoltage = computed(() => (powerData?.value.voltage/1000).toFixed(2))
-        const inputCurrent = computed(() => (powerData?.value.current/1000).toFixed(2))
+        const inputVoltage = computed(() => (powerData?.value?.voltage/1000).toFixed(2))
+        const inputCurrent = computed(() => (powerData?.value?.current/1000).toFixed(2))
         const { t } = useI18n();
         return {
             quasar,

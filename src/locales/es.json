@@ -19,7 +19,8 @@
   },
   "pool": {
     "notConnected": "No connectado",
-    "settings": "Ajustes"
+    "settings": "Ir a red",
+    "responseTime": "Tiempo de respuesta"
   },
   "dashboardPage": {
     "title": "Panel de control",
@@ -28,7 +29,7 @@
       "subtitle": "Potencia computacional de la red",
       "description": "La tasa de hash es una métrica que cuantifica la potencia y la eficiencia computacional de una red. Representa la cantidad de funciones hash que el hardware de un procesador de transacciones puede calcular en un segundo. Una tasa de hash más alta significa que un procesador puede realizar más cálculos en un tiempo determinado.",
       "efficiency": "Eficiencia",
-      "networkDifficulty": "Mejor dificultad de red",
+      "networkDifficulty": "Mejor dificultad",
       "expected": "Esperado",
       "expHasRateHelp": "Tasa de hash teórica que el dispositivo debería realizar bajo las condiciones de configuración actuales (frecuencia y voltaje)."
     },
@@ -123,7 +124,8 @@
     "display": "Pantalla",
     "displayDesc": "Personaliza el comportamiento de la pantalla del dispositivo",
     "poweroffScreen": "Apagar la pantalla tras 10 minutos",
-    "flipScreen": "Girar pantalla"
+    "flipScreen": "Girar pantalla",
+    "defaultValue": "Valor por defecto"
   },
   "poolPage": {
     "title": "Configuración del Pool",
