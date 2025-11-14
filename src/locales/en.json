@@ -19,7 +19,8 @@
   },
   "pool": {
     "notConnected": "Not Connected",
-    "settings": "Settings"
+    "settings": "Go network",
+    "responseTime": "Response time"
   },
 
   "dashboardPage": {

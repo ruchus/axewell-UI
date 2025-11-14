@@ -19,7 +19,8 @@
   },
   "pool": {
     "notConnected": "No connectado",
-    "settings": "Ajustes"
+    "settings": "Ir a red",
+    "responseTime": "Tiempo de respuesta"
   },
   "dashboardPage": {
     "title": "Panel de control",

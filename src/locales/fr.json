@@ -19,7 +19,8 @@
   },
   "pool": {
     "notConnected": "Non connecté",
-    "settings": "Paramètres"
+    "settings": "Aller au réseau",
+    "responseTime": "Temps de réponse"
   },
   "dashboardPage": {
     "title": "Tableau de bord",

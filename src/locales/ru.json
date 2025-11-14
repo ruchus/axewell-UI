@@ -19,7 +19,8 @@
   },
   "pool": {
     "notConnected": "Не подключен",
-    "settings": "Настройки"
+    "settings": "Перейти в сеть",
+    "responseTime": "Время отклика"
   },
   "dashboardPage": {
     "title": "Панель управления",
