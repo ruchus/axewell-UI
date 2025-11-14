@@ -32,8 +32,12 @@
                     {{ t('settingsPage.coreVoltage') }}
                   </span>
                   <span class="small-container rounded-borders text-left" style="width: 100px;">
-                    {{ optionsFrequencies[model]?.voltage }}
+                    {{ form.coreVoltage }}
                   </span>
+                  <q-btn flat dense round icon="remove" size="md" color="deep-purple" class="q-ml-xs"
+                    @click="decreaseVoltage" :disable="!canDecreaseVoltage" />
+                  <q-btn flat dense round icon="add" size="md" color="deep-purple" @click="increaseVoltage"
+                    :disable="!canIncreaseVoltage" />
                 </div>
               </div>
             </div>
@@ -341,6 +345,34 @@ export default defineComponent({
       }
     }
 
+    const canIncreaseVoltage = computed(() => {
+      if (!voltageOptions.value?.length || form.value.coreVoltage === undefined) return false;
+      const currentIndex = voltageOptions.value.indexOf(form.value.coreVoltage);
+      return currentIndex !== -1 && currentIndex < voltageOptions.value.length - 1;
+    });
+
+    const canDecreaseVoltage = computed(() => {
+      if (!voltageOptions.value?.length || form.value.coreVoltage === undefined) return false;
+      const currentIndex = voltageOptions.value.indexOf(form.value.coreVoltage);
+      return currentIndex !== -1 && currentIndex > 0;
+    });
+
+    const increaseVoltage = () => {
+      if (!canIncreaseVoltage.value) return;
+      const currentIndex = voltageOptions.value.indexOf(form.value.coreVoltage);
+      if (currentIndex !== -1 && currentIndex < voltageOptions.value.length - 1) {
+        form.value.coreVoltage = voltageOptions.value[currentIndex + 1];
+      }
+    };
+
+    const decreaseVoltage = () => {
+      if (!canDecreaseVoltage.value) return;
+      const currentIndex = voltageOptions.value.indexOf(form.value.coreVoltage);
+      if (currentIndex !== -1 && currentIndex > 0) {
+        form.value.coreVoltage = voltageOptions.value[currentIndex - 1];
+      }
+    };
+
     const submitForm = async (e) => {
       //console.log(temperatureValue.value);
       e.preventDefault();
@@ -394,7 +426,11 @@ export default defineComponent({
       //markerLabels,
       model,
       temperatureValue,
-      markerLabels
+      markerLabels,
+      increaseVoltage,
+      decreaseVoltage,
+      canIncreaseVoltage,
+      canDecreaseVoltage
     }
   }
 })
