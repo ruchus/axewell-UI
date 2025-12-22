@@ -29,9 +29,11 @@
       "subtitle": "Puissance de calcul du réseau",
       "description": "Le taux de hachage est une métrique qui quantifie la puissance de calcul et l'efficacité d'un réseau. Il représente le nombre de fonctions de hachage que le matériel d'un processeur de transactions peut calculer par seconde. Un taux de hachage plus élevé signifie qu'un processeur peut effectuer plus de calculs dans un temps donné.",
       "efficiency": "Efficacité",
-      "networkDifficulty": "Meilleure difficulté",
+      "networkDifficulty": "Difficulté",
       "expected": "Attendu",
-      "expHasRateHelp": "Taux de hachage théorique que l'appareil devrait réaliser dans les conditions de configuration actuelles (fréquence et tension)."
+      "expHasRateHelp": "Taux de hachage théorique que l'appareil devrait réaliser dans les conditions de configuration actuelles (fréquence et tension).",
+      "bestDiffAllTimeTooltip": "Meilleur résultat historique",
+      "bestDiffSessionTooltip": "Depuis le démarrage du système"
     },
     "shares": {
       "title": "Parts",

@@ -15,7 +15,8 @@
               <span class="secondary-fields" style="font-size: 24px;">Gh/s</span>
             </div>
             <div class="text-center text-body2 text-grey-6">
-              <span class="q-ml-md">{{ t("dashboardPage.hashRate.expected") }}: {{ Math.round(axeStore?.expectedHashRate) }} Gh/s</span>
+              <span class="q-ml-md">{{ t("dashboardPage.hashRate.expected") }}: {{
+                Math.round(axeStore?.expectedHashRate) }} Gh/s</span>
               <q-icon name="info" size="xs" color="grey-7" class="q-mr-sm cursor-pointer" style="color: #629C44">
                 <q-tooltip anchor="bottom middle" self="center middle">
                   {{ t("dashboardPage.hashRate.expHasRateHelp") }}
@@ -36,26 +37,41 @@
               </div>
             </div>
             <div class="row justify-evenly q-mt-md">
-              <div class="col-5">
+              <div class="col-4">
                 <div class="small-container data-label rounded-borders text-left">{{
                   t("dashboardPage.hashRate.efficiency") }}
                 </div>
               </div>
-              <div class="col-6">
+              <div class="col-7">
                 <div class="small-container data-fields rounded-borders text-right">
                   {{ efficiency }} J/Th <small>(≈ {{ efficiency }} W/Th)</small>
                 </div>
               </div>
             </div>
             <div class="row justify-evenly q-mt-sm">
-              <div class="col-5">
+              <div class="col-4">
                 <div class="small-container data-label rounded-borders text-left">{{
                   t("dashboardPage.hashRate.networkDifficulty")
-                }}</div>
+                  }}</div>
               </div>
-              <div class="col-6">
+              <div class="col-7">
                 <div class="small-container data-fields rounded-borders text-right">
-                  {{ hashRateData?.bestDiff }}
+                  <span class="q-mr-sm">
+                    {{ bestDifficulty.value }} {{ bestDifficulty.unit }}
+                    <q-icon name="info" size="xs" color="grey-7" class="q-mr-sm cursor-pointer" style="color: #629C44">
+                      <q-tooltip anchor="bottom middle" self="center middle">
+                        {{ t("dashboardPage.hashRate.bestDiffAllTimeTooltip") }}
+                      </q-tooltip>
+                    </q-icon>
+                  </span>
+                  <span class="q-ml-sm">
+                    {{ bestDifficultySession.value }} {{ bestDifficultySession.unit }}
+                    <q-icon name="info" size="xs" color="grey-7" class="q-mr-sm cursor-pointer" style="color: #629C44">
+                      <q-tooltip anchor="bottom middle" self="center middle">
+                        {{ t("dashboardPage.hashRate.bestDiffSessionTooltip") }}
+                      </q-tooltip>
+                    </q-icon>
+                  </span>
                 </div>
               </div>
             </div>
@@ -77,7 +93,8 @@
             }}
             <span style="color: #d4d4d4;font-size: 32px;">Gh/s</span>
             <div class="text-center text-body2 text-grey-6">
-              <span class="q-ml-md">{{ t("dashboardPage.hashRate.expected") }}: {{ Math.round(axeStore?.expectedHashRate) }} Gh/s</span>
+              <span class="q-ml-md">{{ t("dashboardPage.hashRate.expected") }}: {{
+                Math.round(axeStore?.expectedHashRate) }} Gh/s</span>
               <q-icon name="info" size="xs" color="grey-7" class="q-mr-sm cursor-pointer" style="color: #629C44">
                 <q-tooltip anchor="bottom middle" self="center middle">
                   {{ t("dashboardPage.hashRate.expHasRateHelp") }}
@@ -100,26 +117,41 @@
             </div>
           </div>
           <div class="row justify-evenly q-mt-md">
-            <div class="col-5">
+            <div class="col-4">
               <div class="small-container data-label rounded-borders text-left">{{
                 t("dashboardPage.hashRate.efficiency") }}
               </div>
             </div>
-            <div class="col-6">
+            <div class="col-7">
               <div class="small-container data-fields rounded-borders text-right">
                 {{ efficiency }} J/Th <small>(≈ {{ efficiency }} W/Th)</small>
               </div>
             </div>
           </div>
           <div class="row justify-evenly q-mt-sm">
-            <div class="col-5">
+            <div class="col-4">
               <div class="small-container data-label rounded-borders text-left">{{
                 t("dashboardPage.hashRate.networkDifficulty")
-              }}</div>
+                }}</div>
             </div>
-            <div class="col-6">
+            <div class="col-7">
               <div class="small-container data-fields rounded-borders text-right">
-                {{ hashRateData?.bestDiff }}
+                <span class="q-mr-sm">
+                  {{ bestDifficulty.value }} {{ bestDifficulty.unit }}
+                  <q-icon name="info" size="xs" color="grey-7" class="q-mr-sm cursor-pointer" style="color: #629C44">
+                    <q-tooltip anchor="bottom middle" self="center middle">
+                      {{ t("dashboardPage.hashRate.bestDiffAllTimeTooltip") }}
+                    </q-tooltip>
+                  </q-icon>
+                </span>
+                <span class="q-ml-sm">
+                  {{ bestDifficultySession.value }} {{ bestDifficultySession.unit }}
+                  <q-icon name="info" size="xs" color="grey-7" class="q-mr-sm cursor-pointer" style="color: #629C44">
+                    <q-tooltip anchor="bottom middle" self="center middle">
+                      {{ t("dashboardPage.hashRate.bestDiffSessionTooltip") }}
+                    </q-tooltip>
+                  </q-icon>
+                </span>
               </div>
             </div>
           </div>
@@ -171,12 +203,43 @@ export default defineComponent({
       if (!hashRateData?.value?.power || !hashRateData?.value?.hashRate) return 0;
       return Math.round(hashRateData?.value?.power / (hashRateData?.value?.hashRate / 1000));
     });
+    const normalizeDifficulty = (value) => {
+      if (value === undefined || value === null) {
+        return { value: '-', unit: '' };
+      }
+      let divisor = 1;
+      let unit = '';
+      if (value >= 1_000_000_000) {
+        divisor = 1_000_000_000;
+        unit = 'G';
+      } else if (value >= 1_000_000) {
+        divisor = 1_000_000;
+        unit = 'M';
+      } else if (value >= 1_000) {
+        divisor = 1_000;
+        unit = 'K';
+      }
+      return {
+        value: (value / divisor).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }),
+        unit
+      };
+    };
+
+    const bestDifficulty = computed(() => {
+      return normalizeDifficulty(hashRateData?.value?.bestDiff);
+    });
+
+    const bestDifficultySession = computed(() => {
+      return normalizeDifficulty(hashRateData?.value?.bestSessionDiff);
+    });
 
     return {
       quasar,
       axeStore,
       formatNumber,
       efficiency,
+      bestDifficulty,
+      bestDifficultySession,
       i18n,
       t,
       showDialogReset,

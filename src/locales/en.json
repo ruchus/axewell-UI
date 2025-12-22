@@ -30,9 +30,11 @@
       "subtitle": "Network's computational power",
       "description": "Hash rate is a metric quantifying a network's computational power and efficiency. It represents the number of hash functions a transaction processor's hardware can compute within a second. A higher hash rate signifies that a processor can perform more computations within a given time.",
       "efficiency": "Efficiency",
-      "networkDifficulty": "Best difficulty",
+      "networkDifficulty": "Difficulty",
       "expected": "Expected",
-      "expHasRateHelp": "Theoretical hash rate that the device should perform under the current configuration conditions (frequency and voltage)."
+      "expHasRateHelp": "Theoretical hash rate that the device should perform under the current configuration conditions (frequency and voltage).",
+      "bestDiffAllTimeTooltip": "All-time best",
+      "bestDiffSessionTooltip": "Since system boot"
     },
     "shares": {
       "title": "Shares",
