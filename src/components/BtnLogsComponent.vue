@@ -12,12 +12,12 @@
         </div>
         <div v-if="quasar.screen.gt.sm" class="row justify-between items-baseline">
           <div class="card-text q-mt-md">{{ t("logs.description")
-          }}</div>
+            }}</div>
           <q-btn class="q-mr-md btn-titles btn-background" :label="autoScroll ? 'Stop scroll' : 'Start scroll'" no-caps
             @click="toggleScroll"></q-btn>
         </div>
         <div v-else>
-          <div class="card-text q-mb-sm">{{ t(" logs.description") }}</div>
+          <div class="card-text q-mb-sm">{{ t("logs.description") }}</div>
           <div class="text-center">
             <q-btn class="q-mr-md btn-titles btn-background q-px-lg" :style="!quasar.screen.gt.sm ? '' : ''"
               :label="autoScroll ? 'Stop scroll' : 'Start scroll'" no-caps @click="toggleScroll"></q-btn>
