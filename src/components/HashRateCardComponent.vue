@@ -55,17 +55,17 @@
                   }}</div>
               </div>
               <div class="col-7">
-                <div class="small-container data-fields rounded-borders text-right">
-                  <span class="q-mr-sm">
-                    {{ bestDifficulty.value }} {{ bestDifficulty.unit }}
+                <div class="small-container data-fields rounded-borders text-right" style="padding-left: 0">
+                  <span class="q-mr-xs">
+                    {{ bestDifficulty.value }}{{ bestDifficulty.unit }}
                     <q-icon name="info" size="xs" color="grey-7" class="q-mr-sm cursor-pointer" style="color: #629C44">
                       <q-tooltip anchor="bottom middle" self="center middle">
                         {{ t("dashboardPage.hashRate.bestDiffAllTimeTooltip") }}
                       </q-tooltip>
                     </q-icon>
                   </span>
-                  <span class="q-ml-sm">
-                    {{ bestDifficultySession.value }} {{ bestDifficultySession.unit }}
+                  <span class="q-ml-xs">
+                    {{ bestDifficultySession.value }}{{ bestDifficultySession.unit }}
                     <q-icon name="info" size="xs" color="grey-7" class="q-mr-sm cursor-pointer" style="color: #629C44">
                       <q-tooltip anchor="bottom middle" self="center middle">
                         {{ t("dashboardPage.hashRate.bestDiffSessionTooltip") }}
@@ -135,17 +135,17 @@
                 }}</div>
             </div>
             <div class="col-7">
-              <div class="small-container data-fields rounded-borders text-right">
-                <span class="q-mr-sm">
-                  {{ bestDifficulty.value }} {{ bestDifficulty.unit }}
+              <div class="small-container data-fields rounded-borders text-right" style="padding-left: 0;">
+                <span class="q-mr-xs">
+                  {{ bestDifficulty.value }}{{ bestDifficulty.unit }}
                   <q-icon name="info" size="xs" color="grey-7" class="q-mr-sm cursor-pointer" style="color: #629C44">
                     <q-tooltip anchor="bottom middle" self="center middle">
                       {{ t("dashboardPage.hashRate.bestDiffAllTimeTooltip") }}
                     </q-tooltip>
                   </q-icon>
                 </span>
-                <span class="q-ml-sm">
-                  {{ bestDifficultySession.value }} {{ bestDifficultySession.unit }}
+                <span class="q-ml-xs">
+                  {{ bestDifficultySession.value }}{{ bestDifficultySession.unit }}
                   <q-icon name="info" size="xs" color="grey-7" class="q-mr-sm cursor-pointer" style="color: #629C44">
                     <q-tooltip anchor="bottom middle" self="center middle">
                       {{ t("dashboardPage.hashRate.bestDiffSessionTooltip") }}
@@ -220,7 +220,7 @@ export default defineComponent({
         unit = 'K';
       }
       return {
-        value: (value / divisor).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }),
+        value: (value / divisor).toLocaleString(undefined, { minimumFractionDigits: 1, maximumFractionDigits: 1 }),
         unit
       };
     };
