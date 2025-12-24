@@ -33,7 +33,9 @@
       "expected": "Attendu",
       "expHasRateHelp": "Taux de hachage théorique que l'appareil devrait réaliser dans les conditions de configuration actuelles (fréquence et tension).",
       "bestDiffAllTimeTooltip": "Meilleur résultat historique",
-      "bestDiffSessionTooltip": "Depuis le démarrage du système"
+      "bestDiffSessionTooltip": "Depuis le démarrage du système",
+      "hashRate_1h": "Ratio heure",
+      "hashRate_1h_desc": "moyenne 1h"
     },
     "shares": {
       "title": "Parts",

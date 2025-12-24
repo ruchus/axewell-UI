@@ -62,6 +62,10 @@ export const useAxeStore = defineStore('axe', {
       let hashRate = this.infoData?.hashRate
       return hashRate?.toFixed(2)
     },
+    getHashRate1hRounded() {
+      let hashRate_1h = this.infoData?.hashRate_1h
+      return hashRate_1h?.toFixed(2)
+    },
     secondsToHms() {
       var d = Number(this.infoData?.uptimeSeconds)
       var days = Math.floor(d / 86400)
@@ -180,7 +184,7 @@ export const useAxeStore = defineStore('axe', {
         const año = f.getFullYear()
         return `${dia}/${mes}/${año}, ${horaFormateada}`
       }
-    },
+    }
   },
   persist: {
     paths: ['minHashRateLocalStorage', 'maxHashRateLocalStorage', 'darkmode']

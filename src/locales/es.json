@@ -33,7 +33,9 @@
       "expected": "Esperado",
       "expHasRateHelp": "Tasa de hash teórica que el dispositivo debería realizar bajo las condiciones de configuración actuales (frecuencia y voltaje).",
       "bestDiffAllTimeTooltip": "Mejor de todos los tiempos",
-      "bestDiffSessionTooltip": "Desde el arranque del sistema"
+      "bestDiffSessionTooltip": "Desde el arranque del sistema",
+      "hashRate_1h": "Ratio hora",
+      "hashRate_1h_desc": "media 1h"
     },
     "shares": {
       "title": "Prueba de trabajo",

@@ -34,7 +34,9 @@
       "expected": "Expected",
       "expHasRateHelp": "Theoretical hash rate that the device should perform under the current configuration conditions (frequency and voltage).",
       "bestDiffAllTimeTooltip": "All-time best",
-      "bestDiffSessionTooltip": "Since system boot"
+      "bestDiffSessionTooltip": "Since system boot",
+      "hashRate_1h": "Rate hour",
+      "hashRate_1h_desc": "average 1h"
     },
     "shares": {
       "title": "Shares",

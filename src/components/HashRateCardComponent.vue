@@ -36,7 +36,22 @@
 
               </div>
             </div>
+
             <div class="row justify-evenly q-mt-md">
+              <div class="col-4">
+                <div class="small-container data-label rounded-borders text-left">{{
+                  t("dashboardPage.hashRate.hashRate_1h") }}
+                </div>
+              </div>
+              <div class="col-7">
+                <div class="small-container data-fields rounded-borders text-right">
+                  {{ axeStore?.getHashRate1hRounded }} Gh/s <small>({{ t("dashboardPage.hashRate.hashRate_1h_desc") }})
+                  </small>
+                </div>
+              </div>
+            </div>
+
+            <div class="row justify-evenly q-mt-sm">
               <div class="col-4">
                 <div class="small-container data-label rounded-borders text-left">{{
                   t("dashboardPage.hashRate.efficiency") }}
@@ -48,6 +63,7 @@
                 </div>
               </div>
             </div>
+
             <div class="row justify-evenly q-mt-sm">
               <div class="col-4">
                 <div class="small-container data-label rounded-borders text-left">{{
@@ -55,7 +71,7 @@
                   }}</div>
               </div>
               <div class="col-7">
-                <div class="small-container data-fields rounded-borders text-right" style="padding-left: 0">
+                <div class="small-container data-fields rounded-borders text-right" style="padding-right: 0">
                   <span class="q-mr-xs">
                     {{ bestDifficulty.value }}{{ bestDifficulty.unit }}
                     <q-icon name="info" size="xs" color="grey-7" class="q-mr-sm cursor-pointer" style="color: #629C44">
@@ -116,7 +132,22 @@
               </div>
             </div>
           </div>
+
           <div class="row justify-evenly q-mt-md">
+            <div class="col-4">
+              <div class="small-container data-label rounded-borders text-left">{{
+                t("dashboardPage.hashRate.hashRate_1h") }}
+              </div>
+            </div>
+            <div class="col-7">
+              <div class="small-container data-fields rounded-borders text-right">
+                {{ axeStore?.getHashRate1hRounded }} Gh/s <small>({{ t("dashboardPage.hashRate.hashRate_1h_desc") }})
+                </small>
+              </div>
+            </div>
+          </div>
+
+          <div class="row justify-evenly q-mt-sm">
             <div class="col-4">
               <div class="small-container data-label rounded-borders text-left">{{
                 t("dashboardPage.hashRate.efficiency") }}
@@ -135,7 +166,7 @@
                 }}</div>
             </div>
             <div class="col-7">
-              <div class="small-container data-fields rounded-borders text-right" style="padding-left: 0;">
+              <div class="small-container data-fields rounded-borders text-right" style="padding-right: 0;">
                 <span class="q-mr-xs">
                   {{ bestDifficulty.value }}{{ bestDifficulty.unit }}
                   <q-icon name="info" size="xs" color="grey-7" class="q-mr-sm cursor-pointer" style="color: #629C44">
