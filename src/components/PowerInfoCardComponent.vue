@@ -104,7 +104,22 @@
                         </div>
                         <div class="col-4">
                             <div class="small-container data-fields rounded-borders text-right">
-                                {{ powerData?.temp }} ºC
+                                <template v-if="hasValidTemp(powerData?.temp2)">
+                                    <div class="column text-right">
+                                        <div class="q-mb-xs">
+                                            <span class="text-caption text-grey-6">ASIC 1</span>
+                                            <span class="q-ml-xs">{{ powerData?.temp }} ºC</span>
+                                        </div>
+                                        <div>
+                                            <span class="text-caption text-grey-6">ASIC 2</span>
+                                            <span class="q-ml-xs">{{ powerData?.temp2 }} ºC</span>
+                                        </div>
+                                    </div>
+                                </template>
+                                <template v-else>
+                                    <span v-if="hasValidTemp(powerData?.temp)">{{ powerData?.temp }} ºC</span>
+                                    <span v-else>-</span>
+                                </template>
                             </div>
                         </div>
                     </div>
@@ -216,7 +231,22 @@
                     </div>
                     <div class="col-4">
                         <div class="small-container data-fields rounded-borders text-right">
-                            {{ powerData?.temp }} ºC
+                            <template v-if="hasValidTemp(powerData?.temp2)">
+                                <div class="column text-right">
+                                    <div class="q-mb-xs">
+                                        <span class="text-caption text-grey-6">ASIC 1</span>
+                                        <span class="q-ml-xs">{{ powerData?.temp }} ºC</span>
+                                    </div>
+                                    <div>
+                                        <span class="text-caption text-grey-6">ASIC 2</span>
+                                        <span class="q-ml-xs">{{ powerData?.temp2 }} ºC</span>
+                                    </div>
+                                </div>
+                            </template>
+                            <template v-else>
+                                <span v-if="hasValidTemp(powerData?.temp)">{{ powerData?.temp }} ºC</span>
+                                <span v-else>-</span>
+                            </template>
                         </div>
                     </div>
                 </div>
@@ -241,9 +271,10 @@ export default defineComponent({
         const quasar = useQuasar();
         const { powerData } = toRefs(props);
         const powerConsumption = computed(() => Math.round(powerData?.value?.power))
-        const ASICvoltage = computed(() => (powerData?.value?.coreVoltageActual/1000).toFixed(2))
-        const inputVoltage = computed(() => (powerData?.value?.voltage/1000).toFixed(2))
-        const inputCurrent = computed(() => (powerData?.value?.current/1000).toFixed(2))
+        const ASICvoltage = computed(() => (powerData?.value?.coreVoltageActual / 1000).toFixed(2))
+        const inputVoltage = computed(() => (powerData?.value?.voltage / 1000).toFixed(2))
+        const inputCurrent = computed(() => (powerData?.value?.current / 1000).toFixed(2))
+        const hasValidTemp = (value) => value !== undefined && value !== null && value !== '' && value !== -1
         const { t } = useI18n();
         return {
             quasar,
@@ -251,6 +282,7 @@ export default defineComponent({
             ASICvoltage,
             inputVoltage,
             inputCurrent,
+            hasValidTemp,
             t
         }
     }
