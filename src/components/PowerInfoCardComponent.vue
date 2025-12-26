@@ -152,7 +152,7 @@
                     </div>
                     <div class="col-4">
                         <div class="small-container data-fields rounded-borders text-right">
-                            {{ inputVoltage }} V / {{ inputCurrent }} A
+                            {{ inputVoltage }}V / {{ inputCurrent }}A
                         </div>
                     </div>
                 </div>
@@ -219,7 +219,7 @@
                     </div>
                     <div class="col-4">
                         <div class="small-container data-fields rounded-borders text-right">
-                            ({{ powerData?.fanspeed }}%) RPM
+                            ({{ powerData?.fanspeed }}%) {{ powerData?.fanrpm }} RPM
                         </div>
                     </div>
                 </div>
