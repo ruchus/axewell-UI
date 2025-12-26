@@ -59,7 +59,7 @@ export const useAxeStore = defineStore('axe', {
       return percentageSharesRejected?.toFixed(2)
     },
     errorPercentage() {
-      return this.infoData?.errorPercentage.toFixed(2)
+      return (this.infoData?.errorPercentage ?? 0).toFixed(2)
     },
     getHashRateRounded() {
       let hashRate = this.infoData?.hashRate
