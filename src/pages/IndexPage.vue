@@ -27,8 +27,16 @@
                 <div class="col">
                   <div class="card-text">
                     <q-icon v-if="axeStore?.infoData?.isUsingFallbackStratum === 0" name="cloud" size="sm"
-                      class="q-mr-sm" style="color: #629C44" />
-                    <q-icon v-else name="o_cloud" size="sm" class="q-mr-sm" />
+                      class="q-mr-sm" style="color: #629C44">
+                      <q-tooltip anchor="bottom middle" self="center middle">
+                        {{ t("pool.activeTooltip") }}
+                      </q-tooltip>
+                    </q-icon>
+                    <q-icon v-else name="o_cloud" size="sm" class="q-mr-sm">
+                      <q-tooltip anchor="bottom middle" self="center middle">
+                        {{ t("pool.inactiveTooltip") }}
+                      </q-tooltip>
+                    </q-icon>
                     {{ axeStore?.infoData?.stratumURL }}:{{ axeStore?.infoData?.stratumPort }}
                     <br />
                     <span style="word-wrap: break-word; white-space: normal;margin-left: 40px;">
@@ -59,8 +67,16 @@
                 <div class="col">
                   <div class="card-text q-ml-md">
                     <q-icon v-if="axeStore?.infoData?.isUsingFallbackStratum === 1" name="cloud" size="sm"
-                      class="q-mr-sm" style="color: #629C44" />
-                    <q-icon v-else name="o_cloud" size="sm" class="q-mr-sm" />
+                      class="q-mr-sm" style="color: #629C44">
+                      <q-tooltip anchor="bottom middle" self="center middle">
+                        {{ t("pool.activeTooltip") }}
+                      </q-tooltip>
+                    </q-icon>
+                    <q-icon v-else name="o_cloud" size="sm" class="q-mr-sm">
+                      <q-tooltip anchor="bottom middle" self="center middle">
+                        {{ t("pool.inactiveTooltip") }}
+                      </q-tooltip>
+                    </q-icon>
                     {{ axeStore?.infoData?.fallbackStratumURL }}:{{ axeStore?.infoData?.fallbackStratumPort }} <br />
                     <span style="word-wrap: break-word; white-space: normal;margin-left: 40px;">
                       {{ fallbackStratumUser }}
@@ -108,8 +124,16 @@
               <q-item>
                 <div class="card-text q-ml-md">
                   <q-icon v-if="axeStore?.infoData?.isUsingFallbackStratum === 0" name="cloud" size="sm" class="q-mr-sm"
-                    style="color: #629C44" />
-                  <q-icon v-else name="o_cloud" size="sm" class="q-mr-sm" />
+                    style="color: #629C44">
+                    <q-tooltip anchor="bottom middle" self="center middle">
+                      {{ t("pool.activeTooltip") }}
+                    </q-tooltip>
+                  </q-icon>
+                  <q-icon v-else name="o_cloud" size="sm" class="q-mr-sm">
+                    <q-tooltip anchor="bottom middle" self="center middle">
+                      {{ t("pool.inactiveTooltip") }}
+                    </q-tooltip>
+                  </q-icon>
                   {{ axeStore?.infoData?.stratumURL }}:{{ axeStore?.infoData?.stratumPort }} <br />
                   {{ mainStratumUser }}
                 </div>
@@ -120,8 +144,16 @@
               <q-item>
                 <div class="card-text q-ml-md">
                   <q-icon v-if="axeStore?.infoData?.isUsingFallbackStratum === 1" name="cloud" size="sm" class="q-mr-sm"
-                    style="color: #629C44" />
-                  <q-icon v-else name="o_cloud" size="sm" class="q-mr-sm" />
+                    style="color: #629C44">
+                    <q-tooltip anchor="bottom middle" self="center middle">
+                      {{ t("pool.activeTooltip") }}
+                    </q-tooltip>
+                  </q-icon>
+                  <q-icon v-else name="o_cloud" size="sm" class="q-mr-sm">
+                    <q-tooltip anchor="bottom middle" self="center middle">
+                      {{ t("pool.inactiveTooltip") }}
+                    </q-tooltip>
+                  </q-icon>
                   {{ axeStore?.infoData?.fallbackStratumURL }}:{{ axeStore?.infoData?.fallbackStratumPort }} <br />
                   {{ fallbackStratumUser }}
                 </div>

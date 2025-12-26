@@ -21,7 +21,9 @@
     "notConnected": "Non connecté",
     "settings": "Aller au réseau",
     "responseTime": "Temps de réponse",
-    "responseTimeTooltip": "Latence entre l'ASIC et le pool (ms). Une latence élevée réduit les performances en provoquant des erreurs réseau."
+    "responseTimeTooltip": "Latence entre l'ASIC et le pool (ms). Une latence élevée réduit les performances en provoquant des erreurs réseau.",
+    "activeTooltip": "Pool actif",
+    "inactiveTooltip": "Pool inactif"
   },
   "dashboardPage": {
     "title": "Tableau de bord",
