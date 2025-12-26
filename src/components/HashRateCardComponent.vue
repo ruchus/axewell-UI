@@ -67,8 +67,26 @@
             <div class="row justify-evenly q-mt-sm">
               <div class="col-4">
                 <div class="small-container data-label rounded-borders text-left">{{
+                  t("dashboardPage.hashRate.errorPercentage") }}
+                </div>
+              </div>
+              <div class="col-7">
+                <div class="small-container data-fields rounded-borders text-right" style="padding-right: 0">
+                  {{ axeStore?.errorPercentage }} %
+                  <q-icon name="info" size="xs" color="grey-7" class="q-mr-sm cursor-pointer" style="color: #629C44">
+                    <q-tooltip anchor="bottom middle" self="center middle">
+                      {{ t("dashboardPage.hashRate.errorPercentageTooltip") }}
+                    </q-tooltip>
+                  </q-icon>
+                </div>
+              </div>
+            </div>
+
+            <div class="row justify-evenly q-mt-sm">
+              <div class="col-4">
+                <div class="small-container data-label rounded-borders text-left">{{
                   t("dashboardPage.hashRate.networkDifficulty")
-                  }}</div>
+                }}</div>
               </div>
               <div class="col-7">
                 <div class="small-container data-fields rounded-borders text-right" style="padding-right: 0">
@@ -159,11 +177,30 @@
               </div>
             </div>
           </div>
+
+          <div class="row justify-evenly q-mt-md">
+            <div class="col-4">
+              <div class="small-container data-label rounded-borders text-left">{{
+                t("dashboardPage.hashRate.errorPercentage") }}
+              </div>
+            </div>
+            <div class="col-7">
+              <div class="small-container data-fields rounded-borders text-right" style="padding-right: 0">
+                {{ axeStore?.errorPercentage }} %
+                <q-icon name="info" size="xs" color="grey-7" class="q-mr-sm cursor-pointer" style="color: #629C44">
+                  <q-tooltip anchor="bottom middle" self="center middle">
+                    {{ t("dashboardPage.hashRate.errorPercentageTooltip") }}
+                  </q-tooltip>
+                </q-icon>
+              </div>
+            </div>
+          </div>
+
           <div class="row justify-evenly q-mt-sm">
             <div class="col-4">
               <div class="small-container data-label rounded-borders text-left">{{
                 t("dashboardPage.hashRate.networkDifficulty")
-                }}</div>
+              }}</div>
             </div>
             <div class="col-7">
               <div class="small-container data-fields rounded-borders text-right" style="padding-right: 0;">

@@ -35,7 +35,9 @@
       "bestDiffAllTimeTooltip": "Лучший результат за всё время",
       "bestDiffSessionTooltip": "С момента запуска системы",
       "hashRate_1h": "Средний",
-      "hashRate_1h_desc": "в среднем 1ч"
+      "hashRate_1h_desc": "в среднем 1ч",
+      "errorPercentage": "Ошибки",
+      "errorPercentageTooltip": "Процент ошибок в работе ASIC. Небольшой процент является нормой, но высокий процент может указывать на проблемы с оборудованием или перегрев."
     },
     "shares": {
       "title": "Доказательство работы",

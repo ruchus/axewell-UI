@@ -35,7 +35,9 @@
       "bestDiffAllTimeTooltip": "Mejor de todos los tiempos",
       "bestDiffSessionTooltip": "Desde el arranque del sistema",
       "hashRate_1h": "Ratio hora",
-      "hashRate_1h_desc": "media 1h"
+      "hashRate_1h_desc": "media 1h",
+      "errorPercentage": "Errores",
+      "errorPercentageTooltip": "Porcentaje de errores en las operaciones del ASIC. Un pequeño porcentaje es normal, pero uno alto puede indicar problemas de hardware o sobrecalentamiento."
     },
     "shares": {
       "title": "Prueba de trabajo",

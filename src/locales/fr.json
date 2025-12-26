@@ -35,7 +35,9 @@
       "bestDiffAllTimeTooltip": "Meilleur résultat historique",
       "bestDiffSessionTooltip": "Depuis le démarrage du système",
       "hashRate_1h": "Ratio heure",
-      "hashRate_1h_desc": "moyenne 1h"
+      "hashRate_1h_desc": "moyenne 1h",
+      "errorPercentage": "Erreurs",
+      "errorPercentageTooltip": "Pourcentage d'erreurs dans les opérations ASIC. Un faible pourcentage est normal, mais un pourcentage élevé peut indiquer des problèmes matériels ou une surchauffe."
     },
     "shares": {
       "title": "Parts",

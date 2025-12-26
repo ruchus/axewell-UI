@@ -36,7 +36,9 @@
       "bestDiffAllTimeTooltip": "All-time best",
       "bestDiffSessionTooltip": "Since system boot",
       "hashRate_1h": "Rate hour",
-      "hashRate_1h_desc": "average 1h"
+      "hashRate_1h_desc": "average 1h",
+      "errorPercentage": "Errors",
+      "errorPercentageTooltip": "Percentage of errors in ASIC operations. A small percentage is normal, but a high percentage may indicate hardware issues or overheating."
     },
     "shares": {
       "title": "Shares",
