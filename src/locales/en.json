@@ -20,7 +20,8 @@
   "pool": {
     "notConnected": "Not Connected",
     "settings": "Go network",
-    "responseTime": "Response time"
+    "responseTime": "Response time",
+    "responseTimeTooltip": "Latency between the ASIC and the pool (ms). High latency leads to lower performance due to network errors."
   },
 
   "dashboardPage": {

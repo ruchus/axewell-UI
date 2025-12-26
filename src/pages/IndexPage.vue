@@ -38,21 +38,6 @@
                 </div>
 
 
-                <div class="col-auto row items-center justify-center q-ml-md">
-                  <q-card bordered class="bg-grey-10 my-card">
-                    <q-card-section class="column items-center text-center">
-                      <div class="card-title" style="font-size: 14px;">{{ t("pool.responseTime") }}</div>
-                      <div class="row items-center justify-center q-mt-xs">
-                        <q-icon name="speed" size="sm" class="q-mr-sm" :style="`color: ${responseTimeColor}`" />
-                        <span class="card-text"
-                          :style="`color: ${responseTimeColor}; font-size: 18px; font-weight: bold;`">
-                          {{ responseTimeRounded }}
-                        </span>
-                        <span class="card-text q-ml-xs" style="font-size: 12px;">ms</span>
-                      </div>
-                    </q-card-section>
-                  </q-card>
-                </div>
               </div>
             </q-card-section>
             <q-card-section v-else class="pool-info-container items-center">
@@ -94,6 +79,28 @@
                 </q-btn>
               </div>
             </q-card-section>
+            <q-card-section v-if="axeStore?.infoData?.stratumURL || axeStore?.infoData?.fallbackStratumURL"
+              class="pool-info-container items-center">
+              <div class="row items-center q-gutter-md">
+                <div class="col-auto">
+                  <div class="card-title" style="font-size: 16px;">{{ t("pool.responseTime") }}</div>
+                </div>
+                <div class="col">
+                  <div class="card-text q-ml-md">
+                    <q-icon name="speed" size="sm" class="q-mr-sm" :style="`color: ${responseTimeColor}`" />
+                    <span class="card-text" :style="`color: ${responseTimeColor}; font-size: 18px; font-weight: bold;`">
+                      {{ responseTimeRounded }}
+                    </span>
+                    <span class="card-text q-ml-xs" style="font-size: 12px;">ms </span>
+                    <q-icon name="info" size="xs" color="grey-7" class="q-mr-sm cursor-pointer" style="color: #629C44">
+                      <q-tooltip anchor="bottom middle" self="center middle">
+                        {{ t("pool.responseTimeTooltip") }}
+                      </q-tooltip>
+                    </q-icon>
+                  </div>
+                </div>
+              </div>
+            </q-card-section>
           </template>
           <template v-else class="items-center">
             <div v-if="axeStore?.infoData?.stratumURL" class="pool-info-container items-center">
@@ -108,7 +115,7 @@
                 </div>
               </q-item>
             </div>
-            <div v-if="axeStore?.infoData?.fallbackStratumURL" class="pool-info-container items-center">
+            <div v-if="axeStore?.infoData?.fallbackStratumURL" class="pool-info-container items-center q-mt-md">
               <div class="card-title" style="font-size: 16px;">Fallback pool</div>
               <q-item>
                 <div class="card-text q-ml-md">
@@ -132,7 +139,7 @@
                 <q-icon left size="sm" name="cloud_off" class="cloud-off parpadea" />
                 <div>{{ t("pool.settings") }}</div>
               </q-btn>
-              <div class="pool-info-container justify-between items-center q-pb-md">
+              <div class="pool-info-container justify-between items-center q-pb-md q-mt-md">
                 <div>
                   <div class="card-title" style="font-size: 16px;">Fallback Pool</div>
                   <div class="card-text ">{{ t("pool.notConnected") }}</div>
@@ -147,16 +154,23 @@
             </div>
 
 
-            <div class="card-title" style="font-size: 16px;">{{ t("pool.responseTime") }}</div>
-            <q-item>
-              <div class="card-text q-ml-md">
-                <q-icon name="speed" size="sm" class="q-mr-sm" :style="`color: ${responseTimeColor}`" />
-                <span class="card-text" :style="`color: ${responseTimeColor}; font-size: 18px; font-weight: bold;`">
-                  {{ responseTimeRounded }}
-                </span>
-                <span class="card-text q-ml-xs" style="font-size: 12px;">ms</span>
-              </div>
-            </q-item>
+            <div v-if="axeStore?.infoData?.stratumURL || axeStore?.infoData?.fallbackStratumURL" class="q-mt-md">
+              <div class="card-title" style="font-size: 16px;">{{ t("pool.responseTime") }}</div>
+              <q-item>
+                <div class="card-text q-ml-md">
+                  <q-icon name="speed" size="sm" class="q-mr-sm" :style="`color: ${responseTimeColor}`" />
+                  <span class="card-text" :style="`color: ${responseTimeColor}; font-size: 18px; font-weight: bold;`">
+                    {{ responseTimeRounded }}
+                  </span>
+                  <span class="card-text q-ml-xs" style="font-size: 12px;">ms </span>
+                  <q-icon name="info" size="xs" color="grey-7" class="q-mr-sm cursor-pointer" style="color: #629C44">
+                    <q-tooltip anchor="bottom middle" self="center middle">
+                      {{ t("pool.responseTimeTooltip") }}
+                    </q-tooltip>
+                  </q-icon>
+                </div>
+              </q-item>
+            </div>
 
           </template>
         </q-card>

@@ -20,7 +20,8 @@
   "pool": {
     "notConnected": "No connectado",
     "settings": "Ir a red",
-    "responseTime": "Tiempo de respuesta"
+    "responseTime": "Tiempo de respuesta",
+    "responseTimeTooltip": "Latencia entre el ASIC y el pool (ms). Una latencia alta conlleva un menor rendimiento debido a errores de red."
   },
   "dashboardPage": {
     "title": "Panel de control",
