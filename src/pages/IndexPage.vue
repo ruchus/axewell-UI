@@ -40,7 +40,13 @@
                     {{ axeStore?.infoData?.stratumURL }}:{{ axeStore?.infoData?.stratumPort }}
                     <br />
                     <span style="word-wrap: break-word; white-space: normal;margin-left: 40px;">
-                      {{ mainStratumUser }}
+                      <template v-if="mainStratumUser?.url">
+                        <a :href="mainStratumUser.url" target="_blank" rel="noopener" class="text-grey-7">{{
+                          mainStratumUser.display }}</a>
+                      </template>
+                      <template v-else>
+                        {{ mainStratumUser.display }}
+                      </template>
                     </span>
                   </div>
                 </div>
@@ -79,7 +85,14 @@
                     </q-icon>
                     {{ axeStore?.infoData?.fallbackStratumURL }}:{{ axeStore?.infoData?.fallbackStratumPort }} <br />
                     <span style="word-wrap: break-word; white-space: normal;margin-left: 40px;">
-                      {{ fallbackStratumUser }}
+                      <template v-if="fallbackStratumUser?.url">
+                        <a :href="fallbackStratumUser.url" target="_blank" rel="noopener" class="text-grey-7">{{
+                          fallbackStratumUser.display
+                          }}</a>
+                      </template>
+                      <template v-else>
+                        {{ fallbackStratumUser.display }}
+                      </template>
                     </span>
                   </div>
                 </div>
@@ -135,7 +148,13 @@
                     </q-tooltip>
                   </q-icon>
                   {{ axeStore?.infoData?.stratumURL }}:{{ axeStore?.infoData?.stratumPort }} <br />
-                  {{ mainStratumUser }}
+                  <template v-if="mainStratumUser?.url">
+                    <a :href="mainStratumUser.url" target="_blank" rel="noopener" class="text-grey-7">{{
+                      mainStratumUser.display }}</a>
+                  </template>
+                  <template v-else>
+                    {{ mainStratumUser.display }}
+                  </template>
                 </div>
               </q-item>
             </div>
@@ -155,7 +174,14 @@
                     </q-tooltip>
                   </q-icon>
                   {{ axeStore?.infoData?.fallbackStratumURL }}:{{ axeStore?.infoData?.fallbackStratumPort }} <br />
-                  {{ fallbackStratumUser }}
+                  <template v-if="fallbackStratumUser?.url">
+                    <a :href="fallbackStratumUser.url" target="_blank" rel="noopener" class="text-grey-7">{{
+                      fallbackStratumUser.display
+                      }}</a>
+                  </template>
+                  <template v-else>
+                    {{ fallbackStratumUser.display }}
+                  </template>
                 </div>
               </q-item>
             </div>
@@ -240,15 +266,64 @@ export default defineComponent({
       const lang = route.query.lang || 'es';
       locale.value = lang;
     });
-    const shortenString = (str, visibleChars = 6) => {
-      if (!str || str < visibleChars * 2) return str;
-      return str.slice(0, 6) + '...' + str.slice(-6)
+    const shortenString = (value, visibleChars = 6) => {
+      if (!value) return '-';
+      const str = String(value);
+      if (str.length <= visibleChars * 2) return str;
+      return `${str.slice(0, visibleChars)}...${str.slice(-visibleChars)}`;
     }
+
+    const poolLinkResolvers = [
+      { search: 'public-pool.io', build: (user) => `https://web.public-pool.io/#/app/${user}` },
+      { search: 'nerdminer.de', build: (user) => `https://pool.nerdminer.de/#/app/${user}` },
+      { search: 'solomining.de', build: (user) => `https://pool.solomining.de/#/app/${user}` },
+      { search: 'yourdevice.ch', build: (user) => `https://blitzpool.yourdevice.ch/#/app/${user}` },
+      { search: 'ocean.xyz', build: (user) => `https://ocean.xyz/stats/${user}` },
+      { search: 'pool.noderunners.network', build: (user) => `https://noderunners.network/en/pool/user/${user}` },
+      { search: 'satoshiradio.nl', build: (user) => `https://pool.satoshiradio.nl/user/${user}` },
+      { search: 'solohash.co.uk', build: (user) => `https://solohash.co.uk/user/${user}` },
+      { search: 'solo.stratum.braiins.com', build: (user) => `https://solo.braiins.com/stats/${user}` },
+      { search: 'parasite.wtf', build: (user) => `https://parasite.space/user/${user}` },
+      {
+        regex: /^(?:https?:\/\/)?((?:eu|au)?solo[46]?\.)?ckpool\.org/i,
+        build: (user, match) => {
+          const regionRaw = match?.[1]?.replace('.', '') ?? '';
+          const region = regionRaw.replace(/solo[46]?/i, '');
+          const subdomain = region ? `${region}solostats` : 'solostats';
+          return `https://${subdomain}.ckpool.org/users/${user}`;
+        }
+      },
+      { search: 'atlaspool.io', build: (user) => `https://atlaspool.io/dashboard.html?wallet=${user}` },
+    ];
+
+    const resolvePoolLink = (url, user) => {
+      if (!url || !user) return null;
+      const entry = poolLinkResolvers.find((resolver) => {
+        if (resolver.search) return url.includes(resolver.search);
+        if (resolver.regex) return resolver.regex.test(url);
+        return false;
+      });
+      if (!entry) return null;
+      if (entry.regex) {
+        const match = url.match(entry.regex);
+        return match ? entry.build(user, match) : null;
+      }
+      return entry.build(user);
+    };
+
+    const buildUserLink = (user, url) => {
+      if (!user) return { display: '-', url: null };
+      return {
+        display: shortenString(user),
+        url: resolvePoolLink(url, user)
+      };
+    };
+
     const mainStratumUser = computed(() => {
-      return shortenString(axeStore?.infoData?.stratumUser);
+      return buildUserLink(axeStore?.infoData?.stratumUser, axeStore?.infoData?.stratumURL);
     })
     const fallbackStratumUser = computed(() => {
-      return shortenString(axeStore?.infoData?.fallbackStratumUser);
+      return buildUserLink(axeStore?.infoData?.fallbackStratumUser, axeStore?.infoData?.fallbackStratumURL);
     })
 
     const responseTimeRounded = computed(() => {
