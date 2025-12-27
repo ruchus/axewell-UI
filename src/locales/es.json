@@ -29,7 +29,7 @@
     "title": "Panel de control",
     "subtitle": "Hola, observa algunos datos de rendimiento.",
     "hashRate": {
-      "subtitle": "Potencia computacional de la red",
+      "subtitle": "Potencia computacional del minero",
       "description": "La tasa de hash es una métrica que cuantifica la potencia y la eficiencia computacional de una red. Representa la cantidad de funciones hash que el hardware de un procesador de transacciones puede calcular en un segundo. Una tasa de hash más alta significa que un procesador puede realizar más cálculos en un tiempo determinado.",
       "efficiency": "Eficiencia",
       "networkDifficulty": "Dificultad",
