@@ -14,10 +14,13 @@
 
         <div class="right-aligned" v-if="quasar.screen.gt.sm">
           <div :style="axeStore.darkmode ? '' : 'font-weight:600'">
-            <div class=" q-mt-sm">
-              <span class="secondary-fields  q-mr-sm">{{ t("layout.wifiStatus") }}</span>
-              <span v-if="axeStore?.infoData?.wifiStatus == 'Connected!'" style="color:green">{{ t("layout.connected")
-                }}</span>
+            <div class="q-mt-sm">
+              <span class="secondary-fields  q-mr-sm">{{ axeStore?.infoData?.ssid }}</span>
+              <q-icon v-if="isWifiConnected" :name="wifiIcon" :color="wifiColor" size="sm">
+                <q-tooltip anchor="bottom middle" self="top middle">
+                  {{ t('layout.signalQuality') }}: {{ signalQualityText }} ({{ axeStore?.infoData?.wifiRSSI }} dBm)
+                </q-tooltip>
+              </q-icon>
               <span v-else style="color:red">{{ t("layout.notConnected") }}</span>
             </div>
             <span class="secondary-fields">{{ t("layout.uptime") }}: {{ axeStore.secondsToHms }}</span>
@@ -50,12 +53,13 @@
             <div class="text-subtitle2 q-ml-lg" style="color: #d4d4d4;"
               :style="axeStore.darkmode ? '' : 'font-weight:500'">
               <div>
-                <span class="secondary-fields q-mr-sm">{{ t("layout.wifiStatus") }}</span>
-                <span :style="{ color: axeStore?.infoData?.wifiStatus === 'Connected!' ? 'green' : 'red' }">
-                  {{ axeStore?.infoData?.wifiStatus === 'Connected!' ? t("layout.connected") :
-                    t("layout.notConnected")
-                  }}
-                </span>
+                <span class="secondary-fields q-mr-sm">{{ axeStore?.infoData?.ssid }}</span>
+                <q-icon v-if="isWifiConnected" :name="wifiIcon" :color="wifiColor" size="sm">
+                  <q-tooltip anchor="bottom middle" self="top middle">
+                    {{ t('layout.signalQuality') }}: {{ signalQualityText }} ({{ axeStore?.infoData?.wifiRSSI }} dBm)
+                  </q-tooltip>
+                </q-icon>
+                <span v-else style="color:red">{{ t("layout.notConnected") }}</span>
               </div>
               <div>
                 <span class="secondary-fields">{{ t("layout.uptime") }} {{ axeStore.secondsToHms }}</span>
@@ -208,6 +212,37 @@ export default defineComponent({
         });
       }
     }
+    const isWifiConnected = computed(() => axeStore?.infoData?.wifiStatus === 'Connected!')
+
+    const wifiIcon = computed(() => {
+      if (!isWifiConnected.value) return 'wifi_off'
+      const rssi = axeStore?.infoData?.wifiRSSI ?? -100
+      if (rssi >= -55) return 'signal_wifi_4_bar'
+      if (rssi >= -67) return 'signal_wifi_3_bar'
+      if (rssi >= -75) return 'signal_wifi_2_bar'
+      if (rssi >= -82) return 'signal_wifi_1_bar'
+      return 'signal_wifi_0_bar'
+    })
+
+    const wifiColor = computed(() => {
+      if (!isWifiConnected.value) return 'red'
+      const rssi = axeStore?.infoData?.wifiRSSI ?? -100
+      if (rssi >= -55) return 'green'
+      if (rssi >= -67) return 'light-green-6'
+      if (rssi >= -75) return 'amber-7'
+      if (rssi >= -82) return 'deep-orange-8'
+      return 'red'
+    })
+
+    const signalQualityText = computed(() => {
+      const rssi = axeStore?.infoData?.wifiRSSI ?? -100
+      if (rssi >= -55) return t('layout.excellent')
+      if (rssi >= -67) return t('layout.good')
+      if (rssi >= -75) return t('layout.fair')
+      if (rssi >= -82) return t('layout.weak')
+      return t('layout.poor')
+    })
+
     const currentLanguage = computed(() => {
       var localeLabel = '';
       if (locale.value == 'es') {
@@ -279,7 +314,11 @@ export default defineComponent({
       currentLanguage,
       confirm,
       t,
-      version
+      version,
+      isWifiConnected,
+      wifiIcon,
+      wifiColor,
+      signalQualityText
 
     }
   }

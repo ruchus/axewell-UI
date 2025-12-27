@@ -11,7 +11,13 @@
     "locale": "Français",
     "restartText": "L'appareil va redémarrer. Ok?",
     "connected": "Connecté !",
-    "restartedDevice": "Appareil redémarré"
+    "restartedDevice": "Appareil redémarré",
+    "signalQuality": "Qualité du signal",
+    "excellent": "Excellente",
+    "good": "Bonne",
+    "fair": "Moyenne",
+    "weak": "Faible",
+    "poor": "Mauvaise"
   },
   "logs": {
     "viewLogs": "Voir les journaux",

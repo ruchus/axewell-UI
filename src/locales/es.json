@@ -11,7 +11,13 @@
     "locale": "Español",
     "restartText": "El dispositivo se reiniciará. ¿Ok?",
     "connected": "¡Conectado!",
-    "restartedDevice": "Dispositivo reiniciado"
+    "restartedDevice": "Dispositivo reiniciado",
+    "signalQuality": "Calidad de la señal",
+    "excellent": "Excelente",
+    "good": "Buena",
+    "fair": "Regular",
+    "weak": "Débil",
+    "poor": "Mala"
   },
   "logs": {
     "viewLogs": "Ver logs",
