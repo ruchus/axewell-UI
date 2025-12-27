@@ -7,6 +7,7 @@
     "swarm": "Swarm",
     "settings": "Settings",
     "network": "Network",
+    "system": "System",
     "locale": "English",
     "restartText": "The device will be restarted. Ok?",
     "connected": "Connected!",
@@ -155,5 +156,20 @@
     "password": "WiFi password",
     "update": "Update",
     "restartText": "The device will be restarted. Ok?"
+  },
+  "systemPage": {
+    "title": "System",
+    "subtitle": "Device and software information.",
+    "deviceInfo": "Device Information",
+    "softwareInfo": "Software Information",
+    "memoryInfo": "Memory",
+    "asicModel": "ASIC Model",
+    "macAddress": "MAC Address",
+    "boardVersion": "Board Version",
+    "firmwareVersion": "Firmware Version",
+    "axewellVersion": "Axewell UI Version",
+    "espIdfVersion": "ESP-IDF Version",
+    "freeHeapMemory": "Free Heap Memory",
+    "logs": "Logs"
   }
 }

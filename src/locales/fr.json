@@ -7,6 +7,7 @@
     "swarm": "Essaim",
     "settings": "Paramètres",
     "network": "Réseau",
+    "system": "Système",
     "locale": "Français",
     "restartText": "L'appareil va redémarrer. Ok?",
     "connected": "Connecté !",
@@ -154,5 +155,20 @@
     "password": "mot de passe WiFi",
     "update": "Mettre à jour",
     "restartText": "L'appareil va redémarrer. Ok?"
+  },
+  "systemPage": {
+    "title": "Système",
+    "subtitle": "Informations sur le dispositif et le logiciel.",
+    "deviceInfo": "Informations sur le dispositif",
+    "softwareInfo": "Informations sur le logiciel",
+    "memoryInfo": "Mémoire",
+    "asicModel": "Modèle ASIC",
+    "macAddress": "Adresse MAC",
+    "boardVersion": "Version du board",
+    "firmwareVersion": "Version du firmware",
+    "axewellVersion": "Axewell-ui",
+    "espIdfVersion": "Version ESP-IDF",
+    "freeHeapMemory": "Mémoire libre",
+    "logs": "Logs du système"
   }
 }

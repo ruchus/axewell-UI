@@ -1,6 +1,6 @@
 <template>
-  <q-btn icon="manage_history" size="sm" no-caps @click="openLog = !openLog" style="color:#A8C6FA"
-    :label="quasar.screen.gt.sm ? t('logs.viewLogs') : undefined" />
+  <q-btn icon="manage_history" size="md" no-caps @click="openLog = !openLog" style="color:#A8C6FA"
+    :label="t('logs.viewLogs')" />
 
   <q-dialog v-model="openLog" persistent backdrop-filter="brightness(60%)" full-width full-height>
     <q-card class="dialogBg">

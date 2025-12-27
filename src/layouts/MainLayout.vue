@@ -17,7 +17,7 @@
             <div class=" q-mt-sm">
               <span class="secondary-fields  q-mr-sm">{{ t("layout.wifiStatus") }}</span>
               <span v-if="axeStore?.infoData?.wifiStatus == 'Connected!'" style="color:green">{{ t("layout.connected")
-              }}</span>
+                }}</span>
               <span v-else style="color:red">{{ t("layout.notConnected") }}</span>
             </div>
             <span class="secondary-fields">{{ t("layout.uptime") }}: {{ axeStore.secondsToHms }}</span>
@@ -119,20 +119,7 @@
           <a href="https://github.com/ruchus/axewell-UI" target="_blank" rel="noopener noreferrer"
             style="color: var(--text-primary)">axewell UI</a>
           v{{ version }}, running on Bitaxe
-          <q-icon name="info" size="xs" color="grey-7" class="q-mr-sm cursor-pointer" style="color: #629C44">
-            <q-tooltip anchor="top middle" self="center middle">
-              ASIC Model: {{ axeStore?.infoData?.ASICModel }} <br />
-              MAC Address: {{ axeStore?.infoData?.macAddr }} <br />
-              Free Heap Memory: {{ axeStore?.infoData?.freeHeap }} <br />
-              Firmware Version: {{ axeStore?.infoData?.version }} <br />
-              Axewell UI Version: v{{ version }} <br />
-              ESP-IDF Version: {{ axeStore?.infoData?.idfVersion }} <br />
-              Board Version: {{ axeStore?.infoData?.boardVersion }}
-            </q-tooltip>
-          </q-icon>
         </q-toolbar-title>
-
-        <BtnLogsComponent></BtnLogsComponent>
       </q-toolbar>
     </q-footer>
 
@@ -165,14 +152,12 @@ import { useI18n } from 'vue-i18n';
 import { availableLocales } from '@/locales/index.js'
 import { useRouter } from 'vue-router';
 import '@quasar/extras/material-icons/material-icons.css';
-import BtnLogsComponent from '@/components/BtnLogsComponent.vue'
 
 export default defineComponent({
   name: 'MainLayout',
 
   components: {
-    EssentialLink,
-    BtnLogsComponent
+    EssentialLink
   },
 
   setup() {
@@ -257,6 +242,11 @@ export default defineComponent({
         title: t('layout.settings'),
         icon: 'settings',
         link: 'Settings'
+      },
+      {
+        title: t('layout.system'),
+        icon: 'memory',
+        link: 'System'
       },
       {
         title: t('layout.network'),

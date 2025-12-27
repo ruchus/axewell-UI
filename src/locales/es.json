@@ -7,6 +7,7 @@
     "swarm": "Enjambre",
     "settings": "Ajustes",
     "network": "Red",
+    "system": "Sistema",
     "locale": "Español",
     "restartText": "El dispositivo se reiniciará. ¿Ok?",
     "connected": "¡Conectado!",
@@ -154,5 +155,20 @@
     "password": "contrasña WiFi",
     "update": "Actualizar",
     "restartText": "El dispositivo se reiniciará. ¿Ok?"
+  },
+  "systemPage": {
+    "title": "Sistema",
+    "subtitle": "Información del dispositivo y software.",
+    "deviceInfo": "Información del dispositivo",
+    "softwareInfo": "Información del software",
+    "memoryInfo": "Memoria",
+    "asicModel": "Modelo ASIC",
+    "macAddress": "Dirección MAC",
+    "boardVersion": "Versión placa",
+    "firmwareVersion": "Versión del firmware",
+    "axewellVersion": "Axewell-ui",
+    "espIdfVersion": "Versión ESP-IDF",
+    "freeHeapMemory": "Memoria libre",
+    "logs": "Logs del sistema"
   }
 }

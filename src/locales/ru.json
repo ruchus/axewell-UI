@@ -7,6 +7,7 @@
     "swarm": "Рой",
     "settings": "Настройки",
     "network": "Cеть",
+    "system": "Система",
     "locale": "Pусский",
     "restartText": "Устройство будет перезагружено. Ок?",
     "connected": "Подключено!",
@@ -154,5 +155,20 @@
     "password": "пароль WiFi",
     "update": "Обновлять",
     "restartText": "Устройство будет перезагружено. Ок?"
+  },
+  "systemPage": {
+    "title": "Система",
+    "subtitle": "Информация о устройстве и программном обеспечении.",
+    "deviceInfo": "Информация о устройстве",
+    "softwareInfo": "Информация о программном обеспечении",
+    "memoryInfo": "Память",
+    "asicModel": "Модель ASIC",
+    "macAddress": "MAC Address",
+    "boardVersion": "Board version",
+    "firmwareVersion": "Firmware version",
+    "axewellVersion": "Axewell-ui",
+    "espIdfVersion": "ESP-IDF version",
+    "freeHeapMemory": "Свободная память кучи",
+    "logs": "Системные журналы"
   }
 }
