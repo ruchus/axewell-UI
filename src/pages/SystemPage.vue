@@ -14,21 +14,28 @@
                                 <q-item-section>
                                     <q-item-label class="text-grey-6">{{ t("systemPage.asicModel") }}</q-item-label>
                                     <q-item-label class="card-text">{{ axeStore?.infoData?.ASICModel || '-'
-                                        }}</q-item-label>
+                                    }}</q-item-label>
                                 </q-item-section>
                             </q-item>
                             <q-item>
                                 <q-item-section>
                                     <q-item-label class="text-grey-6">{{ t("systemPage.macAddress") }}</q-item-label>
                                     <q-item-label class="card-text">{{ axeStore?.infoData?.macAddr || '-'
-                                        }}</q-item-label>
+                                    }}</q-item-label>
                                 </q-item-section>
                             </q-item>
                             <q-item>
                                 <q-item-section>
                                     <q-item-label class="text-grey-6">{{ t("systemPage.boardVersion") }}</q-item-label>
                                     <q-item-label class="card-text">{{ axeStore?.infoData?.boardVersion || '-'
-                                        }}</q-item-label>
+                                    }}</q-item-label>
+                                </q-item-section>
+                            </q-item>
+                            <q-item>
+                                <q-item-section>
+                                    <q-item-label class="text-grey-6">{{ t("systemPage.resetReason") }}</q-item-label>
+                                    <q-item-label class="card-text">{{ axeStore?.infoData?.resetReason || '-'
+                                    }}</q-item-label>
                                 </q-item-section>
                             </q-item>
                         </q-list>
@@ -41,15 +48,15 @@
                             <q-item>
                                 <q-item-section>
                                     <q-item-label class="text-grey-6">{{ t("systemPage.firmwareVersion")
-                                        }}</q-item-label>
+                                    }}</q-item-label>
                                     <q-item-label class="card-text">{{ axeStore?.infoData?.version || '-'
-                                        }}</q-item-label>
+                                    }}</q-item-label>
                                 </q-item-section>
                             </q-item>
                             <q-item>
                                 <q-item-section>
                                     <q-item-label class="text-grey-6">{{ t("systemPage.axewellVersion")
-                                        }}</q-item-label>
+                                    }}</q-item-label>
                                     <q-item-label class="card-text">v{{ version }}</q-item-label>
                                 </q-item-section>
                             </q-item>
@@ -57,7 +64,7 @@
                                 <q-item-section>
                                     <q-item-label class="text-grey-6">{{ t("systemPage.espIdfVersion") }}</q-item-label>
                                     <q-item-label class="card-text">{{ axeStore?.infoData?.idfVersion || '-'
-                                        }}</q-item-label>
+                                    }}</q-item-label>
                                 </q-item-section>
                             </q-item>
                         </q-list>
@@ -70,7 +77,7 @@
                             <q-item>
                                 <q-item-section>
                                     <q-item-label class="text-grey-6">{{ t("systemPage.freeHeapMemory")
-                                        }}</q-item-label>
+                                    }}</q-item-label>
                                     <q-item-label class="card-text">{{ freeHeapDisplay }}</q-item-label>
                                 </q-item-section>
                             </q-item>

@@ -165,6 +165,7 @@
     "asicModel": "Модель ASIC",
     "macAddress": "MAC Address",
     "boardVersion": "Board version",
+    "resetReason": "Причина последней перезагрузки",
     "firmwareVersion": "Firmware version",
     "axewellVersion": "Axewell-ui",
     "espIdfVersion": "ESP-IDF version",

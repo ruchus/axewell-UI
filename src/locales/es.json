@@ -165,6 +165,7 @@
     "asicModel": "Modelo ASIC",
     "macAddress": "Dirección MAC",
     "boardVersion": "Versión placa",
+    "resetReason": "Motivo del último reinicio",
     "firmwareVersion": "Versión del firmware",
     "axewellVersion": "Axewell-ui",
     "espIdfVersion": "Versión ESP-IDF",
