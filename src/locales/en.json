@@ -171,6 +171,10 @@
     "axewellVersion": "Axewell UI Version",
     "espIdfVersion": "ESP-IDF Version",
     "freeHeapMemory": "Free Heap Memory",
-    "logs": "Logs"
+    "logs": "Logs",
+    "identifyButton": "Identify",
+    "identifyHelp": "Makes the physical device say “Hi!” on its LCD.",
+    "identifySuccess": "Device is showing the identification message!",
+    "identifyError": "Unable to trigger identification."
   }
 }

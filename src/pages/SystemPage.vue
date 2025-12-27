@@ -39,6 +39,12 @@
                                 </q-item-section>
                             </q-item>
                         </q-list>
+                        <div class="q-mt-md flex items-center q-gutter-sm">
+                            <q-btn color="deep-purple" class="btn-background" no-caps @click="identifyDevice">
+                                {{ t("systemPage.identifyButton") }}
+                            </q-btn>
+                            <span class="text-caption text-grey-6">{{ t("systemPage.identifyHelp") }}</span>
+                        </div>
                     </q-card>
                 </div>
                 <div class="col-12 col-md-6">
@@ -104,6 +110,7 @@ import { useQuasar } from 'quasar'
 import { useI18n } from 'vue-i18n';
 import { useRoute } from 'vue-router';
 import BtnLogsComponent from '@/components/BtnLogsComponent.vue'
+import axios from 'axios'
 
 export default defineComponent({
     name: 'SystemPage',
@@ -135,12 +142,36 @@ export default defineComponent({
             return `${megabytes.toFixed(2)} M`
         })
 
+        const identifyDevice = async () => {
+            try {
+                await axios.post('/api/system/identify', {})
+                quasar.notify({
+                    type: 'positive',
+                    message: t('systemPage.identifySuccess')
+                })
+            } catch (error) {
+                const status = error?.response?.status
+                if (status === 0 || status === 200 || error?.message === 'Network Error') {
+                    quasar.notify({
+                        type: 'positive',
+                        message: t('systemPage.identifySuccess')
+                    })
+                    return
+                }
+                quasar.notify({
+                    type: 'negative',
+                    message: t('systemPage.identifyError')
+                })
+            }
+        }
+
         return {
             quasar,
             axeStore,
             t,
             version,
-            freeHeapDisplay
+            freeHeapDisplay,
+            identifyDevice
         }
     }
 })

@@ -170,6 +170,10 @@
     "axewellVersion": "Axewell-ui",
     "espIdfVersion": "ESP-IDF version",
     "freeHeapMemory": "Свободная память кучи",
-    "logs": "Системные журналы"
+    "logs": "Системные журналы",
+    "identifyButton": "Идентифицировать",
+    "identifyHelp": "Заставляет устройство сказать «Hi!» на ЖК-дисплее.",
+    "identifySuccess": "Устройство показывает идентификационное сообщение!",
+    "identifyError": "Не удалось вызвать идентификацию."
   }
 }

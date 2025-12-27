@@ -170,6 +170,10 @@
     "axewellVersion": "Axewell-ui",
     "espIdfVersion": "Version ESP-IDF",
     "freeHeapMemory": "Mémoire libre",
-    "logs": "Logs du système"
+    "logs": "Logs du système",
+    "identifyButton": "Identifier",
+    "identifyHelp": "Fait dire “Bonjour !” à l’écran LCD de l’appareil physique.",
+    "identifySuccess": "L’appareil affiche le message d’identification !",
+    "identifyError": "Impossible d’activer l’identification."
   }
 }
