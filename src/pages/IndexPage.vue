@@ -116,8 +116,7 @@
                 </div>
                 <div class="col">
                   <div class="card-text q-ml-md">
-                    <q-icon name="speed" size="sm" class="q-mr-sm" :style="`color: ${responseTimeColor}`" />
-                    <span class="card-text" :style="`color: ${responseTimeColor}; font-size: 18px; font-weight: bold;`">
+                    <span class="card-text" :style="`color: ${responseTimeColor}; font-size: 18px;`">
                       {{ responseTimeRounded }}
                     </span>
                     <span class="card-text q-ml-xs" style="font-size: 12px;">ms </span>
