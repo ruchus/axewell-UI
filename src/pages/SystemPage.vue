@@ -13,8 +13,9 @@
                             <q-item>
                                 <q-item-section>
                                     <q-item-label class="text-grey-6">{{ t("systemPage.asicModel") }}</q-item-label>
-                                    <q-item-label class="card-text">{{ axeStore?.infoData?.ASICModel || '-'
-                                    }}</q-item-label>
+                                    <q-item-label class="card-text">
+                                        {{ validChipCount > 0 ? `${validChipCount} x ` : '' }}{{ axeStore?.infoData?.ASICModel || '-' }}
+                                    </q-item-label>
                                 </q-item-section>
                             </q-item>
                             <q-item>
@@ -142,6 +143,18 @@ export default defineComponent({
             return `${megabytes.toFixed(2)} M`
         })
 
+        const validChipCount = computed(() => {
+            let count = 0;
+            const fields = ['temp', 'temp2', 'temp3', 'temp4', 'temp5', 'temp6'];
+            fields.forEach(field => {
+                const val = axeStore?.infoData?.[field];
+                if (val !== undefined && val !== null && val !== '' && val !== -1) {
+                    count++;
+                }
+            });
+            return count;
+        });
+
         const identifyDevice = async () => {
             try {
                 await axios.post('/api/system/identify', {})
@@ -171,6 +184,7 @@ export default defineComponent({
             t,
             version,
             freeHeapDisplay,
+            validChipCount,
             identifyDevice
         }
     }

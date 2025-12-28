@@ -28,20 +28,6 @@
                             </div>
                         </div>
                     </div>
-                    <!--
-                    <div class="row justify-evenly q-mt-md">
-                        <div class="col-6">
-                            <div class="small-container data-label rounded-borders text-left">
-                                {{ t("dashboardPage.power.inputCurrent") }}
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="small-container data-fields rounded-borders text-right">
-                                {{ powerData?.current }} V
-                            </div>
-                        </div>
-                    </div>
-                    -->
                 </div>
                 <div class="col-lg-4 col-md-4">
                     <div class="row justify-evenly q-mt-md">
@@ -56,20 +42,6 @@
                             </div>
                         </div>
                     </div>
-                    <!--
-                    <div class="row justify-evenly q-mt-md">
-                        <div class="col-6">
-                            <div class="small-container data-label rounded-borders text-left">
-                                {{ t("dashboardPage.power.voltageRequested") }}
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="small-container data-fields rounded-borders text-right">
-                                {{ powerData?.coreVoltage }} V
-                            </div>
-                        </div>
-                    </div>
-                    -->
                     <div class="row justify-evenly q-mt-md">
                         <div class="col-6">
                             <div class="small-container data-label rounded-borders text-left">
@@ -104,20 +76,14 @@
                         </div>
                         <div class="col-4">
                             <div class="small-container data-fields rounded-borders text-right">
-                                <template v-if="hasValidTemp(powerData?.temp2)">
-                                    <div class="column text-right">
-                                        <div class="q-mb-xs">
-                                            <span class="text-caption text-grey-6">ASIC 1</span>
-                                            <span class="q-ml-xs">{{ powerData?.temp }} ºC</span>
-                                        </div>
-                                        <div>
-                                            <span class="text-caption text-grey-6">ASIC 2</span>
-                                            <span class="q-ml-xs">{{ powerData?.temp2 }} ºC</span>
-                                        </div>
+                                <div v-if="chipTemperatures.length > 1" class="column text-right">
+                                    <div v-for="(temp, index) in chipTemperatures" :key="index" :class="{ 'q-mb-xs': index < chipTemperatures.length - 1 }">
+                                        <span class="text-caption text-grey-6">{{ temp.label }}</span>
+                                        <span class="q-ml-xs">{{ temp.value }} ºC</span>
                                     </div>
-                                </template>
+                                </div>
                                 <template v-else>
-                                    <span v-if="hasValidTemp(powerData?.temp)">{{ powerData?.temp }} ºC</span>
+                                    <span v-if="chipTemperatures.length === 1">{{ chipTemperatures[0].value }} ºC</span>
                                     <span v-else>-</span>
                                 </template>
                             </div>
@@ -156,20 +122,6 @@
                         </div>
                     </div>
                 </div>
-                <!--
-                <div class="row justify-evenly q-mt-md">
-                    <div class="col-6">
-                        <div class="small-container data-label rounded-borders text-left">
-                            {{ t("dashboardPage.power.inputCurrent") }}
-                        </div>
-                    </div>
-                    <div class="col-4">
-                        <div class="small-container data-fields rounded-borders text-right">
-                            {{ powerData?.current }} V
-                        </div>
-                    </div>
-                </div>
-                -->
                 <div class="row justify-evenly q-mt-md">
                     <div class="col-6">
                         <div class="small-container data-label rounded-borders text-left">
@@ -185,20 +137,6 @@
 
             </div>
             <div class="col-sm-6 col-xs-6">
-                <!--
-                <div class="row justify-evenly q-mt-md">
-                    <div class="col-6">
-                        <div class="small-container data-label rounded-borders text-left">
-                            {{ t("dashboardPage.power.voltageRequested") }}
-                        </div>
-                    </div>
-                    <div class="col-4">
-                        <div class="small-container data-fields rounded-borders text-right">
-                            {{ powerData?.coreVoltage }} V
-                        </div>
-                    </div>
-                </div>
-                -->
                 <div class="row justify-evenly q-mt-md">
                     <div class="col-6">
                         <div class="small-container data-label rounded-borders text-left">
@@ -231,20 +169,14 @@
                     </div>
                     <div class="col-4">
                         <div class="small-container data-fields rounded-borders text-right">
-                            <template v-if="hasValidTemp(powerData?.temp2)">
-                                <div class="column text-right">
-                                    <div class="q-mb-xs">
-                                        <span class="text-caption text-grey-6">ASIC 1</span>
-                                        <span class="q-ml-xs">{{ powerData?.temp }} ºC</span>
-                                    </div>
-                                    <div>
-                                        <span class="text-caption text-grey-6">ASIC 2</span>
-                                        <span class="q-ml-xs">{{ powerData?.temp2 }} ºC</span>
-                                    </div>
+                            <div v-if="chipTemperatures.length > 1" class="column text-right">
+                                <div v-for="(temp, index) in chipTemperatures" :key="index" :class="{ 'q-mb-xs': index < chipTemperatures.length - 1 }">
+                                    <span class="text-caption text-grey-6">{{ temp.label }}</span>
+                                    <span class="q-ml-xs">{{ temp.value }} ºC</span>
                                 </div>
-                            </template>
+                            </div>
                             <template v-else>
-                                <span v-if="hasValidTemp(powerData?.temp)">{{ powerData?.temp }} ºC</span>
+                                <span v-if="chipTemperatures.length === 1">{{ chipTemperatures[0].value }} ºC</span>
                                 <span v-else>-</span>
                             </template>
                         </div>
@@ -275,6 +207,21 @@ export default defineComponent({
         const inputVoltage = computed(() => (powerData?.value?.voltage / 1000).toFixed(2))
         const inputCurrent = computed(() => (powerData?.value?.current / 1000).toFixed(2))
         const hasValidTemp = (value) => value !== undefined && value !== null && value !== '' && value !== -1
+        const chipTemperatures = computed(() => {
+            const temps = [];
+            const fields = ['temp', 'temp2', 'temp3', 'temp4', 'temp5', 'temp6'];
+            fields.forEach((field, index) => {
+                const val = powerData?.value?.[field];
+                if (hasValidTemp(val)) {
+                    temps.push({
+                        label: `ASIC ${index + 1}`,
+                        value: val
+                    });
+                }
+            });
+            return temps;
+        });
+
         const { t } = useI18n();
         return {
             quasar,
@@ -283,6 +230,7 @@ export default defineComponent({
             inputVoltage,
             inputCurrent,
             hasValidTemp,
+            chipTemperatures,
             t
         }
     }
