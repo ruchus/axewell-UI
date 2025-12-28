@@ -350,6 +350,7 @@ export default defineComponent({
       { search: 'solohash.co.uk', build: (user) => `https://solohash.co.uk/user/${user}` },
       { search: 'solo.stratum.braiins.com', build: (user) => `https://solo.braiins.com/stats/${user}` },
       { search: 'parasite.wtf', build: (user) => `https://parasite.space/user/${user}` },
+      { search: 'atlaspool.io', build: (user) => `https://atlaspool.io/dashboard.html?wallet=${user}` },
       {
         regex: /^(?:https?:\/\/)?((?:eu|au)?solo[46]?\.)?ckpool\.org/i,
         build: (user, match) => {
