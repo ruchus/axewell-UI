@@ -114,7 +114,7 @@
                           </div>
                           <div class="col-3">
                             <div class="small-container data-fields rounded-borders text-right">
-                              {{ device.temp }} º
+                              {{ Math.round(device.temp) }} º
                             </div>
                           </div>
                           <div class="col-4">
@@ -663,11 +663,6 @@ export default defineComponent({
       if (!deviceExists) return;
 
       const newSwarm = SWARM_DATA.value.filter((deviceFromArr) => deviceFromArr.IP != device);
-      // const swarmUpdatePromises = newSwarm.map(({ ip }) => {
-      //   return updateSwarm(ip);
-      // });
-      // const removedAxeOsPromise = updateSwarm(device);
-      // await Promise.all([removedAxeOsPromise, ...swarmUpdatePromises]);
 
       localStorage.setItem('SWARM_DATA', JSON.stringify(newSwarm));
 
