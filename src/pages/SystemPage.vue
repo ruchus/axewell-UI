@@ -74,6 +74,27 @@
                                     }}</q-item-label>
                                 </q-item-section>
                             </q-item>
+                            <q-item>
+                                <q-item-section>
+                                    <q-item-label class="text-grey-6">{{ t("systemPage.hostname") }}</q-item-label>
+                                    <q-item-label class="card-text">{{ axeStore?.infoData?.hostname || '-'
+                                    }}</q-item-label>
+                                </q-item-section>
+                            </q-item>
+                            <q-item>
+                                <q-item-section>
+                                    <q-item-label class="text-grey-6">{{ t("systemPage.ipv4") }}</q-item-label>
+                                    <q-item-label class="card-text">{{ axeStore?.infoData?.ipv4 || '-'
+                                    }}</q-item-label>
+                                </q-item-section>
+                            </q-item>
+                            <q-item>
+                                <q-item-section>
+                                    <q-item-label class="text-grey-6">{{ t("systemPage.ipv6") }}</q-item-label>
+                                    <q-item-label class="card-text" style="word-break: break-all;">{{ axeStore?.infoData?.ipv6 || '-'
+                                    }}</q-item-label>
+                                </q-item-section>
+                            </q-item>
                         </q-list>
                     </q-card>
                 </div>
