@@ -157,7 +157,7 @@
                     </div>
                     <div class="col-4">
                         <div class="small-container data-fields rounded-borders text-right">
-                            ({{ powerData?.fanspeed }}%) {{ powerData?.fanrpm }} RPM
+                            ({{ Math.round(powerData?.fanspeed) }}%) {{ Math.round(powerData?.fanrpm) }} RPM
                         </div>
                     </div>
                 </div>

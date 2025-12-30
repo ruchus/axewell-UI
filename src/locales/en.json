@@ -103,7 +103,8 @@
     "price": "Price",
     "daily": "Daily",
     "monthly": "Monthly",
-    "yearly": "Yearly"
+    "yearly": "Yearly",
+    "unknownToken": "Token unknown"
   },
   "settingsPage": {
     "title": "Settings",
