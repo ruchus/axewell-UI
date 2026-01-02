@@ -131,7 +131,7 @@
     "updateErr": "Oups... quelque chose s'est mal passé.",
     "wwwFileError": "Le fichier doit s'appeler www.bin",
     "espFileError": "Le fichier doit s'appeler esp-miner.bin",
-    "uploadingFile": "Téléchargement du fichier",
+    "uploadingFile": "Téléchargement du fichier...",
     "uploadSuccessful": "Téléchargement réussi",
     "miningPower": "Puissance minière",
     "miningPowerDesc": "Plus de puissance, plus de Gh/s, mais aussi plus de consommation et une température plus élevée.",

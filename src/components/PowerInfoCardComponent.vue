@@ -206,7 +206,7 @@ export default defineComponent({
         const ASICvoltage = computed(() => (powerData?.value?.coreVoltageActual / 1000).toFixed(2))
         const inputVoltage = computed(() => (powerData?.value?.voltage / 1000).toFixed(2))
         const inputCurrent = computed(() => (powerData?.value?.current / 1000).toFixed(2))
-        const hasValidTemp = (value) => value !== undefined && value !== null && value !== '' && value !== -1
+        const hasValidTemp = (value) => value !== undefined && value !== null && value !== '' && value !== -1 && value !== 0
         const chipTemperatures = computed(() => {
             const temps = [];
             const fields = ['temp', 'temp2', 'temp3', 'temp4', 'temp5', 'temp6'];

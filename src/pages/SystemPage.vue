@@ -175,7 +175,7 @@ export default defineComponent({
             const fields = ['temp', 'temp2', 'temp3', 'temp4', 'temp5', 'temp6'];
             fields.forEach(field => {
                 const val = axeStore?.infoData?.[field];
-                if (val !== undefined && val !== null && val !== '' && val !== -1) {
+                if (val !== undefined && val !== null && val !== '' && val !== -1 && val !== 0) {
                     count++;
                 }
             });
