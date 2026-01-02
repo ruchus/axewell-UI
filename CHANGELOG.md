@@ -1,3 +1,36 @@
+# [1.6.0](https://github.com/ruchus/axewell-UI/compare/v1.5.0...v1.6.0) (2026-01-02)
+
+
+### Bug Fixes
+
+* angular files added to project to avoid esp-miner compile error ([c7fec8e](https://github.com/ruchus/axewell-UI/commit/c7fec8ecff6e23f2294f97bdb3727d65c3ecd2fe))
+* difficult var number instead of formatted string ([d185a45](https://github.com/ruchus/axewell-UI/commit/d185a45acf004fcd07699ca6322bb826433ad715)), closes [#40](https://github.com/ruchus/axewell-UI/issues/40)
+* errorPercentage fails in axe store and throw error on console in some cases ([28037df](https://github.com/ruchus/axewell-UI/commit/28037dff404a5366ce82d0ae721b4350e602ebed))
+* minor fixes ([aba2bf1](https://github.com/ruchus/axewell-UI/commit/aba2bf110ebdbf8a3b5638fa7d0af0e0a80a704b))
+* rounded temperature values ([d148f3b](https://github.com/ruchus/axewell-UI/commit/d148f3ba32085cffcb9f9c7e80fccedfabc98dbe))
+* small fixes on power info card component ([1910817](https://github.com/ruchus/axewell-UI/commit/1910817c43de381b1daac42f97a402b6a0c2cb27))
+* translation label error on logs component ([52ea2c4](https://github.com/ruchus/axewell-UI/commit/52ea2c431e99b1c8ebc40dc924212ab25a5a0d03))
+
+
+### Features
+
+* add atlaspool.io to poolLinkResolvers on index page ([7a5c76d](https://github.com/ruchus/axewell-UI/commit/7a5c76da8a8eed124c4eb3db73b071fabbf84dd1))
+* add button on system page to identify phisical bitaxe showing Hi! message ([0e1d7ac](https://github.com/ruchus/axewell-UI/commit/0e1d7ac8b945ac700362603f56158b0ba9d39bb5))
+* add delete option on swarm page to disconnected devices ([8a7ff95](https://github.com/ruchus/axewell-UI/commit/8a7ff9590382895eb3294daef0a69bdd9cb723c2))
+* add error ASIC percentage rate to dashboard ([9303de4](https://github.com/ruchus/axewell-UI/commit/9303de4207ac29d51f084edff00808eeacf988dd))
+* add external quick links to stats page from public pools ([c79f222](https://github.com/ruchus/axewell-UI/commit/c79f222cddcb41e1a69fae6ad4cbd912fdc1347f))
+* add hash rate 1h average to dashboard ([8336577](https://github.com/ruchus/axewell-UI/commit/8336577960e46c77050b549de59f953c8ce4f486))
+* add hostname and consumption details on swarm page ([39f1549](https://github.com/ruchus/axewell-UI/commit/39f15498453244318a5d4bf2d1852f8a86c0eb29))
+* add ipv4, ipv6 and hostname as info on system page ([2365863](https://github.com/ruchus/axewell-UI/commit/2365863a74d65bf7599ffa7162aeb51d03fb712b))
+* add labels for pool cloud icon active/inactive on dashboard ([aadcce2](https://github.com/ruchus/axewell-UI/commit/aadcce274417ca41bf7536f901c8d223036b4a4e))
+* add last reset reason device on system page ([ad8edbe](https://github.com/ruchus/axewell-UI/commit/ad8edbeba62f8946f169d00f14c2fe585d6a3d39))
+* add support for 6 asics on power info card component on dashboard and system page ([e59c4d5](https://github.com/ruchus/axewell-UI/commit/e59c4d5b9e93f907bd178444c5a91b6134b32ebc))
+* add temperature for second chip asic on dashboard ([0f1262a](https://github.com/ruchus/axewell-UI/commit/0f1262aacf5cb50d6d620ec281fa8b969ba4962b))
+* add token icons on main and fallback stratum user ([b7eaa21](https://github.com/ruchus/axewell-UI/commit/b7eaa2193ae3db4ab5795f66d8ea1df5bd3945c1))
+* add wifi icon on header layout ([7a1fbc1](https://github.com/ruchus/axewell-UI/commit/7a1fbc1cf3d0e24c92a22ee6e443c225908cb89e))
+* normalize stratum urls and port for pool and fallback pool input urls ([aede819](https://github.com/ruchus/axewell-UI/commit/aede819e5f7f7da296be6fb1dfab7a6cd525b017)), closes [#39](https://github.com/ruchus/axewell-UI/issues/39)
+* restyle swarp page and add some feats ([1bdcc15](https://github.com/ruchus/axewell-UI/commit/1bdcc1564f120b5f78e2ffedd7181b9f39496d84))
+
 # [1.5.0](https://github.com/ruchus/axewell-UI/compare/v1.4.1...v1.5.0) (2025-11-14)
 
 
