@@ -11,8 +11,7 @@
               <q-icon name="rocket_launch" size="md"
                 :style="axeStore.darkmode ? 'color: #444444' : 'color:#343d47'" />{{
                   axeStore?.getHashRateRounded
-                }}
-              <span class="secondary-fields" style="font-size: 24px;">Gh/s</span>
+                }} Gh/s
             </div>
             <div class="text-center text-body2 text-grey-6">
               <span class="q-ml-md">{{ t("dashboardPage.hashRate.expected") }}: {{
@@ -26,11 +25,11 @@
             <div class="row text-center q-mt-md">
               <div class="col-6">
                 <q-badge color="orange-2" rounded class="q-mr-sm parpadea" /> Max
-                <span style="color: #444444"> {{ axeStore?.maxHashRate }} Gh/s</span>
+                <span style="color: #444444"> {{ Math.round(axeStore?.maxHashRate) }} Gh/s</span>
               </div>
               <div class="col-6">
                 <q-badge color="deep-purple-11" rounded class="q-mr-sm parpadea" />Min
-                <span style="color: #444444">{{ axeStore?.minHashRate }} Gh/s</span><br>
+                <span style="color: #444444">{{ Math.round(axeStore?.minHashRate) }} Gh/s</span><br>
                 <q-btn class="q-ml-xl" label="Reset" style="text-decoration: underline;text-align: right;" flat no-caps
                   @click="axeStore.resetDataLocalStorage()" v-close-popup />
 
@@ -121,11 +120,10 @@
       <span>{{ t("dashboardPage.hashRate.subtitle") }}</span>
       <div style="width:100%;">
         <div class="q-mt-md">
-          <div class="card-title text-center">
+          <div class="card-title text-center ">
             <q-icon name="rocket_launch" size="md" style="color: #444444" />{{
               axeStore?.getHashRateRounded
-            }}
-            <span style="color: #d4d4d4;font-size: 32px;">Gh/s</span>
+            }} Gh/s
             <div class="text-center text-body2 text-grey-6">
               <span class="q-ml-md">{{ t("dashboardPage.hashRate.expected") }}: {{
                 Math.round(axeStore?.expectedHashRate) }} Gh/s</span>
@@ -139,11 +137,11 @@
           <div class="row text-center q-mt-md">
             <div class="col-6">
               <q-badge color="orange-2" rounded class="q-mr-sm parpadea" /> Max
-              <span style="color: #444444"> {{ axeStore?.maxHashRate }} Gh/s</span>
+              <span style="color: #444444"> {{ Math.round(axeStore?.maxHashRate) }} Gh/s</span>
             </div>
             <div class="col-6">
               <q-badge color="deep-purple-11" rounded class="q-mr-sm parpadea" />Min
-              <span style="color: #444444"> {{ axeStore?.minHashRate }} Gh/s</span>
+              <span style="color: #444444"> {{ Math.round(axeStore?.minHashRate) }} Gh/s</span>
               <div style="margin-left: 90px;">
                 <q-btn align="right" style="color: #444444; text-decoration: underline" flat no-caps
                   @click="showDialogReset = !showDialogReset">Reset</q-btn>

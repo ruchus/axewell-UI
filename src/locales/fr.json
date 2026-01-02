@@ -170,6 +170,7 @@
     "softwareInfo": "Informations sur le logiciel",
     "memoryInfo": "Mémoire",
     "asicModel": "Modèle ASIC",
+    "uptime": "Temps de fonctionnement",
     "macAddress": "Adresse MAC",
     "boardVersion": "Version du board",
     "resetReason": "Raison du dernier redémarrage",

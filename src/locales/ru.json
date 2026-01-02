@@ -170,6 +170,7 @@
     "softwareInfo": "Информация о программном обеспечении",
     "memoryInfo": "Память",
     "asicModel": "Модель ASIC",
+    "uptime": "Время работы",
     "macAddress": "MAC Address",
     "boardVersion": "Board version",
     "resetReason": "Причина последней перезагрузки",

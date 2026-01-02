@@ -64,7 +64,7 @@
                         </div>
                         <div class="col-4">
                             <div class="small-container data-fields rounded-borders text-right">
-                                ({{ powerData?.fanspeed }}%) {{ powerData?.fanrpm }} RPM
+                                ({{ Math.round(powerData?.fanspeed) }}%) {{ Math.round(powerData?.fanrpm) }} RPM
                             </div>
                         </div>
                     </div>
@@ -83,7 +83,7 @@
                                     </div>
                                 </div>
                                 <template v-else>
-                                    <span v-if="chipTemperatures.length === 1">{{ chipTemperatures[0].value }} ºC</span>
+                                    <span v-if="chipTemperatures.length === 1">{{ Math.round(chipTemperatures[0].value) }} ºC</span>
                                     <span v-else>-</span>
                                 </template>
                             </div>
@@ -172,11 +172,11 @@
                             <div v-if="chipTemperatures.length > 1" class="column text-right">
                                 <div v-for="(temp, index) in chipTemperatures" :key="index" :class="{ 'q-mb-xs': index < chipTemperatures.length - 1 }">
                                     <span class="text-caption text-grey-6">{{ temp.label }}</span>
-                                    <span class="q-ml-xs">{{ temp.value }} ºC</span>
+                                    <span class="q-ml-xs">{{ Math.round(temp.value) }} ºC</span>
                                 </div>
                             </div>
                             <template v-else>
-                                <span v-if="chipTemperatures.length === 1">{{ chipTemperatures[0].value }} ºC</span>
+                                <span v-if="chipTemperatures.length === 1">{{ Math.round(chipTemperatures[0].value) }} ºC</span>
                                 <span v-else>-</span>
                             </template>
                         </div>

@@ -39,6 +39,12 @@
                                     }}</q-item-label>
                                 </q-item-section>
                             </q-item>
+                            <q-item>
+                                <q-item-section>
+                                    <q-item-label class="text-grey-6">{{ t("systemPage.uptime") }}</q-item-label>
+                                    <q-item-label class="card-text">{{ axeStore.secondsToHms }}</q-item-label>
+                                </q-item-section>
+                            </q-item>
                         </q-list>
                         <div class="q-mt-md flex items-center q-gutter-sm">
                             <q-btn color="deep-purple" class="btn-background" no-caps @click="identifyDevice">

@@ -170,6 +170,7 @@
     "softwareInfo": "Información del software",
     "memoryInfo": "Memoria",
     "asicModel": "Modelo ASIC",
+    "uptime": "Tiempo activo",
     "macAddress": "Dirección MAC",
     "boardVersion": "Versión placa",
     "resetReason": "Motivo del último reinicio",

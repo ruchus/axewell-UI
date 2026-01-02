@@ -64,11 +64,11 @@ export const useAxeStore = defineStore('axe', {
     },
     getHashRateRounded() {
       let hashRate = this.infoData?.hashRate
-      return hashRate?.toFixed(2)
+      return hashRate?.toFixed(0)
     },
     getHashRate1hRounded() {
       let hashRate_1h = this.infoData?.hashRate_1h
-      return hashRate_1h?.toFixed(2)
+      return hashRate_1h?.toFixed(0)
     },
     secondsToHms() {
       var d = Number(this.infoData?.uptimeSeconds)

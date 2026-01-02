@@ -116,7 +116,13 @@
                           </div>
                           <div class="col-4">
                             <div class="small-container data-label rounded-borders text-left" style="word-break: break-all;">
-                              {{ device?.hostname || '-' }}
+                              <template v-if="device?.IP === currentDeviceIP">
+                                {{ device?.hostname || '-' }}
+                              </template>
+                              <a v-else :href="'http://' + device?.IP" target="_blank" class="device-link"
+                                :class="axeStore.darkmode ? 'text-white' : 'text-black'">
+                                {{ device?.hostname || '-' }}
+                              </a>
                             </div>
                           </div>
                           <div class="col-3">
@@ -389,7 +395,13 @@
                             </a>
                           </div>
                           <div class="col-2 text-caption" style="word-break: break-all;">
-                            {{ device?.hostname || '-' }}
+                            <template v-if="device?.IP === currentDeviceIP">
+                              {{ device?.hostname || '-' }}
+                            </template>
+                            <a v-else :href="'http://' + device?.IP" target="_blank" class="device-link"
+                              :class="axeStore.darkmode ? 'text-white' : 'text-black'">
+                              {{ device?.hostname || '-' }}
+                            </a>
                           </div>
                           <div class="col-2 text-center text-caption" style="font-size: 10px;">
                             {{ uptimeFormatted(device?.uptimeSeconds) }}
@@ -652,9 +664,7 @@ export default defineComponent({
       { label: '₹ (INR)', symbol: '₹' },
       { label: 'C$ (CAD)', symbol: 'C$' },
       { label: 'A$ (AUD)', symbol: 'A$' },
-      { label: '(CHF)', symbol: 'CHF' },
-      { label: '₿ (BTC)', symbol: '₿' },
-      { label: 'Ξ (ETH)', symbol: 'Ξ' }
+      { label: '(CHF)', symbol: 'CHF' }
     ]);
 
     const getInitialCurrency = () => {
