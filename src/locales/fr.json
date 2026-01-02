@@ -7,10 +7,17 @@
     "swarm": "Essaim",
     "settings": "Paramètres",
     "network": "Réseau",
+    "system": "Système",
     "locale": "Français",
     "restartText": "L'appareil va redémarrer. Ok?",
     "connected": "Connecté !",
-    "restartedDevice": "Appareil redémarré"
+    "restartedDevice": "Appareil redémarré",
+    "signalQuality": "Qualité du signal",
+    "excellent": "Excellente",
+    "good": "Bonne",
+    "fair": "Moyenne",
+    "weak": "Faible",
+    "poor": "Mauvaise"
   },
   "logs": {
     "viewLogs": "Voir les journaux",
@@ -20,18 +27,27 @@
   "pool": {
     "notConnected": "Non connecté",
     "settings": "Aller au réseau",
-    "responseTime": "Temps de réponse"
+    "responseTime": "Temps de réponse",
+    "responseTimeTooltip": "Latence entre l'ASIC et le pool (ms). Une latence élevée réduit les performances en provoquant des erreurs réseau.",
+    "activeTooltip": "Pool actif",
+    "inactiveTooltip": "Pool inactif"
   },
   "dashboardPage": {
     "title": "Tableau de bord",
     "subtitle": "Bonjour, voyons quelques données de performance.",
     "hashRate": {
-      "subtitle": "Puissance de calcul du réseau",
+      "subtitle": "Puissance de calcul du mineur.",
       "description": "Le taux de hachage est une métrique qui quantifie la puissance de calcul et l'efficacité d'un réseau. Il représente le nombre de fonctions de hachage que le matériel d'un processeur de transactions peut calculer par seconde. Un taux de hachage plus élevé signifie qu'un processeur peut effectuer plus de calculs dans un temps donné.",
       "efficiency": "Efficacité",
-      "networkDifficulty": "Meilleure difficulté",
+      "networkDifficulty": "Difficulté",
       "expected": "Attendu",
-      "expHasRateHelp": "Taux de hachage théorique que l'appareil devrait réaliser dans les conditions de configuration actuelles (fréquence et tension)."
+      "expHasRateHelp": "Taux de hachage théorique que l'appareil devrait réaliser dans les conditions de configuration actuelles (fréquence et tension).",
+      "bestDiffAllTimeTooltip": "Meilleur résultat historique",
+      "bestDiffSessionTooltip": "Depuis le démarrage du système",
+      "hashRate_1h": "Ratio heure",
+      "hashRate_1h_desc": "moyenne 1h",
+      "errorPercentage": "Erreurs",
+      "errorPercentageTooltip": "Pourcentage d'erreurs dans les opérations ASIC. Un faible pourcentage est normal, mais un pourcentage élevé peut indiquer des problèmes matériels ou une surchauffe."
     },
     "shares": {
       "title": "Parts",
@@ -61,7 +77,7 @@
     "ip": "IP",
     "uptime": "Active",
     "temp": "Temp.",
-    "power": "Puissance",
+    "power": "W.",
     "miningPower": "Puissance de minage",
     "miningPowerSubtitle": "Taux de hachage total de votre essaim.",
     "efficiency": "Efficacité",
@@ -86,13 +102,14 @@
     "price": "Prix",
     "daily": "Journalier",
     "monthly": "Mensuel",
-    "yearly": "Annuel"
+    "yearly": "Annuel",
+    "unknownToken": "Token inconnu"
   },
   "settingsPage": {
     "title": "Paramètres",
     "subtitle": "Prenez le contrôle de votre ASIC",
     "network": "Réseau",
-    "hostname": "Nom de l'hôte",
+    "hostname": "Host",
     "pool": "Pool",
     "poolText": "Pool principal",
     "fallbackPoolText": "Pool secondaire (utilisé uniquement si le principal échoue)",
@@ -114,7 +131,7 @@
     "updateErr": "Oups... quelque chose s'est mal passé.",
     "wwwFileError": "Le fichier doit s'appeler www.bin",
     "espFileError": "Le fichier doit s'appeler esp-miner.bin",
-    "uploadingFile": "Téléchargement du fichier",
+    "uploadingFile": "Téléchargement du fichier...",
     "uploadSuccessful": "Téléchargement réussi",
     "miningPower": "Puissance minière",
     "miningPowerDesc": "Plus de puissance, plus de Gh/s, mais aussi plus de consommation et une température plus élevée.",
@@ -145,5 +162,29 @@
     "password": "mot de passe WiFi",
     "update": "Mettre à jour",
     "restartText": "L'appareil va redémarrer. Ok?"
+  },
+  "systemPage": {
+    "title": "Système",
+    "subtitle": "Informations sur le dispositif et le logiciel.",
+    "deviceInfo": "Informations sur le dispositif",
+    "softwareInfo": "Informations sur le logiciel",
+    "memoryInfo": "Mémoire",
+    "asicModel": "Modèle ASIC",
+    "uptime": "Temps de fonctionnement",
+    "macAddress": "Adresse MAC",
+    "boardVersion": "Version du board",
+    "resetReason": "Raison du dernier redémarrage",
+    "firmwareVersion": "Version du firmware",
+    "axewellVersion": "Axewell-ui",
+    "espIdfVersion": "Version ESP-IDF",
+    "hostname": "Nom d'hôte",
+    "ipv4": "Adresse IPv4",
+    "ipv6": "Adresse IPv6",
+    "freeHeapMemory": "Mémoire libre",
+    "logs": "Logs du système",
+    "identifyButton": "Identifier",
+    "identifyHelp": "Fait dire “Bonjour !” à l’écran LCD de l’appareil physique.",
+    "identifySuccess": "L’appareil affiche le message d’identification !",
+    "identifyError": "Impossible d’activer l’identification."
   }
 }

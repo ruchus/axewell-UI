@@ -12,9 +12,11 @@
                         <div class="card-title">{{ t("settingsPage.pool") }}</div>
                         <span class="card-text">{{ t("settingsPage.poolText") }}</span>
                         <q-input class="q-my-md" filled color="deep-purple" stack-label v-model="form.stratumURL"
-                            :label="t('settingsPage.stratumURL')" :dark="axeStore.darkmode ? true : false" />
+                            :label="t('settingsPage.stratumURL')" :dark="axeStore.darkmode ? true : false"
+                            @blur="() => normalizeEndpoint('stratumURL', 'stratumPort')" />
                         <q-input class="q-mb-md" filled color="deep-purple" stack-label v-model="form.stratumPort"
-                            :label="t('settingsPage.stratumPort')" :dark="axeStore.darkmode ? true : false" />
+                            :label="t('settingsPage.stratumPort')" :dark="axeStore.darkmode ? true : false"
+                            @blur="() => normalizeEndpoint('stratumURL', 'stratumPort')" />
                         <q-input class="q-mb-md" filled color="deep-purple" stack-label v-model="form.stratumUser"
                             :label="t('settingsPage.stratumUser')" :dark="axeStore.darkmode ? true : false" />
                         <q-input class="q-mb-md" v-model="form.stratumPass" filled color="deep-purple" stack-label
@@ -33,10 +35,12 @@
                         <span class="card-text">{{ t("settingsPage.fallbackPoolText") }}</span>
                         <q-input class="q-my-md" filled color="deep-purple" stack-label
                             v-model="form.fallbackStratumURL" :label="t('settingsPage.fallbackStratumURL')"
-                            :dark="axeStore.darkmode ? true : false" />
+                            :dark="axeStore.darkmode ? true : false"
+                            @blur="() => normalizeEndpoint('fallbackStratumURL', 'fallbackStratumPort')" />
                         <q-input class="q-mb-md" filled color="deep-purple" stack-label
                             v-model="form.fallbackStratumPort" :label="t('settingsPage.fallbackStratumPort')"
-                            :dark="axeStore.darkmode ? true : false" />
+                            :dark="axeStore.darkmode ? true : false"
+                            @blur="() => normalizeEndpoint('fallbackStratumURL', 'fallbackStratumPort')" />
                         <q-input class="q-mb-md" filled color="deep-purple" stack-label
                             v-model="form.fallbackStratumUser" :label="t('settingsPage.fallbackStratumUser')"
                             :dark="axeStore.darkmode ? true : false" />
@@ -52,7 +56,7 @@
                     <div class="col-12 col-lg-4 col-md-4 col-sm-12 col-xs-12">
                         <div class="card-title">{{ t("poolPage.advanced") }}</div>
                         <span class="card-text">{{ t("poolPage.advancedDesc") }}</span>
-                        <q-input class="q-my-md" filled color="deep-purple" stack-label 
+                        <q-input class="q-my-md" filled color="deep-purple" stack-label
                             @keydown="(e) => !/^[0-9]$/.test(e.key) && e.key !== 'Backspace' && e.key !== 'Delete' && e.key !== 'ArrowLeft' && e.key !== 'ArrowRight' && e.key !== 'Tab' && e.preventDefault()"
                             v-model.number="form.stratumSuggestedDifficulty"
                             :label="t('poolPage.stratumSuggestedDifficulty')"
@@ -131,6 +135,32 @@ export default defineComponent({
             extraNounce: axeStore.infoData?.stratumExtranonceSubscribe ?? 0,
         })
 
+        const normalizeEndpoint = (urlField, portField) => {
+            const rawValue = form.value[urlField];
+            if (!rawValue) return;
+
+            let sanitized = String(rawValue).trim();
+            sanitized = sanitized.replace(/^(?:stratum\+tcp|stratum\+ssl|tcp|ssl|https?|wss?):\/\//i, '');
+            sanitized = sanitized.replace(/^\/\//, '');
+
+            const slashIndex = sanitized.indexOf('/');
+            if (slashIndex >= 0) {
+                sanitized = sanitized.slice(0, slashIndex);
+            }
+
+            let extractedPort = null;
+            const portMatch = sanitized.match(/:(\d+)(?:$)/);
+            if (portMatch) {
+                extractedPort = portMatch[1];
+                sanitized = sanitized.slice(0, portMatch.index);
+            }
+
+            form.value[urlField] = sanitized;
+            if (extractedPort) {
+                form.value[portField] = parseInt(extractedPort);
+            }
+        }
+
         const submitForm = async (e) => {
             //console.log(temperatureValue.value);
             e.preventDefault();
@@ -167,6 +197,7 @@ export default defineComponent({
             form,
             confirm,
             submitForm,
+            normalizeEndpoint,
             quasar,
             t,
             axeStore

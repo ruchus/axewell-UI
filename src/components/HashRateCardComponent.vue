@@ -11,11 +11,11 @@
               <q-icon name="rocket_launch" size="md"
                 :style="axeStore.darkmode ? 'color: #444444' : 'color:#343d47'" />{{
                   axeStore?.getHashRateRounded
-                }}
-              <span class="secondary-fields" style="font-size: 24px;">Gh/s</span>
+                }} Gh/s
             </div>
             <div class="text-center text-body2 text-grey-6">
-              <span class="q-ml-md">{{ t("dashboardPage.hashRate.expected") }}: {{ Math.round(axeStore?.expectedHashRate) }} Gh/s</span>
+              <span class="q-ml-md">{{ t("dashboardPage.hashRate.expected") }}: {{
+                Math.round(axeStore?.expectedHashRate) }} Gh/s</span>
               <q-icon name="info" size="xs" color="grey-7" class="q-mr-sm cursor-pointer" style="color: #629C44">
                 <q-tooltip anchor="bottom middle" self="center middle">
                   {{ t("dashboardPage.hashRate.expHasRateHelp") }}
@@ -25,37 +25,86 @@
             <div class="row text-center q-mt-md">
               <div class="col-6">
                 <q-badge color="orange-2" rounded class="q-mr-sm parpadea" /> Max
-                <span style="color: #444444"> {{ axeStore?.maxHashRate }} Gh/s</span>
+                <span style="color: #444444"> {{ Math.round(axeStore?.maxHashRate) }} Gh/s</span>
               </div>
               <div class="col-6">
                 <q-badge color="deep-purple-11" rounded class="q-mr-sm parpadea" />Min
-                <span style="color: #444444">{{ axeStore?.minHashRate }} Gh/s</span><br>
+                <span style="color: #444444">{{ Math.round(axeStore?.minHashRate) }} Gh/s</span><br>
                 <q-btn class="q-ml-xl" label="Reset" style="text-decoration: underline;text-align: right;" flat no-caps
                   @click="axeStore.resetDataLocalStorage()" v-close-popup />
 
               </div>
             </div>
+
             <div class="row justify-evenly q-mt-md">
-              <div class="col-5">
+              <div class="col-4">
+                <div class="small-container data-label rounded-borders text-left">{{
+                  t("dashboardPage.hashRate.hashRate_1h") }}
+                </div>
+              </div>
+              <div class="col-7">
+                <div class="small-container data-fields rounded-borders text-right">
+                  {{ axeStore?.getHashRate1hRounded }} Gh/s <small>({{ t("dashboardPage.hashRate.hashRate_1h_desc") }})
+                  </small>
+                </div>
+              </div>
+            </div>
+
+            <div class="row justify-evenly q-mt-sm">
+              <div class="col-4">
                 <div class="small-container data-label rounded-borders text-left">{{
                   t("dashboardPage.hashRate.efficiency") }}
                 </div>
               </div>
-              <div class="col-6">
+              <div class="col-7">
                 <div class="small-container data-fields rounded-borders text-right">
                   {{ efficiency }} J/Th <small>(≈ {{ efficiency }} W/Th)</small>
                 </div>
               </div>
             </div>
+
             <div class="row justify-evenly q-mt-sm">
-              <div class="col-5">
+              <div class="col-4">
+                <div class="small-container data-label rounded-borders text-left">{{
+                  t("dashboardPage.hashRate.errorPercentage") }}
+                </div>
+              </div>
+              <div class="col-7">
+                <div class="small-container data-fields rounded-borders text-right" style="padding-right: 0">
+                  {{ axeStore?.errorPercentage }} %
+                  <q-icon name="info" size="xs" color="grey-7" class="q-mr-sm cursor-pointer" style="color: #629C44">
+                    <q-tooltip anchor="bottom middle" self="center middle">
+                      {{ t("dashboardPage.hashRate.errorPercentageTooltip") }}
+                    </q-tooltip>
+                  </q-icon>
+                </div>
+              </div>
+            </div>
+
+            <div class="row justify-evenly q-mt-sm">
+              <div class="col-4">
                 <div class="small-container data-label rounded-borders text-left">{{
                   t("dashboardPage.hashRate.networkDifficulty")
                 }}</div>
               </div>
-              <div class="col-6">
-                <div class="small-container data-fields rounded-borders text-right">
-                  {{ hashRateData?.bestDiff }}
+              <div class="col-7">
+                <div class="small-container data-fields rounded-borders text-right" style="padding-right: 0">
+                  <span class="q-mr-xs">
+                    {{ bestDifficulty.value }}{{ bestDifficulty.unit }}
+                    <q-icon name="info" size="xs" color="grey-7" class="q-mr-sm cursor-pointer" style="color: #629C44">
+                      <q-tooltip anchor="bottom middle" self="center middle">
+                        {{ t("dashboardPage.hashRate.bestDiffAllTimeTooltip") }}
+                      </q-tooltip>
+                    </q-icon>
+                  </span>
+                  <span class="q-ml-xs">
+                    {{ bestDifficultySession.value }}{{ bestDifficultySession.unit }}
+                    <q-icon name="info" size="xs" color="grey-7" class="q-mr-sm cursor-pointer" style="color: #629C44">
+                      <q-tooltip anchor="bottom middle" self="center middle">
+                        {{ t("dashboardPage.hashRate.bestDiffSessionTooltip") }}
+                      </q-tooltip>
+                    </q-icon>
+                  </span>
                 </div>
               </div>
             </div>
@@ -71,13 +120,13 @@
       <span>{{ t("dashboardPage.hashRate.subtitle") }}</span>
       <div style="width:100%;">
         <div class="q-mt-md">
-          <div class="card-title text-center">
+          <div class="card-title text-center ">
             <q-icon name="rocket_launch" size="md" style="color: #444444" />{{
               axeStore?.getHashRateRounded
-            }}
-            <span style="color: #d4d4d4;font-size: 32px;">Gh/s</span>
+            }} Gh/s
             <div class="text-center text-body2 text-grey-6">
-              <span class="q-ml-md">{{ t("dashboardPage.hashRate.expected") }}: {{ Math.round(axeStore?.expectedHashRate) }} Gh/s</span>
+              <span class="q-ml-md">{{ t("dashboardPage.hashRate.expected") }}: {{
+                Math.round(axeStore?.expectedHashRate) }} Gh/s</span>
               <q-icon name="info" size="xs" color="grey-7" class="q-mr-sm cursor-pointer" style="color: #629C44">
                 <q-tooltip anchor="bottom middle" self="center middle">
                   {{ t("dashboardPage.hashRate.expHasRateHelp") }}
@@ -88,38 +137,87 @@
           <div class="row text-center q-mt-md">
             <div class="col-6">
               <q-badge color="orange-2" rounded class="q-mr-sm parpadea" /> Max
-              <span style="color: #444444"> {{ axeStore?.maxHashRate }} Gh/s</span>
+              <span style="color: #444444"> {{ Math.round(axeStore?.maxHashRate) }} Gh/s</span>
             </div>
             <div class="col-6">
               <q-badge color="deep-purple-11" rounded class="q-mr-sm parpadea" />Min
-              <span style="color: #444444"> {{ axeStore?.minHashRate }} Gh/s</span>
+              <span style="color: #444444"> {{ Math.round(axeStore?.minHashRate) }} Gh/s</span>
               <div style="margin-left: 90px;">
                 <q-btn align="right" style="color: #444444; text-decoration: underline" flat no-caps
                   @click="showDialogReset = !showDialogReset">Reset</q-btn>
               </div>
             </div>
           </div>
+
           <div class="row justify-evenly q-mt-md">
-            <div class="col-5">
+            <div class="col-4">
+              <div class="small-container data-label rounded-borders text-left">{{
+                t("dashboardPage.hashRate.hashRate_1h") }}
+              </div>
+            </div>
+            <div class="col-7">
+              <div class="small-container data-fields rounded-borders text-right">
+                {{ axeStore?.getHashRate1hRounded }} Gh/s <small>({{ t("dashboardPage.hashRate.hashRate_1h_desc") }})
+                </small>
+              </div>
+            </div>
+          </div>
+
+          <div class="row justify-evenly q-mt-sm">
+            <div class="col-4">
               <div class="small-container data-label rounded-borders text-left">{{
                 t("dashboardPage.hashRate.efficiency") }}
               </div>
             </div>
-            <div class="col-6">
+            <div class="col-7">
               <div class="small-container data-fields rounded-borders text-right">
                 {{ efficiency }} J/Th <small>(≈ {{ efficiency }} W/Th)</small>
               </div>
             </div>
           </div>
+
+          <div class="row justify-evenly q-mt-md">
+            <div class="col-4">
+              <div class="small-container data-label rounded-borders text-left">{{
+                t("dashboardPage.hashRate.errorPercentage") }}
+              </div>
+            </div>
+            <div class="col-7">
+              <div class="small-container data-fields rounded-borders text-right" style="padding-right: 0">
+                {{ axeStore?.errorPercentage }} %
+                <q-icon name="info" size="xs" color="grey-7" class="q-mr-sm cursor-pointer" style="color: #629C44">
+                  <q-tooltip anchor="bottom middle" self="center middle">
+                    {{ t("dashboardPage.hashRate.errorPercentageTooltip") }}
+                  </q-tooltip>
+                </q-icon>
+              </div>
+            </div>
+          </div>
+
           <div class="row justify-evenly q-mt-sm">
-            <div class="col-5">
+            <div class="col-4">
               <div class="small-container data-label rounded-borders text-left">{{
                 t("dashboardPage.hashRate.networkDifficulty")
               }}</div>
             </div>
-            <div class="col-6">
-              <div class="small-container data-fields rounded-borders text-right">
-                {{ hashRateData?.bestDiff }}
+            <div class="col-7">
+              <div class="small-container data-fields rounded-borders text-right" style="padding-right: 0;">
+                <span class="q-mr-xs">
+                  {{ bestDifficulty.value }}{{ bestDifficulty.unit }}
+                  <q-icon name="info" size="xs" color="grey-7" class="q-mr-sm cursor-pointer" style="color: #629C44">
+                    <q-tooltip anchor="bottom middle" self="center middle">
+                      {{ t("dashboardPage.hashRate.bestDiffAllTimeTooltip") }}
+                    </q-tooltip>
+                  </q-icon>
+                </span>
+                <span class="q-ml-xs">
+                  {{ bestDifficultySession.value }}{{ bestDifficultySession.unit }}
+                  <q-icon name="info" size="xs" color="grey-7" class="q-mr-sm cursor-pointer" style="color: #629C44">
+                    <q-tooltip anchor="bottom middle" self="center middle">
+                      {{ t("dashboardPage.hashRate.bestDiffSessionTooltip") }}
+                    </q-tooltip>
+                  </q-icon>
+                </span>
               </div>
             </div>
           </div>
@@ -171,12 +269,43 @@ export default defineComponent({
       if (!hashRateData?.value?.power || !hashRateData?.value?.hashRate) return 0;
       return Math.round(hashRateData?.value?.power / (hashRateData?.value?.hashRate / 1000));
     });
+    const normalizeDifficulty = (value) => {
+      if (value === undefined || value === null) {
+        return { value: '-', unit: '' };
+      }
+      let divisor = 1;
+      let unit = '';
+      if (value >= 1_000_000_000) {
+        divisor = 1_000_000_000;
+        unit = 'G';
+      } else if (value >= 1_000_000) {
+        divisor = 1_000_000;
+        unit = 'M';
+      } else if (value >= 1_000) {
+        divisor = 1_000;
+        unit = 'K';
+      }
+      return {
+        value: (value / divisor).toLocaleString(undefined, { minimumFractionDigits: 1, maximumFractionDigits: 1 }),
+        unit
+      };
+    };
+
+    const bestDifficulty = computed(() => {
+      return normalizeDifficulty(hashRateData?.value?.bestDiff);
+    });
+
+    const bestDifficultySession = computed(() => {
+      return normalizeDifficulty(hashRateData?.value?.bestSessionDiff);
+    });
 
     return {
       quasar,
       axeStore,
       formatNumber,
       efficiency,
+      bestDifficulty,
+      bestDifficultySession,
       i18n,
       t,
       showDialogReset,

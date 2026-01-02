@@ -208,20 +208,6 @@ export default defineComponent({
       const selectedIndex = optionsFrequencies.value[val];
       if (selectedIndex) {
         form.value.frequency = optionsFrequencies.value[val].value;
-
-        // Limitar el voltage entre la segunda (índice 1) y penúltima (length-2) posición del array voltageOptions
-        let selectedVoltage = optionsFrequencies.value[val].voltage;
-        if (voltageOptions.value?.length > 2) {
-          const minVoltage = voltageOptions.value[1]; // Segunda posición
-          const maxVoltage = voltageOptions.value[voltageOptions.value.length - 2]; // Penúltima posición
-
-          if (selectedVoltage < minVoltage) {
-            selectedVoltage = minVoltage;
-          } else if (selectedVoltage > maxVoltage) {
-            selectedVoltage = maxVoltage;
-          }
-        }
-        form.value.coreVoltage = selectedVoltage;
       }
     });
 

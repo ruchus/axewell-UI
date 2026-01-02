@@ -7,10 +7,17 @@
     "swarm": "Enjambre",
     "settings": "Ajustes",
     "network": "Red",
+    "system": "Sistema",
     "locale": "Español",
     "restartText": "El dispositivo se reiniciará. ¿Ok?",
     "connected": "¡Conectado!",
-    "restartedDevice": "Dispositivo reiniciado"
+    "restartedDevice": "Dispositivo reiniciado",
+    "signalQuality": "Calidad de la señal",
+    "excellent": "Excelente",
+    "good": "Buena",
+    "fair": "Regular",
+    "weak": "Débil",
+    "poor": "Mala"
   },
   "logs": {
     "viewLogs": "Ver logs",
@@ -20,18 +27,27 @@
   "pool": {
     "notConnected": "No connectado",
     "settings": "Ir a red",
-    "responseTime": "Tiempo de respuesta"
+    "responseTime": "Tiempo de respuesta",
+    "responseTimeTooltip": "Latencia entre el ASIC y el pool (ms). Una latencia alta conlleva un menor rendimiento debido a errores de red.",
+    "activeTooltip": "Pool activo",
+    "inactiveTooltip": "Pool inactivo"
   },
   "dashboardPage": {
     "title": "Panel de control",
     "subtitle": "Hola, observa algunos datos de rendimiento.",
     "hashRate": {
-      "subtitle": "Potencia computacional de la red",
+      "subtitle": "Potencia computacional del minero",
       "description": "La tasa de hash es una métrica que cuantifica la potencia y la eficiencia computacional de una red. Representa la cantidad de funciones hash que el hardware de un procesador de transacciones puede calcular en un segundo. Una tasa de hash más alta significa que un procesador puede realizar más cálculos en un tiempo determinado.",
       "efficiency": "Eficiencia",
-      "networkDifficulty": "Mejor dificultad",
+      "networkDifficulty": "Dificultad",
       "expected": "Esperado",
-      "expHasRateHelp": "Tasa de hash teórica que el dispositivo debería realizar bajo las condiciones de configuración actuales (frecuencia y voltaje)."
+      "expHasRateHelp": "Tasa de hash teórica que el dispositivo debería realizar bajo las condiciones de configuración actuales (frecuencia y voltaje).",
+      "bestDiffAllTimeTooltip": "Mejor de todos los tiempos",
+      "bestDiffSessionTooltip": "Desde el arranque del sistema",
+      "hashRate_1h": "Ratio hora",
+      "hashRate_1h_desc": "media 1h",
+      "errorPercentage": "Errores",
+      "errorPercentageTooltip": "Porcentaje de errores en las operaciones del ASIC. Un pequeño porcentaje es normal, pero uno alto puede indicar problemas de hardware o sobrecalentamiento."
     },
     "shares": {
       "title": "Prueba de trabajo",
@@ -61,7 +77,7 @@
     "ip": "IP",
     "uptime": "Activo",
     "temp": "Temp.",
-    "power": "Consumo",
+    "power": "W.",
     "miningPower": "Poder de minado",
     "miningPowerSubtitle": "Tasa de hash total de tu enjambre.",
     "efficiency": "Eficiencia",
@@ -86,13 +102,14 @@
     "price": "Precio",
     "daily": "Diario",
     "monthly": "Mensual",
-    "yearly": "Anual"
+    "yearly": "Anual",
+    "unknownToken": "Token desconocido"
   },
   "settingsPage": {
     "title": "Configuración",
     "subtitle": "Toma el control de tu ASIC",
     "network": "Red",
-    "hostname": "Nombre de host",
+    "hostname": "Host",
     "pool": "Pool",
     "poolText": "Pool principal",
     "fallbackPoolText": "Pool secundaria (usada solo si la principal falla)",
@@ -114,7 +131,7 @@
     "updateErr": "Ups... algo ha ido mal.",
     "wwwFileError": "El archivo debe llamarse www.bin",
     "espFileError": "El archivo debe llamarse esp-miner.bin",
-    "uploadingFile": "Subiendo el archivo",
+    "uploadingFile": "Subiendo el archivo...",
     "uploadSuccessful": "Subida exitosa",
     "miningPower": "Potencia de minado",
     "miningPowerDesc": "A más potencia más Gh/s, pero también más consumo y más temperatura.",
@@ -145,5 +162,29 @@
     "password": "contrasña WiFi",
     "update": "Actualizar",
     "restartText": "El dispositivo se reiniciará. ¿Ok?"
+  },
+  "systemPage": {
+    "title": "Sistema",
+    "subtitle": "Información del dispositivo y software.",
+    "deviceInfo": "Información del dispositivo",
+    "softwareInfo": "Información del software",
+    "memoryInfo": "Memoria",
+    "asicModel": "Modelo ASIC",
+    "uptime": "Tiempo activo",
+    "macAddress": "Dirección MAC",
+    "boardVersion": "Versión placa",
+    "resetReason": "Motivo del último reinicio",
+    "firmwareVersion": "Versión del firmware",
+    "axewellVersion": "Axewell-ui",
+    "espIdfVersion": "Versión ESP-IDF",
+    "hostname": "Nombre de host",
+    "ipv4": "Dirección IPv4",
+    "ipv6": "Dirección IPv6",
+    "freeHeapMemory": "Memoria libre",
+    "logs": "Logs del sistema",
+    "identifyButton": "Identificar",
+    "identifyHelp": "Hace que el dispositivo físico diga “Hola” en su pantalla LCD.",
+    "identifySuccess": "¡El dispositivo está mostrando el mensaje de identificación!",
+    "identifyError": "No se pudo activar la identificación."
   }
 }

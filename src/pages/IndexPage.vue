@@ -26,33 +26,47 @@
 
                 <div class="col">
                   <div class="card-text">
-                    <q-icon v-if="axeStore?.infoData?.isUsingFallbackStratum === 0" name="cloud" size="sm"
-                      class="q-mr-sm" style="color: #629C44" />
-                    <q-icon v-else name="o_cloud" size="sm" class="q-mr-sm" />
-                    {{ axeStore?.infoData?.stratumURL }}:{{ axeStore?.infoData?.stratumPort }}
-                    <br />
-                    <span style="word-wrap: break-word; white-space: normal;margin-left: 40px;">
-                      {{ mainStratumUser }}
-                    </span>
+                    <div class="row no-wrap items-center">
+                      <q-icon v-if="axeStore?.infoData?.isUsingFallbackStratum === 0" name="cloud" size="sm"
+                        class="q-mr-sm" style="color: #629C44">
+                        <q-tooltip anchor="bottom middle" self="center middle">
+                          {{ t("pool.activeTooltip") }}
+                        </q-tooltip>
+                      </q-icon>
+                      <q-icon v-else name="o_cloud" size="sm" class="q-mr-sm">
+                        <q-tooltip anchor="bottom middle" self="center middle">
+                          {{ t("pool.inactiveTooltip") }}
+                        </q-tooltip>
+                      </q-icon>
+                      <span class="text-bold">{{ axeStore?.infoData?.stratumURL }}:{{ axeStore?.infoData?.stratumPort }}</span>
+                    </div>
+                    <div class="row no-wrap items-center q-mt-xs">
+                      <template v-if="mainStratumUser.coin">
+                        <q-img v-if="mainStratumUser.coin.image" :src="mainStratumUser.coin.image"
+                          style="width: 20px; height: 20px;" class="q-mr-sm">
+                          <q-tooltip>{{ mainStratumUser.coin.name }} ({{ mainStratumUser.coin.code }})</q-tooltip>
+                        </q-img>
+                        <q-icon v-else :name="mainStratumUser.coin.icon" :color="mainStratumUser.coin.color" size="xs"
+                          class="q-mr-sm">
+                          <q-tooltip>{{ mainStratumUser.coin.name }} ({{ mainStratumUser.coin.code }})</q-tooltip>
+                        </q-icon>
+                      </template>
+                      <template v-else>
+                         <div style="width: 20px" class="q-mr-sm"></div>
+                      </template>
+
+                      <template v-if="mainStratumUser?.url">
+                        <a :href="mainStratumUser.url" target="_blank" rel="noopener" class="text-grey-7 text-bold" style="word-break: break-all;">{{
+                          mainStratumUser.display }}</a>
+                      </template>
+                      <template v-else>
+                        <span class="text-bold" style="word-break: break-all;">{{ mainStratumUser.display }}</span>
+                      </template>
+                    </div>
                   </div>
                 </div>
 
 
-                <div class="col-auto row items-center justify-center q-ml-md">
-                  <q-card bordered class="bg-grey-10 my-card">
-                    <q-card-section class="column items-center text-center">
-                      <div class="card-title" style="font-size: 14px;">{{ t("pool.responseTime") }}</div>
-                      <div class="row items-center justify-center q-mt-xs">
-                        <q-icon name="speed" size="sm" class="q-mr-sm" :style="`color: ${responseTimeColor}`" />
-                        <span class="card-text"
-                          :style="`color: ${responseTimeColor}; font-size: 18px; font-weight: bold;`">
-                          {{ responseTimeRounded }}
-                        </span>
-                        <span class="card-text q-ml-xs" style="font-size: 12px;">ms</span>
-                      </div>
-                    </q-card-section>
-                  </q-card>
-                </div>
               </div>
             </q-card-section>
             <q-card-section v-else class="pool-info-container items-center">
@@ -73,13 +87,44 @@
                 </div>
                 <div class="col">
                   <div class="card-text q-ml-md">
-                    <q-icon v-if="axeStore?.infoData?.isUsingFallbackStratum === 1" name="cloud" size="sm"
-                      class="q-mr-sm" style="color: #629C44" />
-                    <q-icon v-else name="o_cloud" size="sm" class="q-mr-sm" />
-                    {{ axeStore?.infoData?.fallbackStratumURL }}:{{ axeStore?.infoData?.fallbackStratumPort }} <br />
-                    <span style="word-wrap: break-word; white-space: normal;margin-left: 40px;">
-                      {{ fallbackStratumUser }}
-                    </span>
+                    <div class="row no-wrap items-center">
+                      <q-icon v-if="axeStore?.infoData?.isUsingFallbackStratum === 1" name="cloud" size="sm"
+                        class="q-mr-sm" style="color: #629C44">
+                        <q-tooltip anchor="bottom middle" self="center middle">
+                          {{ t("pool.activeTooltip") }}
+                        </q-tooltip>
+                      </q-icon>
+                      <q-icon v-else name="o_cloud" size="sm" class="q-mr-sm">
+                        <q-tooltip anchor="bottom middle" self="center middle">
+                          {{ t("pool.inactiveTooltip") }}
+                        </q-tooltip>
+                      </q-icon>
+                      <span class="text-bold">{{ axeStore?.infoData?.fallbackStratumURL }}:{{ axeStore?.infoData?.fallbackStratumPort }}</span>
+                    </div>
+                    <div class="row no-wrap items-center q-mt-xs">
+                      <template v-if="fallbackStratumUser.coin">
+                        <q-img v-if="fallbackStratumUser.coin.image" :src="fallbackStratumUser.coin.image"
+                          style="width: 20px; height: 20px;" class="q-mr-sm">
+                          <q-tooltip>{{ fallbackStratumUser.coin.name }} ({{ fallbackStratumUser.coin.code }})</q-tooltip>
+                        </q-img>
+                        <q-icon v-else :name="fallbackStratumUser.coin.icon" :color="fallbackStratumUser.coin.color" size="xs"
+                          class="q-mr-sm">
+                          <q-tooltip>{{ fallbackStratumUser.coin.name }} ({{ fallbackStratumUser.coin.code }})</q-tooltip>
+                        </q-icon>
+                      </template>
+                      <template v-else>
+                         <div style="width: 20px" class="q-mr-sm"></div>
+                      </template>
+
+                      <template v-if="fallbackStratumUser?.url">
+                        <a :href="fallbackStratumUser.url" target="_blank" rel="noopener" class="text-grey-7 text-bold" style="word-break: break-all;">{{
+                          fallbackStratumUser.display
+                          }}</a>
+                      </template>
+                      <template v-else>
+                        <span class="text-bold" style="word-break: break-all;">{{ fallbackStratumUser.display }}</span>
+                      </template>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -94,29 +139,115 @@
                 </q-btn>
               </div>
             </q-card-section>
+            <q-card-section v-if="axeStore?.infoData?.stratumURL || axeStore?.infoData?.fallbackStratumURL"
+              class="pool-info-container items-center">
+              <div class="row items-center q-gutter-md">
+                <div class="col-auto">
+                  <div class="card-title" style="font-size: 16px;">{{ t("pool.responseTime") }}</div>
+                </div>
+                <div class="col">
+                  <div class="card-text q-ml-md">
+                    <span class="card-text" :style="`color: ${responseTimeColor}; font-size: 18px;`">
+                      {{ responseTimeRounded }}
+                    </span>
+                    <span class="card-text q-ml-xs" style="font-size: 12px;">ms </span>
+                    <q-icon name="info" size="xs" color="grey-7" class="q-mr-sm cursor-pointer" style="color: #629C44">
+                      <q-tooltip anchor="bottom middle" self="center middle">
+                        {{ t("pool.responseTimeTooltip") }}
+                      </q-tooltip>
+                    </q-icon>
+                  </div>
+                </div>
+              </div>
+            </q-card-section>
           </template>
           <template v-else class="items-center">
             <div v-if="axeStore?.infoData?.stratumURL" class="pool-info-container items-center">
               <div class="card-title">Main pool</div>
               <q-item>
                 <div class="card-text q-ml-md">
-                  <q-icon v-if="axeStore?.infoData?.isUsingFallbackStratum === 0" name="cloud" size="sm" class="q-mr-sm"
-                    style="color: #629C44" />
-                  <q-icon v-else name="o_cloud" size="sm" class="q-mr-sm" />
-                  {{ axeStore?.infoData?.stratumURL }}:{{ axeStore?.infoData?.stratumPort }} <br />
-                  {{ mainStratumUser }}
+                  <div class="row no-wrap items-center">
+                    <q-icon v-if="axeStore?.infoData?.isUsingFallbackStratum === 0" name="cloud" size="sm" class="q-mr-sm"
+                      style="color: #629C44">
+                      <q-tooltip anchor="bottom middle" self="center middle">
+                        {{ t("pool.activeTooltip") }}
+                      </q-tooltip>
+                    </q-icon>
+                    <q-icon v-else name="o_cloud" size="sm" class="q-mr-sm">
+                      <q-tooltip anchor="bottom middle" self="center middle">
+                        {{ t("pool.inactiveTooltip") }}
+                      </q-tooltip>
+                    </q-icon>
+                    <span class="text-bold">{{ axeStore?.infoData?.stratumURL }}:{{ axeStore?.infoData?.stratumPort }}</span>
+                  </div>
+                  <div class="row no-wrap items-center q-mt-xs">
+                    <template v-if="mainStratumUser.coin">
+                      <q-img v-if="mainStratumUser.coin.image" :src="mainStratumUser.coin.image"
+                        style="width: 20px; height: 20px;" class="q-mr-sm">
+                        <q-tooltip>{{ mainStratumUser.coin.name }} ({{ mainStratumUser.coin.code }})</q-tooltip>
+                      </q-img>
+                      <q-icon v-else :name="mainStratumUser.coin.icon" :color="mainStratumUser.coin.color" size="xs"
+                        class="q-mr-sm">
+                        <q-tooltip>{{ mainStratumUser.coin.name }} ({{ mainStratumUser.coin.code }})</q-tooltip>
+                      </q-icon>
+                    </template>
+                    <template v-else>
+                       <div style="width: 20px" class="q-mr-sm"></div>
+                    </template>
+
+                    <template v-if="mainStratumUser?.url">
+                      <a :href="mainStratumUser.url" target="_blank" rel="noopener" class="text-grey-7 text-bold" style="word-break: break-all;">{{
+                        mainStratumUser.display }}</a>
+                    </template>
+                    <template v-else>
+                      <span class="text-bold" style="word-break: break-all;">{{ mainStratumUser.display }}</span>
+                    </template>
+                  </div>
                 </div>
               </q-item>
             </div>
-            <div v-if="axeStore?.infoData?.fallbackStratumURL" class="pool-info-container items-center">
+            <div v-if="axeStore?.infoData?.fallbackStratumURL" class="pool-info-container items-center q-mt-md">
               <div class="card-title" style="font-size: 16px;">Fallback pool</div>
               <q-item>
                 <div class="card-text q-ml-md">
-                  <q-icon v-if="axeStore?.infoData?.isUsingFallbackStratum === 1" name="cloud" size="sm" class="q-mr-sm"
-                    style="color: #629C44" />
-                  <q-icon v-else name="o_cloud" size="sm" class="q-mr-sm" />
-                  {{ axeStore?.infoData?.fallbackStratumURL }}:{{ axeStore?.infoData?.fallbackStratumPort }} <br />
-                  {{ fallbackStratumUser }}
+                  <div class="row no-wrap items-center">
+                    <q-icon v-if="axeStore?.infoData?.isUsingFallbackStratum === 1" name="cloud" size="sm" class="q-mr-sm"
+                      style="color: #629C44">
+                      <q-tooltip anchor="bottom middle" self="center middle">
+                        {{ t("pool.activeTooltip") }}
+                      </q-tooltip>
+                    </q-icon>
+                    <q-icon v-else name="o_cloud" size="sm" class="q-mr-sm">
+                      <q-tooltip anchor="bottom middle" self="center middle">
+                        {{ t("pool.inactiveTooltip") }}
+                      </q-tooltip>
+                    </q-icon>
+                    <span class="text-bold">{{ axeStore?.infoData?.fallbackStratumURL }}:{{ axeStore?.infoData?.fallbackStratumPort }}</span>
+                  </div>
+                  <div class="row no-wrap items-center q-mt-xs">
+                    <template v-if="fallbackStratumUser.coin">
+                      <q-img v-if="fallbackStratumUser.coin.image" :src="fallbackStratumUser.coin.image"
+                        style="width: 20px; height: 20px;" class="q-mr-sm">
+                        <q-tooltip>{{ fallbackStratumUser.coin.name }} ({{ fallbackStratumUser.coin.code }})</q-tooltip>
+                      </q-img>
+                      <q-icon v-else :name="fallbackStratumUser.coin.icon" :color="fallbackStratumUser.coin.color" size="xs"
+                        class="q-mr-sm">
+                        <q-tooltip>{{ fallbackStratumUser.coin.name }} ({{ fallbackStratumUser.coin.code }})</q-tooltip>
+                      </q-icon>
+                    </template>
+                    <template v-else>
+                       <div style="width: 20px" class="q-mr-sm"></div>
+                    </template>
+
+                    <template v-if="fallbackStratumUser?.url">
+                      <a :href="fallbackStratumUser.url" target="_blank" rel="noopener" class="text-grey-7 text-bold" style="word-break: break-all;">{{
+                        fallbackStratumUser.display
+                        }}</a>
+                    </template>
+                    <template v-else>
+                      <span class="text-bold" style="word-break: break-all;">{{ fallbackStratumUser.display }}</span>
+                    </template>
+                  </div>
                 </div>
               </q-item>
             </div>
@@ -132,7 +263,7 @@
                 <q-icon left size="sm" name="cloud_off" class="cloud-off parpadea" />
                 <div>{{ t("pool.settings") }}</div>
               </q-btn>
-              <div class="pool-info-container justify-between items-center q-pb-md">
+              <div class="pool-info-container justify-between items-center q-pb-md q-mt-md">
                 <div>
                   <div class="card-title" style="font-size: 16px;">Fallback Pool</div>
                   <div class="card-text ">{{ t("pool.notConnected") }}</div>
@@ -147,16 +278,23 @@
             </div>
 
 
-            <div class="card-title" style="font-size: 16px;">{{ t("pool.responseTime") }}</div>
-            <q-item>
-              <div class="card-text q-ml-md">
-                <q-icon name="speed" size="sm" class="q-mr-sm" :style="`color: ${responseTimeColor}`" />
-                <span class="card-text" :style="`color: ${responseTimeColor}; font-size: 18px; font-weight: bold;`">
-                  {{ responseTimeRounded }}
-                </span>
-                <span class="card-text q-ml-xs" style="font-size: 12px;">ms</span>
-              </div>
-            </q-item>
+            <div v-if="axeStore?.infoData?.stratumURL || axeStore?.infoData?.fallbackStratumURL" class="q-mt-md">
+              <div class="card-title" style="font-size: 16px;">{{ t("pool.responseTime") }}</div>
+              <q-item>
+                <div class="card-text q-ml-md">
+                  <q-icon name="speed" size="sm" class="q-mr-sm" :style="`color: ${responseTimeColor}`" />
+                  <span class="card-text" :style="`color: ${responseTimeColor}; font-size: 18px; font-weight: bold;`">
+                    {{ responseTimeRounded }}
+                  </span>
+                  <span class="card-text q-ml-xs" style="font-size: 12px;">ms </span>
+                  <q-icon name="info" size="xs" color="grey-7" class="q-mr-sm cursor-pointer" style="color: #629C44">
+                    <q-tooltip anchor="bottom middle" self="center middle">
+                      {{ t("pool.responseTimeTooltip") }}
+                    </q-tooltip>
+                  </q-icon>
+                </div>
+              </q-item>
+            </div>
 
           </template>
         </q-card>
@@ -194,15 +332,66 @@ export default defineComponent({
       const lang = route.query.lang || 'es';
       locale.value = lang;
     });
-    const shortenString = (str, visibleChars = 6) => {
-      if (!str || str < visibleChars * 2) return str;
-      return str.slice(0, 6) + '...' + str.slice(-6)
+    const shortenString = (value, visibleChars = 6) => {
+      if (!value) return '-';
+      const str = String(value);
+      if (str.length <= visibleChars * 2) return str;
+      return `${str.slice(0, visibleChars)}...${str.slice(-visibleChars)}`;
     }
+
+    const poolLinkResolvers = [
+      { search: 'public-pool.io', build: (user) => `https://web.public-pool.io/#/app/${user}` },
+      { search: 'nerdminer.de', build: (user) => `https://pool.nerdminer.de/#/app/${user}` },
+      { search: 'solomining.de', build: (user) => `https://pool.solomining.de/#/app/${user}` },
+      { search: 'yourdevice.ch', build: (user) => `https://blitzpool.yourdevice.ch/#/app/${user}` },
+      { search: 'ocean.xyz', build: (user) => `https://ocean.xyz/stats/${user}` },
+      { search: 'pool.noderunners.network', build: (user) => `https://noderunners.network/en/pool/user/${user}` },
+      { search: 'satoshiradio.nl', build: (user) => `https://pool.satoshiradio.nl/user/${user}` },
+      { search: 'solohash.co.uk', build: (user) => `https://solohash.co.uk/user/${user}` },
+      { search: 'solo.stratum.braiins.com', build: (user) => `https://solo.braiins.com/stats/${user}` },
+      { search: 'parasite.wtf', build: (user) => `https://parasite.space/user/${user}` },
+      { search: 'atlaspool.io', build: (user) => `https://atlaspool.io/dashboard.html?wallet=${user}` },
+      {
+        regex: /^(?:https?:\/\/)?((?:eu|au)?solo[46]?\.)?ckpool\.org/i,
+        build: (user, match) => {
+          const regionRaw = match?.[1]?.replace('.', '') ?? '';
+          const region = regionRaw.replace(/solo[46]?/i, '');
+          const subdomain = region ? `${region}solostats` : 'solostats';
+          return `https://${subdomain}.ckpool.org/users/${user}`;
+        }
+      },
+      { search: 'atlaspool.io', build: (user) => `https://atlaspool.io/dashboard.html?wallet=${user}` },
+    ];
+
+    const resolvePoolLink = (url, user) => {
+      if (!url || !user) return null;
+      const entry = poolLinkResolvers.find((resolver) => {
+        if (resolver.search) return url.includes(resolver.search);
+        if (resolver.regex) return resolver.regex.test(url);
+        return false;
+      });
+      if (!entry) return null;
+      if (entry.regex) {
+        const match = url.match(entry.regex);
+        return match ? entry.build(user, match) : null;
+      }
+      return entry.build(user);
+    };
+
+    const buildUserLink = (user, url) => {
+      if (!user) return { display: '-', url: null, coin: null };
+      return {
+        display: shortenString(user),
+        url: resolvePoolLink(url, user),
+        coin: axeStore.getCoinInfo(user)
+      };
+    };
+
     const mainStratumUser = computed(() => {
-      return shortenString(axeStore?.infoData?.stratumUser);
+      return buildUserLink(axeStore?.infoData?.stratumUser, axeStore?.infoData?.stratumURL);
     })
     const fallbackStratumUser = computed(() => {
-      return shortenString(axeStore?.infoData?.fallbackStratumUser);
+      return buildUserLink(axeStore?.infoData?.fallbackStratumUser, axeStore?.infoData?.fallbackStratumURL);
     })
 
     const responseTimeRounded = computed(() => {

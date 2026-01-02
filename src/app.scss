@@ -22,17 +22,63 @@ body {
   justify-content: space-between;
   width: 100%;
   padding-right: 1.5rem;
+  min-height: 70px;
+}
+
+.status-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: var(--content-shadow);
+  border-radius: 12px;
+  padding: 6px 14px;
+  border: 1px solid rgba(128, 128, 128, 0.08);
+  flex-wrap: nowrap;
+  flex-shrink: 0;
+}
+
+.header-divider {
+  width: 1px;
+  height: 16px;
+  background: rgba(128, 128, 128, 0.25);
+  flex-shrink: 0;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.status-group-mobile {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--content-shadow);
+  border-radius: 10px;
+  padding: 4px 10px;
+  border: 1px solid rgba(128, 128, 128, 0.08);
+  font-size: 12px;
+}
+
+.mobile-header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.5rem 1rem;
+  min-height: 56px;
 }
 .dialogBg {
   border: 1px solid #000142;
   background-color: #060020;
 }
 .axe-title {
-  font-weight: 700;
-  font-size: 30px;
+  font-weight: 800;
+  font-size: 32px;
   color: var(--text-title-primary);
   font-family: 'Anuphan', sans-serif;
-  letter-spacing: -1.5px;
+  letter-spacing: -1.8px;
 }
 .padding-top-drawer {
   padding-top: 80px;
@@ -61,7 +107,7 @@ body {
 }
 .icon-btns-pressed {
   background-color: var(--accent);
-  color: white;
+  color: #fff;
   padding: 8px 8px 8px 8px;
   border-radius: 10px;
 }
@@ -84,13 +130,13 @@ body {
   font-weight: 600;
 }
 .btn-titles {
-  color: var(--text-secondary);
   font-size: 16px;
   font-weight: 600;
 }
 .btn-background {
   background-color: var(--accent);
   border-radius: 6px;
+  color: #fff !important;
 }
 .btn-ajustes {
   background-color: var(--content-shadow);
@@ -113,9 +159,11 @@ body {
   border-radius: 16px;
   .card-title {
     font-size: 22px;
-    font-weight: 600;
+    font-weight: 700;
     color: var(--text-title-primary);
+    letter-spacing: -0.5px;
   }
+
   .card-text {
     color: var(--text-primary);
   }
@@ -370,5 +418,5 @@ body {
 }
 .updateButton {
   background-color: #d68227;
-  color: white;
+  color: #fff;
 }

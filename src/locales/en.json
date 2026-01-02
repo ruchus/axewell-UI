@@ -7,10 +7,17 @@
     "swarm": "Swarm",
     "settings": "Settings",
     "network": "Network",
+    "system": "System",
     "locale": "English",
     "restartText": "The device will be restarted. Ok?",
     "connected": "Connected!",
-    "restartedDevice": "Device restarted"
+    "restartedDevice": "Device restarted",
+    "signalQuality": "Signal Quality",
+    "excellent": "Excellent",
+    "good": "Good",
+    "fair": "Fair",
+    "weak": "Weak",
+    "poor": "Poor"
   },
   "logs": {
     "viewLogs": "View logs",
@@ -20,19 +27,28 @@
   "pool": {
     "notConnected": "Not Connected",
     "settings": "Go network",
-    "responseTime": "Response time"
+    "responseTime": "Response time",
+    "responseTimeTooltip": "Latency between the ASIC and the pool (ms). High latency leads to lower performance due to network errors.",
+    "activeTooltip": "Active pool",
+    "inactiveTooltip": "Inactive pool"
   },
 
   "dashboardPage": {
     "title": "Dashboard",
     "subtitle": "Hello, let's look some performance data.",
     "hashRate": {
-      "subtitle": "Network's computational power",
+      "subtitle": "Miner computational power.",
       "description": "Hash rate is a metric quantifying a network's computational power and efficiency. It represents the number of hash functions a transaction processor's hardware can compute within a second. A higher hash rate signifies that a processor can perform more computations within a given time.",
       "efficiency": "Efficiency",
-      "networkDifficulty": "Best difficulty",
+      "networkDifficulty": "Difficulty",
       "expected": "Expected",
-      "expHasRateHelp": "Theoretical hash rate that the device should perform under the current configuration conditions (frequency and voltage)."
+      "expHasRateHelp": "Theoretical hash rate that the device should perform under the current configuration conditions (frequency and voltage).",
+      "bestDiffAllTimeTooltip": "All-time best",
+      "bestDiffSessionTooltip": "Since system boot",
+      "hashRate_1h": "Rate hour",
+      "hashRate_1h_desc": "average 1h",
+      "errorPercentage": "Errors",
+      "errorPercentageTooltip": "Percentage of errors in ASIC operations. A small percentage is normal, but a high percentage may indicate hardware issues or overheating."
     },
     "shares": {
       "title": "Shares",
@@ -62,7 +78,7 @@
     "ip": "IP",
     "uptime": "Uptime",
     "temp": "Temp",
-    "power": "Power",
+    "power": "W.",
     "miningPower": "Mining power",
     "miningPowerSubtitle": "Total hash rate of your swarm.",
     "hashrate": "Hashrate",
@@ -83,17 +99,18 @@
     "cancel": "Cancel",
     "cantConnect": "Can't connect",
     "electricalCost": "Electrical cost",
-    "electricalSubtitle": "Total electrical consumption of your swarm.",
+    "electricalSubtitle": "Total electrical cost of your swarm.",
     "price": "Price",
     "daily": "Daily",
     "monthly": "Monthly",
-    "yearly": "Yearly"
+    "yearly": "Yearly",
+    "unknownToken": "Token unknown"
   },
   "settingsPage": {
     "title": "Settings",
     "subtitle": "Take control of your ASIC",
     "network": "Network",
-    "hostname": "Hostname",
+    "hostname": "Host",
     "pool": "Pool",
     "poolText": "Main pool",
     "fallbackPoolText": "Secondary pool (used only if main fails)",
@@ -115,7 +132,7 @@
     "updateErr": "Oops... something went wrong.",
     "wwwFileError": "The file must be named www.bin",
     "espFileError": "The file must be named esp-miner.bin",
-    "uploadingFile": "Uploading file",
+    "uploadingFile": "Uploading file...",
     "uploadSuccessful": "Upload successful",
     "miningPower": "Mining power",
     "miningPowerDesc": "More power, more Gh/s, but also more consumption and higher temperature.",
@@ -124,7 +141,7 @@
     "tempTargetInfo": "ASIC chip temperature is considered safe below 70 degrees. Lower temperatures will prolong the ASIC lifespan. Please make you sure your bitaxe fan supports regulation. If not, always will run at full speed.",
     "display": "Display",
     "displayDesc": "Customize the behavior of the device's display",
-    "poweroffScreen": "Turn off the screen after 10 minutes",
+    "poweroffScreen": "Turn off screen after 10 minutes",
     "flipScreen": "Flip screen",
     "defaultValue": "Default value"
   },
@@ -146,5 +163,29 @@
     "password": "WiFi password",
     "update": "Update",
     "restartText": "The device will be restarted. Ok?"
+  },
+  "systemPage": {
+    "title": "System",
+    "subtitle": "Device and software information.",
+    "deviceInfo": "Device Information",
+    "softwareInfo": "Software Information",
+    "memoryInfo": "Memory",
+    "asicModel": "ASIC Model",
+    "uptime": "Uptime",
+    "macAddress": "MAC Address",
+    "boardVersion": "Board Version",
+    "resetReason": "Last reset reason",
+    "firmwareVersion": "Firmware Version",
+    "axewellVersion": "Axewell UI Version",
+    "espIdfVersion": "ESP-IDF Version",
+    "hostname": "Hostname",
+    "ipv4": "IPv4 Address",
+    "ipv6": "IPv6 Address",
+    "freeHeapMemory": "Free Heap Memory",
+    "logs": "Logs",
+    "identifyButton": "Identify",
+    "identifyHelp": "Makes the physical device say “Hi!” on its LCD.",
+    "identifySuccess": "Device is showing the identification message!",
+    "identifyError": "Unable to trigger identification."
   }
 }

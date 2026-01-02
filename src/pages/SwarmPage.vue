@@ -45,32 +45,37 @@
           </div>
           <div class="row q-mt-md justify-between">
             <!-- column names -->
-            <div class="col-lg-7 col-md-8 col-sm-5">
+            <div class="col-lg-8 col-md-8 col-sm-5">
               <div v-if="SWARM_DATA?.length > 0">
                 <Transition name="slide-fade">
                   <div class="row">
                     <div class="col-lg-4 col-md-4">
                       <div class="row justify-evenly q-mt-md">
-                        <div class="col-6">
+                        <div class="col-3">
                           <div class="rounded-borders data-label text-left" style="font-size: 20px!important;">
                             <span>{{ t("swarmPage.ip") }}</span>
                           </div>
                         </div>
                         <div class="col-4">
                           <div class="rounded-borders data-label text-left" style="font-size: 20px!important;">
+                            <span>{{ t("settingsPage.hostname") }}</span>
+                          </div>
+                        </div>
+                        <div class="col-3">
+                          <div class="rounded-borders data-label text-left" style="font-size: 20px!important;">
                             <span>{{ t("swarmPage.uptime") }}</span>
                           </div>
                         </div>
                       </div>
                     </div>
-                    <div class="col-lg-4 col-md-4">
+                    <div class="col-lg-6 col-md-6">
                       <div class="row justify-evenly q-mt-md">
-                        <div class="col-5">
+                        <div class="col-3">
                           <div class="rounded-borders data-label text-left" style="font-size: 20px!important;">
-                            <span>Gh/s</span>
+                            <span>Hashrate</span>
                           </div>
                         </div>
-                        <div class="col-3">
+                        <div class="col-2">
                           <div class="rounded-borders data-label text-left" style="font-size: 20px!important;">
                             <span>{{ t("swarmPage.temp") }}</span>
                           </div>
@@ -78,6 +83,11 @@
                         <div class="col-2">
                           <div class="rounded-borders data-label text-left" style="font-size: 20px!important;">
                             <span>{{ t("swarmPage.power") }}</span>
+                          </div>
+                        </div>
+                        <div class="col-3">
+                          <div class="rounded-borders data-label text-left" style="font-size: 20px!important;">
+                            <span>Token</span>
                           </div>
                         </div>
                       </div>
@@ -93,56 +103,112 @@
                     <template v-if="device?.isActive">
                       <div class="col-lg-4 col-md-4">
                         <div class="row justify-evenly q-mt-md">
-                          <div class="col-6">
+                          <div class="col-3">
                             <div class="small-container data-label rounded-borders text-left">
-                              {{ device?.IP }}
+                              <template v-if="device?.IP === currentDeviceIP">
+                                {{ maskIP(device?.IP) }}
+                              </template>
+                              <a v-else :href="'http://' + device?.IP" target="_blank" class="device-link"
+                                :class="axeStore.darkmode ? 'text-white' : 'text-black'">
+                                {{ maskIP(device?.IP) }}
+                              </a>
                             </div>
                           </div>
                           <div class="col-4">
+                            <div class="small-container data-label rounded-borders text-left" style="word-break: break-all;">
+                              <template v-if="device?.IP === currentDeviceIP">
+                                {{ device?.hostname || '-' }}
+                              </template>
+                              <a v-else :href="'http://' + device?.IP" target="_blank" class="device-link"
+                                :class="axeStore.darkmode ? 'text-white' : 'text-black'">
+                                {{ device?.hostname || '-' }}
+                              </a>
+                            </div>
+                          </div>
+                          <div class="col-3">
                             <div class="small-container data-label rounded-borders text-right">
                               {{ uptimeFormatted(device?.uptimeSeconds) }}
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="col-lg-5 col-md-5">
+                      <div class="col-lg-6 col-md-6">
                         <div class="row justify-evenly q-mt-md">
-                          <div class="col-4">
-                            <div class="small-container data-fields rounded-borders text-left">
-                              {{ device?.hashRate?.toFixed(2) }} Gh/s
+                          <div class="col-3">
+                            <div class="small-container data-fields rounded-borders text-right">
+                              {{ Math.round(device.hashRate) }} Gh/s
+                            </div>
+                          </div>
+                          <div class="col-2">
+                            <div class="small-container data-fields rounded-borders text-right">
+                              {{ Math.round(device.temp) }}º
+                            </div>
+                          </div>
+                          <div class="col-2">
+                            <div class="small-container data-fields rounded-borders text-right">
+                              {{ Math.round(device?.power) }}W
                             </div>
                           </div>
                           <div class="col-3">
-                            <div class="small-container data-fields rounded-borders text-right">
-                              {{ device.temp }} º
-                            </div>
-                          </div>
-                          <div class="col-4">
-                            <div class="small-container data-fields rounded-borders text-right">
-                              {{ Math.round(device?.power) }} W
+                            <div class="small-container data-fields rounded-borders text-center">
+                              <template v-if="axeStore.getCoinInfo(device?.stratumUser)">
+                                <div class="row no-wrap items-center text-left">
+                                  <q-img :src="axeStore.getCoinInfo(device?.stratumUser).image" style="width: 16px; height: 16px;" class="q-mr-xs" />
+                                  <span>{{ axeStore.getCoinInfo(device?.stratumUser).code }}</span>
+                                </div>
+                              </template>
+                              <template v-else>-</template>
                             </div>
                           </div>
                         </div>
                       </div>
                       <template v-if="device?.IP !== currentDeviceIP">
-                        <q-btn flat round color="deep-purple-11" icon="restart_alt"
-                          @click="openDialogRestart(device.IP)">
-                          <q-tooltip>
-                            {{ t("swarmPage.restartDevice") }}
-                          </q-tooltip>
-                        </q-btn>
-                        <q-btn flat round color="deep-purple-11" icon="playlist_remove"
-                          @click="openDialogDelete(device.IP)">
-                          <q-tooltip>
-                            {{ t("swarmPage.deleteDevice") }}
-                          </q-tooltip>
+                        <q-btn flat round color="deep-purple-11" icon="more_vert">
+                          <q-menu auto-close transition-show="scale" transition-hide="scale">
+                            <q-list style="min-width: 150px">
+                              <q-item clickable @click="openDialogRestart(device.IP)">
+                                <q-item-section avatar>
+                                  <q-icon name="restart_alt" color="deep-purple-11" />
+                                </q-item-section>
+                                <q-item-section>{{ t("swarmPage.restartDevice") }}</q-item-section>
+                              </q-item>
+                              <q-item clickable @click="openDialogDelete(device.IP)">
+                                <q-item-section avatar>
+                                  <q-icon name="playlist_remove" color="deep-purple-11" />
+                                </q-item-section>
+                                <q-item-section>{{ t("swarmPage.deleteDevice") }}</q-item-section>
+                              </q-item>
+                            </q-list>
+                          </q-menu>
                         </q-btn>
                       </template>
                     </template>
                     <template v-else>
-                      <div class="col-9 small-container q-my-sm rounded-borders"
-                        style="color:#B70F0A !important; border-radius: 5px;">
-                        {{ device?.IP }} <q-icon name="sensors_off"></q-icon> {{ t("swarmPage.cantConnect") }}
+                      <div class="col-lg-10 col-md-10 col-12 q-pr-md">
+                        <div class="small-container q-my-sm rounded-borders"
+                          style="color:#B70F0A !important; border-radius: 5px;">
+                          <template v-if="device?.IP === currentDeviceIP">
+                            {{ maskIP(device?.IP) }}
+                          </template>
+                          <span v-else>
+                            {{ maskIP(device?.IP) }}
+                          </span>
+                          &nbsp;&nbsp;&nbsp; <q-icon name="sensors_off"></q-icon> {{ t("swarmPage.cantConnect") }}
+                        </div>
+                      </div>
+                      <div class="col-lg-1 col-md-1 col-1 row items-center">
+                        <q-btn flat round color="deep-purple-11" icon="more_vert">
+                          <q-menu auto-close transition-show="scale" transition-hide="scale">
+                            <q-list style="min-width: 150px">
+                              <q-item clickable @click="openDialogDelete(device.IP)">
+                                <q-item-section avatar>
+                                  <q-icon name="playlist_remove" color="deep-purple-11" />
+                                </q-item-section>
+                                <q-item-section>{{ t("swarmPage.deleteDevice") }}</q-item-section>
+                              </q-item>
+                            </q-list>
+                          </q-menu>
+                        </q-btn>
                       </div>
                     </template>
                   </q-card-section>
@@ -151,9 +217,9 @@
             </div>
 
             <!-- Cards column -->
-            <div class="col-12 col-lg-5 col-md-4" v-if="SWARM_DATA.length > 0">
-              <div :class="quasar.screen.gt.lg ? 'row justify-between' : 'q-gutter-md'">
-                <q-card flat class="swarmCards q-pa-sm card" :style="quasar.screen.gt.lg ? 'width:240px' : ''">
+            <div class="col-12 col-lg-4 col-md-4" v-if="SWARM_DATA.length > 0">
+              <div class="column q-gutter-md">
+                <q-card flat class="swarmCards q-pa-sm card">
                   <q-card-section>
                     <span class="card-title">{{ t("swarmPage.miningPower") }}</span>
                     <div class="card-text">{{ t("swarmPage.miningPowerSubtitle") }}</div>
@@ -172,11 +238,18 @@
                         <span>&nbsp;{{ t("swarmPage.efficiency") }} <small>(≈ {{ efficiency }} W/Th)</small></span>
                       </div>
                     </div>
+
+                    <div class="q-mt-md q-pt-sm" v-if="hashRateByToken.length > 0" style="border-top: 1px solid rgba(255,255,255,0.1)">
+                      <div v-for="token in hashRateByToken" :key="token.code" class="row items-center justify-center q-gutter-x-sm q-mb-xs">
+                        <q-img v-if="token.image" :src="token.image" style="width: 23px;" />
+                        <span class="yellowData text-bold" style="font-size: 16px;">{{ token.value }}{{ token.unit }}</span>
+                        <span class="text-caption text-grey-7">{{ token.code }}</span>
+                      </div>
+                    </div>
                   </q-card-section>
                 </q-card>
 
-                <q-card flat class="swarmCards q-pa-sm card"
-                  :style="quasar.screen.gt.lg ? 'width:240px!important' : ''">
+                <q-card flat class="swarmCards q-pa-sm card">
                   <q-card-section>
                     <span class="card-title">{{ t("swarmPage.consumption") }}</span>
                     <div class="card-text">{{ t("swarmPage.consumptionSubtitle") }}</div>
@@ -185,6 +258,23 @@
                     <q-icon name="flash_on" color="yellow-8" size="lg" />
                     <span class="yellowData text-h6 q-mx-sm text-bold">{{ Math.round(totalPowerConsumption) }} </span>
                     <span>Watts</span>
+                  </q-card-section>
+
+                  <q-card-section class="text-center" style="border-top: 1px solid rgba(255,255,255,0.1)">
+                    <div class="row q-col-gutter-md">
+                      <div class="col-4">
+                        <div class="card-text text-grey-7">{{ t('swarmPage.daily') }}</div>
+                        <div class="text-h6 yellowData">{{ dailyKwh.toFixed(2) }} <small>kWh</small></div>
+                      </div>
+                      <div class="col-4">
+                        <div class="card-text text-grey-7">{{ t('swarmPage.monthly') }}</div>
+                        <div class="text-h6 yellowData">{{ Math.round(monthlyKwh) }} <small>kWh</small></div>
+                      </div>
+                      <div class="col-4">
+                        <div class="card-text text-grey-7">{{ t('swarmPage.yearly') }}</div>
+                        <div class="text-h6 yellowData">{{ Math.round(yearlyKwh) }} <small>kWh</small></div>
+                      </div>
+                    </div>
                   </q-card-section>
                 </q-card>
 
@@ -236,7 +326,7 @@
       </template>
     </q-card>
     <div v-if="!quasar.screen.gt.sm">
-      <template v-if="isLoadingDevices" class="text-center">
+      <template v-if="isLoadingDevices">
         <q-spinner-puff color="primary" size="4em" />
       </template>
       <template v-else>
@@ -275,95 +365,119 @@
               </q-card>
             </q-dialog>
             <!-- Arr of devices -->
-            <div v-for="(device, index) in SWARM_DATA" :key="index">
-              <Transition name="slide-fade" v-if="SWARM_DATA?.length > 0">
-                <template v-if="device?.isActive">
-                  <q-card flat class="power-card-mobile q-mt-md">
-                    <q-card-section class="q-py-lg">
-                      <div class="device-title q-ml-lg row data-label contents-center">
-                        <q-icon name="leak_add" size="sm" class="q-mr-md parpadea" />
-                        {{ t("swarmPage.device") }}: {{ device?.IP }}
-
-                        <!-- Menu 3 puntos (opciones) -->
-                        <q-btn flat round icon="more_vert" @click="showMenu = !showMenu" class="q-ml-sm" />
-                        <q-menu v-show="showMenu" flat>
-                          <q-list>
-                            <q-item clickable @click="openDialogRestart(device.IP)">
-                              <q-btn flat round color="deep-purple-11" icon="restart_alt"
-                                :label="t('swarmPage.restartDevice')" no-caps>
-                              </q-btn>
-                            </q-item>
-                            <q-item clickable @click="openDialogDelete(device.IP)">
-                              <q-btn flat round color="deep-purple-11" :label="t('swarmPage.deleteDevice')" no-caps
-                                icon="playlist_remove">
-                              </q-btn>
-                            </q-item>
-                          </q-list>
-                        </q-menu>
+            <!-- Arr of devices -->
+            <q-card flat class="power-card-mobile q-mt-md" v-if="SWARM_DATA?.length > 0">
+              <q-card-section class="q-pa-none">
+                <div style="overflow-x: auto;">
+                  <div style="min-width: 450px;" class="q-pa-md">
+                    <!-- Headers -->
+                      <div class="row no-wrap items-center q-mb-sm text-grey-7 text-caption text-bold">
+                        <div class="col-2">{{ t("swarmPage.ip") }}</div>
+                        <div class="col-2">{{ t("settingsPage.hostname") }}</div>
+                        <div class="col-2 text-center">{{ t("swarmPage.uptime") }}</div>
+                        <div class="col-2 text-center">Hashrate</div>
+                        <div class="col-1 text-center">{{ t("swarmPage.temp") }}</div>
+                        <div class="col-1 text-center">{{ t("swarmPage.power") }}</div>
+                        <div class="col-1 text-center">Token</div>
+                        <div class="col-1"></div>
                       </div>
 
-                      <div class="col-sm-6 col-xs-6">
-                        <div class="row justify-evenly q-mt-md">
-                          <div class="col-4">
-                            <div class="small-container data-label rounded-borders text-left">
-                              {{ t("swarmPage.uptime") }}
-                            </div>
+                    <div v-for="(device, index) in SWARM_DATA" :key="index">
+                      <Transition name="slide-fade">
+                        <div v-if="device?.isActive" class="row no-wrap items-center q-py-sm border-bottom">
+                          <div class="col-2 text-caption text-bold" style="word-break: break-all;">
+                            <template v-if="device?.IP === currentDeviceIP">
+                              {{ maskIP(device?.IP) }}
+                            </template>
+                            <a v-else :href="'http://' + device?.IP" target="_blank" class="device-link"
+                              :class="axeStore.darkmode ? 'text-white' : 'text-black'">
+                              {{ maskIP(device?.IP) }}
+                            </a>
                           </div>
-                          <div class="col-7">
-                            <div class="small-container data-label rounded-borders text-right">
-                              {{ uptimeFormatted(device?.uptimeSeconds) }}
-                            </div>
+                          <div class="col-2 text-caption" style="word-break: break-all;">
+                            <template v-if="device?.IP === currentDeviceIP">
+                              {{ device?.hostname || '-' }}
+                            </template>
+                            <a v-else :href="'http://' + device?.IP" target="_blank" class="device-link"
+                              :class="axeStore.darkmode ? 'text-white' : 'text-black'">
+                              {{ device?.hostname || '-' }}
+                            </a>
+                          </div>
+                          <div class="col-2 text-center text-caption" style="font-size: 10px;">
+                            {{ uptimeFormatted(device?.uptimeSeconds) }}
+                          </div>
+                          <div class="col-2 text-center text-caption">
+                            {{ Math.round(device.hashRate) }}Gh/s
+                          </div>
+                          <div class="col-1 text-center text-caption">
+                            {{ Math.round(device.temp) }}º
+                          </div>
+                          <div class="col-1 text-center text-caption" style="font-size: 10px;">
+                            {{ Math.round(device?.power) }}W
+                          </div>
+                          <div class="col-1 text-center text-caption" style="font-size: 10px;">
+                            <template v-if="axeStore.getCoinInfo(device?.stratumUser)">
+                              <div class="row no-wrap items-center justify-center">
+                                <q-img :src="axeStore.getCoinInfo(device?.stratumUser).image" style="width: 12px; height: 12px;" class="q-mr-xs" />
+                                <span>{{ axeStore.getCoinInfo(device?.stratumUser).code }}</span>
+                              </div>
+                            </template>
+                            <template v-else>-</template>
+                          </div>
+                          <div class="col-1 row justify-end no-wrap">
+                            <template v-if="device?.IP !== currentDeviceIP">
+                              <q-btn flat round dense color="deep-purple-11" icon="more_vert" size="sm">
+                                <q-menu auto-close transition-show="scale" transition-hide="scale">
+                                  <q-list style="min-width: 150px">
+                                    <q-item clickable @click="openDialogRestart(device.IP)">
+                                      <q-item-section avatar>
+                                        <q-icon name="restart_alt" color="deep-purple-11" />
+                                      </q-item-section>
+                                      <q-item-section>{{ t("swarmPage.restartDevice") }}</q-item-section>
+                                    </q-item>
+                                    <q-item clickable @click="openDialogDelete(device.IP)">
+                                      <q-item-section avatar>
+                                        <q-icon name="playlist_remove" color="deep-purple-11" />
+                                      </q-item-section>
+                                      <q-item-section>{{ t("swarmPage.deleteDevice") }}</q-item-section>
+                                    </q-item>
+                                  </q-list>
+                                </q-menu>
+                              </q-btn>
+                            </template>
                           </div>
                         </div>
-                        <div class="row justify-evenly q-mt-md">
-                          <div class="col-4">
-                            <div class="small-container rounded-borders text-left">
-                              Gh/s
-                            </div>
+                        <div v-else class="row no-wrap items-center q-py-sm text-negative text-caption">
+                           <div class="col-11">
+                            <template v-if="device?.IP === currentDeviceIP">
+                              {{ maskIP(device?.IP) }}
+                            </template>
+                            <span v-else>
+                              {{ maskIP(device?.IP) }}
+                            </span>
+                            <q-icon name="sensors_off" class="q-mx-xs"></q-icon> {{ t("swarmPage.cantConnect") }}
                           </div>
-                          <div class="col-6">
-                            <div class="small-container data-fields rounded-borders text-right">
-                              {{ device?.hashRate.toFixed(2) }} Gh/s
-                            </div>
-                          </div>
-                        </div>
-                        <div class="row justify-evenly q-mt-md">
-                          <div class="col-4">
-                            <div class="small-container data-label rounded-borders text-left">
-                              {{ t("swarmPage.temp") }}
-                            </div>
-                          </div>
-                          <div class="col-6">
-                            <div class="small-container data-fields rounded-borders text-right">
-                              {{ device?.temp }} º
-                            </div>
-                          </div>
-                        </div>
-                        <div class="row justify-evenly q-mt-md">
-                          <div class="col-6">
-                            <div class="small-container data-label rounded-borders text-left">
-                              {{ t("swarmPage.power") }}
-                            </div>
-                          </div>
-                          <div class="col-6">
-                            <div class="small-container data-fields rounded-borders text-right">
-                              {{ Math.round(device?.power) }} W
-                            </div>
+                          <div class="col-1 row justify-end no-wrap">
+                            <q-btn flat round dense color="deep-purple-11" icon="more_vert" size="sm">
+                              <q-menu auto-close transition-show="scale" transition-hide="scale">
+                                <q-list style="min-width: 150px">
+                                  <q-item clickable @click="openDialogDelete(device.IP)">
+                                    <q-item-section avatar>
+                                      <q-icon name="playlist_remove" color="deep-purple-11" />
+                                    </q-item-section>
+                                    <q-item-section>{{ t("swarmPage.deleteDevice") }}</q-item-section>
+                                  </q-item>
+                                </q-list>
+                              </q-menu>
+                            </q-btn>
                           </div>
                         </div>
-                      </div>
-                    </q-card-section>
-                  </q-card>
-                </template>
-                <template v-else>
-                  <div class="col-9 q-my-sm small-container rounded-borders"
-                    style="color:#B70F0A !important;border-radius: 5px; ">
-                    {{ device?.IP }} <q-icon name="sensors_off"></q-icon> {{ t("swarmPage.cantConnect") }}
+                      </Transition>
+                    </div>
                   </div>
-                </template>
-
-              </Transition>
-            </div>
+                </div>
+              </q-card-section>
+            </q-card>
           </q-tab-panel>
           <q-tab-panel name="totalValues">
 
@@ -403,6 +517,23 @@
                   <q-icon name="flash_on" color="yellow-8" size="lg" />
                   <span class="yellowData q-mx-sm text-h6">{{ Math.round(totalPowerConsumption) }}</span>
                   <span> Watts</span>
+                </q-card-section>
+
+                <q-card-section class="text-center" style="border-top: 1px solid rgba(255,255,255,0.1)">
+                  <div class="row q-col-gutter-md">
+                    <div class="col-4">
+                      <div class="text-caption text-grey-7">{{ t('swarmPage.daily') }}</div>
+                      <div class="text-h6 yellowData">{{ dailyKwh.toFixed(2) }} <small>kWh</small></div>
+                    </div>
+                    <div class="col-4">
+                      <div class="text-caption text-grey-7">{{ t('swarmPage.monthly') }}</div>
+                      <div class="text-h6 yellowData">{{ Math.round(monthlyKwh) }} <small>kWh</small></div>
+                    </div>
+                    <div class="col-4">
+                      <div class="text-caption text-grey-7">{{ t('swarmPage.yearly') }}</div>
+                      <div class="text-h6 yellowData">{{ Math.round(yearlyKwh) }} <small>kWh</small></div>
+                    </div>
+                  </div>
                 </q-card-section>
               </q-card>
 
@@ -533,9 +664,7 @@ export default defineComponent({
       { label: '₹ (INR)', symbol: '₹' },
       { label: 'C$ (CAD)', symbol: 'C$' },
       { label: 'A$ (AUD)', symbol: 'A$' },
-      { label: '(CHF)', symbol: 'CHF' },
-      { label: '₿ (BTC)', symbol: '₿' },
-      { label: 'Ξ (ETH)', symbol: 'Ξ' }
+      { label: '(CHF)', symbol: 'CHF' }
     ]);
 
     const getInitialCurrency = () => {
@@ -567,6 +696,15 @@ export default defineComponent({
     });
     const yearlyCost = computed(() => {
       return costKwh.value * (totalPowerConsumption.value / 1000) * 24 * 365;
+    });
+    const dailyKwh = computed(() => {
+      return (totalPowerConsumption.value / 1000) * 24;
+    });
+    const monthlyKwh = computed(() => {
+      return (totalPowerConsumption.value / 1000) * 24 * 30;
+    });
+    const yearlyKwh = computed(() => {
+      return (totalPowerConsumption.value / 1000) * 24 * 365;
     });
 
     watch(costKwh, () => {
@@ -630,6 +768,38 @@ export default defineComponent({
       return { totalValue: totalHashRateRounded, unit: 'Gh/s' };
     });
 
+    const hashRateByToken = computed(() => {
+      const breakdown = {};
+      SWARM_DATA.value.forEach(device => {
+        if (device?.isActive) {
+          const coin = axeStore.getCoinInfo(device?.stratumUser);
+          const code = coin ? coin.code : '-';
+          if (!breakdown[code]) {
+            breakdown[code] = {
+              value: 0,
+              coin: coin
+            };
+          }
+          breakdown[code].value += device?.hashRate || 0;
+        }
+      });
+
+      return Object.entries(breakdown).map(([code, info]) => {
+        let val = info.value;
+        let unit = 'Gh/s';
+        if (val >= 1000) {
+          val = val / 1000;
+          unit = 'Th/s';
+        }
+        return {
+          code,
+          value: val.toFixed(2),
+          unit,
+          image: info.coin?.image
+        };
+      });
+    });
+
     const totalEfficiency = computed(() => {
       var divisor;
       if (totalHashRate?.value?.unit === 'Th/s')
@@ -650,6 +820,12 @@ export default defineComponent({
 
       return `${days}d:${h}h:${m}m`;
     }
+    const maskIP = (ip) => {
+      if (!ip) return "";
+      const parts = ip.split('.');
+      if (parts.length < 2) return ip;
+      return `...${parts.slice(-2).join('.')}`;
+    }
     const validateIPAddress = (value) => {
       const ipRegex = /^((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])\.){3}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])$/;
       return ipRegex.test(value) || 'Please enter a valid IP address';
@@ -663,11 +839,6 @@ export default defineComponent({
       if (!deviceExists) return;
 
       const newSwarm = SWARM_DATA.value.filter((deviceFromArr) => deviceFromArr.IP != device);
-      // const swarmUpdatePromises = newSwarm.map(({ ip }) => {
-      //   return updateSwarm(ip);
-      // });
-      // const removedAxeOsPromise = updateSwarm(device);
-      // await Promise.all([removedAxeOsPromise, ...swarmUpdatePromises]);
 
       localStorage.setItem('SWARM_DATA', JSON.stringify(newSwarm));
 
@@ -706,7 +877,7 @@ export default defineComponent({
     };
     const getSwarmDeviceInfo = async (deviceIP) => {
       try {
-        const res = await axios.get(`http://${deviceIP}/api/system/info`, { timeout: 5000 });
+        const res = await axios.get(`http://${deviceIP}/api/system/info`, { timeout: 4000 });
         return { IP: deviceIP, isActive: true, ...res.data };
       } catch (err) {
         return { IP: deviceIP, isActive: false };
@@ -726,7 +897,7 @@ export default defineComponent({
       }
 
       try {
-        return axios.get(`http://${newIp}/api/system/info`, { timeout: 5000 }).then(res => {
+        return axios.get(`http://${newIp}/api/system/info`, { timeout: 4000 }).then(res => {
           if (res?.data) {
             SWARM_DATA.value.push({ IP: newIp, isActive: true, ...res.data });
             localStorage.setItem('SWARM_DATA', JSON.stringify(SWARM_DATA.value));
@@ -825,14 +996,22 @@ export default defineComponent({
       currentDeviceIP.value = getIpOfDevice();
       console.log(currentDeviceIP.value)
 
+      //First call to load devices
+      setTimeout(() => {
+        loadDevicesFromLocalStorage(currentDeviceIP.value);
+      }, 800);
+
+      //Subsequent calls to load devices
       intervalId = setInterval(() => {
         loadDevicesFromLocalStorage(currentDeviceIP.value);
-      }, 5000);
+      }, 16000);
     })
 
     onUnmounted(() => {
       clearInterval(intervalId);
     });
+
+
 
     return {
       quasar,
@@ -867,7 +1046,12 @@ export default defineComponent({
       axeStore,
       dailyCost,
       monthlyCost,
-      yearlyCost
+      yearlyCost,
+      dailyKwh,
+      monthlyKwh,
+      yearlyKwh,
+      hashRateByToken,
+      maskIP
     }
   }
 })
@@ -885,5 +1069,14 @@ export default defineComponent({
 .slide-fade-leave-to {
   transform: translateX(20px);
   opacity: 0;
+}
+
+.device-link {
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.device-link:hover {
+  opacity: 0.7;
 }
 </style>

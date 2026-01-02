@@ -29,3 +29,5 @@ coverage
 *.sw?
 
 *.tsbuildinfo
+
+_axe-os

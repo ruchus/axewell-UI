@@ -5,6 +5,7 @@ import PoolPage from '../pages/PoolPage.vue'
 import SettingsPage from '../pages/SettingsPage.vue'
 import NetworkPage from '../pages/NetworkPage.vue'
 import SwarmPage from '../pages/SwarmPage.vue'
+import SystemPage from '../pages/SystemPage.vue'
 import { i18n } from '../plugins/i18n'
 
 const router = createRouter({
@@ -18,7 +19,8 @@ const router = createRouter({
         { path: 'settings', name: 'Settings', component: SettingsPage },
         { path: 'pool', name: 'Pool', component: PoolPage },
         { path: 'network', name: 'Network', component: NetworkPage },
-        { path: 'swarm', name: 'Swarm', component: SwarmPage }
+        { path: 'swarm', name: 'Swarm', component: SwarmPage },
+        { path: 'system', name: 'System', component: SystemPage }
       ]
     }
   ]
