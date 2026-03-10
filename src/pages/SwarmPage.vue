@@ -30,7 +30,7 @@
                     @submit.prevent="">
                     <div class="row items-start">
 
-                      <q-input dense ref="ipInputRef" filled color="deep-purple" stack-label v-model="form.ip"
+                      <q-input dense ref="ipInputRef_desktop" filled color="deep-purple" stack-label v-model="form.ip"
                         label="IP address" dark style="width: 400px;" :rules="[validateIPAddress]" />
 
                       <q-btn class="q-ml-md q-px-lg btn-titles btn-background" type="submit" :label="t('swarmPage.add')"
@@ -47,8 +47,8 @@
             <!-- column names -->
             <div class="col-lg-8 col-md-8 col-sm-5">
               <div v-if="SWARM_DATA?.length > 0">
-                <Transition name="slide-fade">
-                  <div class="row">
+                <Transition name="slide-fade" appear>
+                  <div class="row" v-if="SWARM_DATA?.length > 0">
                     <div class="col-lg-4 col-md-4">
                       <div class="row justify-evenly q-mt-md">
                         <div class="col-3">
@@ -127,7 +127,12 @@
                           </div>
                           <div class="col-3">
                             <div class="small-container data-label rounded-borders text-right">
-                              {{ uptimeFormatted(device?.uptimeSeconds) }}
+                              <div v-if="device?.showNewBlock" class="text-positive text-bold">
+                                Block found! 🎉
+                              </div>
+                              <div v-else>
+                                {{ uptimeFormatted(device?.uptimeSeconds) }}
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -404,7 +409,12 @@
                             </a>
                           </div>
                           <div class="col-2 text-center text-caption" style="font-size: 10px;">
-                            {{ uptimeFormatted(device?.uptimeSeconds) }}
+                            <div v-if="device?.showNewBlock" class="text-positive text-bold">
+                              Block found! 🎉
+                            </div>
+                            <div v-else>
+                              {{ uptimeFormatted(device?.uptimeSeconds) }}
+                            </div>
                           </div>
                           <div class="col-2 text-center text-caption">
                             {{ Math.round(device.hashRate) }}Gh/s
@@ -633,7 +643,7 @@
 <script>
 import { defineComponent, computed, ref, reactive, nextTick, onBeforeMount, onMounted, onUnmounted, watch } from 'vue'
 import { useRoute } from "vue-router";
-import { useQuasar, Notify, Dialog } from "quasar"
+import { useQuasar, Notify } from "quasar"
 import { useAxeStore } from '@/stores/axe';
 import axios from 'axios'
 import { useI18n } from 'vue-i18n';
@@ -647,7 +657,8 @@ export default defineComponent({
     const quasar = useQuasar();
     const axeStore = useAxeStore();
     const openDialog = ref(false);
-    const ipInputRef = ref(null)
+    const ipInputRef = ref(null);
+    const ipInputRef_desktop = ref(null);
     const SWARM_DATA = ref([]);
     const tab = ref("swarmDevices");
     const { t } = useI18n();
@@ -748,7 +759,11 @@ export default defineComponent({
     })
     const focusInput = () => {
       nextTick(() => {
-        ipInputRef.value?.focus?.();
+        if (quasar.screen.gt.sm) {
+           ipInputRef_desktop.value?.focus?.();
+        } else {
+           ipInputRef.value?.focus?.();
+        }
       });
     };
     const totalPowerConsumption = computed(() => {
@@ -921,7 +936,8 @@ export default defineComponent({
     };
 
     const onSubmit = async () => {
-      if (ipInputRef.value.validate()) {
+      const input = quasar.screen.gt.sm ? ipInputRef_desktop.value : ipInputRef.value;
+      if (input.validate()) {
         openDialog.value = !openDialog.value;
         try {
           const newIp = form.ip;
@@ -945,13 +961,9 @@ export default defineComponent({
             });
 
 
-          } else {
-            return { IP: ip, isActive: false };
           }
         } catch {
-          return { IP: ip, isActive: false };
-        } finally {
-
+          // Error handling
         }
       }
     };
@@ -1027,7 +1039,7 @@ export default defineComponent({
       form,
       validateIPAddress,
       onSubmit,
-      ipInputRef,
+      ipInputRef_desktop,
       SWARM_DATA,
       removeDevice,
       totalPowerConsumption,

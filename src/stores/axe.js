@@ -1,4 +1,3 @@
-import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 import axios from 'axios'
 import { Notify, Loading } from 'quasar'
@@ -78,7 +77,6 @@ export const useAxeStore = defineStore('axe', {
       var days = Math.floor(d / 86400)
       var h = Math.floor((d % 86400) / 3600)
       var m = Math.floor((d % 3600) / 60)
-      var s = Math.floor((d % 3600) % 60)
 
       return `${days}d:${h}h:${m}m`
     }
@@ -105,6 +103,15 @@ export const useAxeStore = defineStore('axe', {
         .finally(() => {
           this.firstLoading = false
         })
+    },
+    dismissBlockFound() {
+      return axios.post(`/api/system/blockFound/dismiss`).then((res) => {
+        if (this.infoData) {
+          this.infoData.showNewBlock = res.data.showNewBlock
+          this.infoData.blockFound = res.data.blockFound
+        }
+        return res.data
+      })
     },
     restartSystem(t) {
       Loading.show({

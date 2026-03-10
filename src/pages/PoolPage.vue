@@ -5,6 +5,14 @@
             <span class="card-text">{{ t("poolPage.subtitle") }}</span>
         </div>
         <div class="q-px-lg" :class="quasar.screen.gt.xs ? 'q-py-xl power-card' : 'q-py-md power-card-mobile'">
+            <div v-if="isAnyPoolUsingDefaultAddress" class="q-mb-md">
+                <q-banner class="bg-warning text-black rounded-borders">
+                    <template v-slot:avatar>
+                        <q-icon name="warning" color="black" />
+                    </template>
+                    <div class="text-bold">{{ t('poolPage.defaultAddressWarning') }}</div>
+                </q-banner>
+            </div>
             <q-form @submit="confirm = !confirm">
                 <div class="row" :class="quasar.screen.gt.sm ? 'justify-between' : 'justify-evenly'">
                     <div class="col-12 col-lg-4 col-md-4 col-sm-12 col-xs-12"
@@ -28,6 +36,11 @@
                                     @click="isPwd = !isPwd" />
                             </template>
                         </q-input>
+                        <q-toggle v-model="form.stratumTLS" :label="t('poolPage.enableTLS')" color="deep-purple" />
+                        <q-input v-if="form.stratumTLS" class="q-mt-md" filled color="deep-purple" stack-label
+                            v-model="form.stratumCert" type="textarea" :label="t('poolPage.stratumCert')"
+                            :placeholder="t('poolPage.stratumCertPlaceholder')"
+                            :dark="axeStore.darkmode ? true : false" />
                     </div>
                     <div class="col-12 col-lg-4 col-md-4 col-sm-12 col-xs-12"
                         :class="quasar.screen.gt.md ? 'column-width-settings-big' : 'column-mobile-tablet'">
@@ -52,6 +65,12 @@
                                     @click="isPwd = !isPwd" />
                             </template>
                         </q-input>
+                        <q-toggle v-model="form.fallbackStratumTLS" :label="t('poolPage.enableTLS')"
+                            color="deep-purple" />
+                        <q-input v-if="form.fallbackStratumTLS" class="q-mt-md" filled color="deep-purple" stack-label
+                            v-model="form.fallbackStratumCert" type="textarea" :label="t('poolPage.stratumCert')"
+                            :placeholder="t('poolPage.stratumCertPlaceholder')"
+                            :dark="axeStore.darkmode ? true : false" />
                     </div>
                     <div class="col-12 col-lg-4 col-md-4 col-sm-12 col-xs-12">
                         <div class="card-title">{{ t("poolPage.advanced") }}</div>
@@ -71,6 +90,17 @@
                                 {{ t("poolPage.extraNounceInfo") }}
                             </q-tooltip>
                         </q-icon>
+
+                        <div class="q-mt-sm">
+                            <q-toggle v-model="form.decodeCoinbase" :label="t('poolPage.decodeCoinbase')"
+                                color="deep-purple" />
+                            <q-icon name="info" size="xs" color="grey-7" class="q-mr-sm cursor-pointer"
+                                style="color: #629C44">
+                                <q-tooltip anchor="bottom middle" self="center middle">
+                                    {{ t("poolPage.decodeCoinbaseInfo") }}
+                                </q-tooltip>
+                            </q-icon>
+                        </div>
                     </div>
                 </div>
 
@@ -104,7 +134,6 @@ import { defineComponent, ref, onBeforeMount, computed } from 'vue'
 import axios from 'axios'
 import { useAxeStore } from '@/stores/axe'
 import { useQuasar } from 'quasar'
-import { Notify } from "quasar";
 import { useI18n } from 'vue-i18n';
 import { useRoute } from 'vue-router';
 export default defineComponent({
@@ -133,6 +162,11 @@ export default defineComponent({
             fallbackStratumPassword: '',
             stratumSuggestedDifficulty: parseInt(axeStore.infoData?.stratumSuggestedDifficulty) ?? 1000,
             extraNounce: axeStore.infoData?.stratumExtranonceSubscribe ?? 0,
+            decodeCoinbase: axeStore.infoData?.stratumDecodeCoinbase ?? true,
+            stratumTLS: axeStore.infoData?.stratumTLS ?? false,
+            stratumCert: axeStore.infoData?.stratumCert ?? '',
+            fallbackStratumTLS: axeStore.infoData?.fallbackStratumTLS ?? false,
+            fallbackStratumCert: axeStore.infoData?.fallbackStratumCert ?? '',
         })
 
         const normalizeEndpoint = (urlField, portField) => {
@@ -174,12 +208,18 @@ export default defineComponent({
                         stratumPass: form.value.stratumPass,
                         stratumExtranonceSubscribe: form.value.extraNounce,
                         stratumSuggestedDifficulty: parseInt(form.value.stratumSuggestedDifficulty),
+                        stratumDecodeCoinbase: form.value.decodeCoinbase,
+                        stratumTLS: form.value.stratumTLS,
+                        stratumCert: form.value.stratumCert,
                         fallbackStratumPort: parseInt(form.value.fallbackStratumPort),
                         fallbackStratumURL: form.value.fallbackStratumURL,
                         fallbackStratumPassword: form.value.fallbackStratumPassword,
                         fallbackStratumUser: form.value.fallbackStratumUser,
                         fallbackStratumSuggestedDifficulty: parseInt(form.value.stratumSuggestedDifficulty),
                         fallbackStratumExtranonceSubscribe: form.value.extraNounce,
+                        fallbackStratumDecodeCoinbase: form.value.decodeCoinbase,
+                        fallbackStratumTLS: form.value.fallbackStratumTLS,
+                        fallbackStratumCert: form.value.fallbackStratumCert,
                     },
                     {
                         headers: { 'Content-Type': 'application/json' }
@@ -193,6 +233,12 @@ export default defineComponent({
                     console.error('There was an error:', error)
                 })
         }
+        const DEFAULT_BITCOIN_ADDRESS = 'bc1qnp980s5fpp8l94p5cvttmtdqy8rvrq74qly2yrfmzkdsntqzlc5qkc4rkq';
+        const isAnyPoolUsingDefaultAddress = computed(() => {
+            return (form.value.stratumUser && form.value.stratumUser.includes(DEFAULT_BITCOIN_ADDRESS)) ||
+                (form.value.fallbackStratumUser && form.value.fallbackStratumUser.includes(DEFAULT_BITCOIN_ADDRESS));
+        });
+
         return {
             form,
             confirm,
@@ -200,7 +246,8 @@ export default defineComponent({
             normalizeEndpoint,
             quasar,
             t,
-            axeStore
+            axeStore,
+            isAnyPoolUsingDefaultAddress
         }
     }
 })

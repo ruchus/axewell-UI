@@ -35,6 +35,11 @@
   "dashboardPage": {
     "title": "Tableau de bord",
     "subtitle": "Bonjour, voyons quelques données de performance.",
+    "blockFoundSingle": "C'est votre jour de chance ! Votre appareil a trouvé un bloc",
+    "blockFoundMulti": "C'est votre jour de chance ! Votre appareil a trouvé {count} blocs",
+    "dismiss": "Ignorer",
+    "dismissSuccess": "Notification de bloc trouvé ignorée",
+    "dismissError": "Erreur lors de l'ignorance de la notification",
     "hashRate": {
       "subtitle": "Puissance de calcul du mineur.",
       "description": "Le taux de hachage est une métrique qui quantifie la puissance de calcul et l'efficacité d'un réseau. Il représente le nombre de fonctions de hachage que le matériel d'un processeur de transactions peut calculer par seconde. Un taux de hachage plus élevé signifie qu'un processeur peut effectuer plus de calculs dans un temps donné.",
@@ -150,8 +155,14 @@
     "advanced": "Avancé",
     "advancedDesc": "Options avancées du pool",
     "stratumSuggestedDifficulty": "Difficulté suggérée",
+    "defaultAddressWarning": "Attention : Vous utilisez l'adresse Bitcoin d'usine par défaut. Veuillez modifier le champ Utilisateur pour votre propre adresse Bitcoin afin de recevoir les récompenses de minage.",
     "extraNounce": "Activer Extranonce",
-    "extraNounceInfo": "Option recommandée, surtout si vous avez plusieurs mineurs connectés au même pool."
+    "extraNounceInfo": "Option recommandée, surtout si vous avez plusieurs mineurs connectés au même pool.",
+    "decodeCoinbase": "Décoder Coinbase Tx",
+    "decodeCoinbaseInfo": "Active le décodage de la transaction coinbase pour afficher les adresses de paiement. Désactivez cette option lorsque vous minez sur des chaînes autres que Bitcoin.",
+    "enableTLS": "Activer TLS",
+    "stratumCert": "Certificat SSL/TLS",
+    "stratumCertPlaceholder": "Entrez ou collez le certificat ici (.pem, .crt, .cer)"
   },
   "networkPage": {
     "title": "Réseau",

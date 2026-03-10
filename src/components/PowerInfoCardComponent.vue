@@ -63,8 +63,13 @@
                             </div>
                         </div>
                         <div class="col-4">
-                            <div class="small-container data-fields rounded-borders text-right">
+                            <div class="small-container data-fields rounded-borders text-right cursor-pointer">
                                 ({{ Math.round(powerData?.fanspeed) }}%) {{ Math.round(powerData?.fanrpm) }} RPM
+                                <q-tooltip v-if="powerData?.fanrpm > 0">
+                                    <div v-if="powerData?.fan2rpm > 0">Fan 1: {{ Math.round(powerData?.fanrpm) }} RPM</div>
+                                    <div v-if="powerData?.fan2rpm > 0">Fan 2: {{ Math.round(powerData?.fan2rpm) }} RPM</div>
+                                    <div v-else>{{ Math.round(powerData?.fanrpm) }} RPM</div>
+                                </q-tooltip>
                             </div>
                         </div>
                     </div>
@@ -156,8 +161,13 @@
                         </div>
                     </div>
                     <div class="col-4">
-                        <div class="small-container data-fields rounded-borders text-right">
+                        <div class="small-container data-fields rounded-borders text-right cursor-pointer">
                             ({{ Math.round(powerData?.fanspeed) }}%) {{ Math.round(powerData?.fanrpm) }} RPM
+                            <q-tooltip v-if="powerData?.fanrpm > 0">
+                                <div v-if="powerData?.fan2rpm > 0">Fan 1: {{ Math.round(powerData?.fanrpm) }} RPM</div>
+                                <div v-if="powerData?.fan2rpm > 0">Fan 2: {{ Math.round(powerData?.fan2rpm) }} RPM</div>
+                                <div v-else>{{ Math.round(powerData?.fanrpm) }} RPM</div>
+                            </q-tooltip>
                         </div>
                     </div>
                 </div>
@@ -190,8 +200,7 @@
 </template>
 
 <script>
-import { defineComponent, onMounted, computed, toRefs } from 'vue'
-import { useRouter } from "vue-router";
+import { defineComponent, computed, toRefs } from 'vue'
 import { useQuasar } from "quasar"
 import { useI18n } from 'vue-i18n';
 export default defineComponent({

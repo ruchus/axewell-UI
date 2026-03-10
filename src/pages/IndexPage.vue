@@ -5,6 +5,22 @@
       <div class="card-text ">{{ t("dashboardPage.subtitle") }}</div>
     </div>
 
+    <div v-if="axeStore.infoData?.showNewBlock" class="q-mt-md" style="max-width: 1500px; width: 100%;">
+      <q-banner class="bg-positive text-white rounded-borders q-py-sm">
+        <template v-slot:avatar>
+          <q-icon name="celebration" color="white" size="md" />
+        </template>
+        <div class="text-subtitle1">
+          {{ axeStore.infoData.blockFound === 1 ? t('dashboardPage.blockFoundSingle') : t('dashboardPage.blockFoundMulti', { count: axeStore.infoData.blockFound }) }} 🎉
+        </div>
+        <template v-slot:action>
+          <q-btn flat color="white" icon="close" @click="dismissBlockFound">
+            <q-tooltip>{{ t('dashboardPage.dismiss') }}</q-tooltip>
+          </q-btn>
+        </template>
+      </q-banner>
+    </div>
+
     <q-spinner v-if="axeStore.firstLoading === true" color="deep-purple-11" size="3em" :thickness="2" />
     <div v-else class="row q-mt-lg " style="max-width: 1500px; width: 100%;">
       <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-xs-12"
@@ -161,7 +177,7 @@
               </div>
             </q-card-section>
           </template>
-          <template v-else class="items-center">
+          <template v-else>
             <div v-if="axeStore?.infoData?.stratumURL" class="pool-info-container items-center">
               <div class="card-title">Main pool</div>
               <q-item>
@@ -407,6 +423,21 @@ export default defineComponent({
       return '#E53935';
     })
 
+    const dismissBlockFound = async () => {
+      try {
+        await axeStore.dismissBlockFound()
+        quasar.notify({
+          type: 'positive',
+          message: t('dashboardPage.dismissSuccess')
+        })
+      } catch (error) {
+        quasar.notify({
+          type: 'negative',
+          message: t('dashboardPage.dismissError')
+        })
+      }
+    }
+
     return {
       quasar,
       axeStore,
@@ -414,7 +445,8 @@ export default defineComponent({
       mainStratumUser,
       fallbackStratumUser,
       responseTimeRounded,
-      responseTimeColor
+      responseTimeColor,
+      dismissBlockFound
     }
   }
 })

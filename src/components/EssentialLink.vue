@@ -40,7 +40,7 @@ export default defineComponent({
       return selected.value === link;
     };
 
-    const goToPage = (link, title) => {
+    const goToPage = (link) => {
       selected.value = link;
       router.push({ name: link });
     }

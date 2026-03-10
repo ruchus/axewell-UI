@@ -12,7 +12,6 @@ import '../src/app.scss'
 
 import App from './App.vue'
 import router from './router'
-import { messages } from './locales'
 
 const app = createApp(App)
 

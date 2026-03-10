@@ -35,6 +35,11 @@
   "dashboardPage": {
     "title": "Panel de control",
     "subtitle": "Hola, observa algunos datos de rendimiento.",
+    "blockFoundSingle": "¡Hoy es tu día de suerte! Tu dispositivo ha encontrado un bloque",
+    "blockFoundMulti": "¡Hoy es tu día de suerte! Tu dispositivo ha encontrado {count} bloques",
+    "dismiss": "Cerrar",
+    "dismissSuccess": "Notificación de bloque encontrado cerrada",
+    "dismissError": "Error al cerrar la notificación",
     "hashRate": {
       "subtitle": "Potencia computacional del minero",
       "description": "La tasa de hash es una métrica que cuantifica la potencia y la eficiencia computacional de una red. Representa la cantidad de funciones hash que el hardware de un procesador de transacciones puede calcular en un segundo. Una tasa de hash más alta significa que un procesador puede realizar más cálculos en un tiempo determinado.",
@@ -150,8 +155,14 @@
     "advanced": "Avanzado",
     "advancedDesc": "Opciones avanzadas del pool",
     "stratumSuggestedDifficulty": "Dificultad sugerida",
+    "defaultAddressWarning": "Atención: Estás utilizando la dirección de Bitcoin de fábrica por defecto. Cambia el campo Usuario por tu propia dirección de Bitcoin para recibir las recompensas de minería.",
     "extraNounce": "Habilitar Extranonce",
-    "extraNounceInfo": "Opción recomendada, sobretodo si tienes varios mineros conectados al mismo pool."
+    "extraNounceInfo": "Opción recomendada, sobretodo si tienes varios mineros conectados al mismo pool.",
+    "decodeCoinbase": "Decodificar Coinbase Tx",
+    "decodeCoinbaseInfo": "Habilita la decodificación de la transacción coinbase para mostrar las direcciones de pago. Desactívalo cuando mines en cadenas que no sean Bitcoin.",
+    "enableTLS": "Habilitar TLS",
+    "stratumCert": "Certificado SSL/TLS",
+    "stratumCertPlaceholder": "Introduce o pega el certificado aquí (.pem, .crt, .cer)"
   },
   "networkPage": {
     "title": "Red",

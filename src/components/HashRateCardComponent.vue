@@ -93,7 +93,8 @@
                     {{ bestDifficulty.value }}{{ bestDifficulty.unit }}
                     <q-icon name="info" size="xs" color="grey-7" class="q-mr-sm cursor-pointer" style="color: #629C44">
                       <q-tooltip anchor="bottom middle" self="center middle">
-                        {{ t("dashboardPage.hashRate.bestDiffAllTimeTooltip") }}
+                        <div class="text-bold">{{ t("dashboardPage.hashRate.bestDiffAllTimeTooltip") }}</div>
+                        <div>{{ hashRateData?.bestDiff }}</div>
                       </q-tooltip>
                     </q-icon>
                   </span>
@@ -101,7 +102,8 @@
                     {{ bestDifficultySession.value }}{{ bestDifficultySession.unit }}
                     <q-icon name="info" size="xs" color="grey-7" class="q-mr-sm cursor-pointer" style="color: #629C44">
                       <q-tooltip anchor="bottom middle" self="center middle">
-                        {{ t("dashboardPage.hashRate.bestDiffSessionTooltip") }}
+                        <div class="text-bold">{{ t("dashboardPage.hashRate.bestDiffSessionTooltip") }}</div>
+                        <div>{{ hashRateData?.bestSessionDiff }}</div>
                       </q-tooltip>
                     </q-icon>
                   </span>
@@ -206,7 +208,8 @@
                   {{ bestDifficulty.value }}{{ bestDifficulty.unit }}
                   <q-icon name="info" size="xs" color="grey-7" class="q-mr-sm cursor-pointer" style="color: #629C44">
                     <q-tooltip anchor="bottom middle" self="center middle">
-                      {{ t("dashboardPage.hashRate.bestDiffAllTimeTooltip") }}
+                      <div class="text-bold">{{ t("dashboardPage.hashRate.bestDiffAllTimeTooltip") }}</div>
+                      <div>{{ hashRateData?.bestDiff }}</div>
                     </q-tooltip>
                   </q-icon>
                 </span>
@@ -214,7 +217,8 @@
                   {{ bestDifficultySession.value }}{{ bestDifficultySession.unit }}
                   <q-icon name="info" size="xs" color="grey-7" class="q-mr-sm cursor-pointer" style="color: #629C44">
                     <q-tooltip anchor="bottom middle" self="center middle">
-                      {{ t("dashboardPage.hashRate.bestDiffSessionTooltip") }}
+                      <div class="text-bold">{{ t("dashboardPage.hashRate.bestDiffSessionTooltip") }}</div>
+                      <div>{{ hashRateData?.bestSessionDiff }}</div>
                     </q-tooltip>
                   </q-icon>
                 </span>
@@ -245,7 +249,6 @@
 
 <script>
 import { defineComponent, computed, toRefs, ref } from 'vue'
-import { useRouter } from 'vue-router'
 import { useQuasar } from 'quasar'
 import { useAxeStore } from '@/stores/axe'
 import { useI18n } from 'vue-i18n';

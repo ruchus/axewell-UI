@@ -36,6 +36,11 @@
   "dashboardPage": {
     "title": "Dashboard",
     "subtitle": "Hello, let's look some performance data.",
+    "blockFoundSingle": "Today is your lucky day! Your device has found a block",
+    "blockFoundMulti": "Today is your lucky day! Your device has found {count} blocks",
+    "dismiss": "Dismiss",
+    "dismissSuccess": "Block found notification dismissed",
+    "dismissError": "Error dismissing notification",
     "hashRate": {
       "subtitle": "Miner computational power.",
       "description": "Hash rate is a metric quantifying a network's computational power and efficiency. It represents the number of hash functions a transaction processor's hardware can compute within a second. A higher hash rate signifies that a processor can perform more computations within a given time.",
@@ -151,8 +156,14 @@
     "advanced": "Advanced",
     "advancedDesc": "Advanced pool options",
     "stratumSuggestedDifficulty": "Difficulty suggested",
+    "defaultAddressWarning": "Warning: You are using the default factory Bitcoin address. Please change the User field to your own Bitcoin address to receive mining rewards.",
     "extraNounce": "Enable Extranonce",
-    "extraNounceInfo": "Recommended option, especially if you have multiple miners connected to the same pool."
+    "extraNounceInfo": "Recommended option, especially if you have multiple miners connected to the same pool.",
+    "decodeCoinbase": "Decode Coinbase Tx",
+    "decodeCoinbaseInfo": "Enable decoding of the coinbase transaction to show payout addresses. Disable when mining on non-Bitcoin chains.",
+    "enableTLS": "Enable TLS",
+    "stratumCert": "SSL/TLS Certificate",
+    "stratumCertPlaceholder": "Enter or paste certificate here (.pem, .crt, .cer)"
   },
   "networkPage": {
     "title": "Network",

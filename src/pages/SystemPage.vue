@@ -146,7 +146,7 @@ export default defineComponent({
         BtnLogsComponent
     },
     setup() {
-        const version = __APP_VERSION__
+        const version = '1.6.1'
         const quasar = useQuasar()
         const axeStore = useAxeStore()
         const { t } = useI18n();
