@@ -30,5 +30,9 @@ export default defineConfig({
         additionalData: `@import "@/var.scss";`
       }
     }
+  },
+  test: {
+    environment: 'jsdom',
+    globals: true
   }
 })
