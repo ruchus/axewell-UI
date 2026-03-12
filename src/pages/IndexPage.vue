@@ -5,6 +5,14 @@
       <div class="card-text ">{{ t("dashboardPage.subtitle") }}</div>
     </div>
 
+
+    <q-banner v-if="miningRewardWarning" inline-actions class="text-white bg-warning q-mb-md rounded-borders" style="max-width: 1500px;">
+      <template v-slot:avatar>
+        <q-icon name="warning" color="white" />
+      </template>
+      {{ miningRewardWarning }}
+    </q-banner>
+
     <q-spinner v-if="axeStore.firstLoading === true" color="deep-purple-11" size="3em" :thickness="2" />
     <div v-else class="row q-mt-lg " style="max-width: 1500px; width: 100%;">
       <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-xs-12"
@@ -301,6 +309,7 @@
         <SharesCardComponent :shareData="axeStore?.infoData"></SharesCardComponent>
       </div>
     </div>
+    <BlockHeaderCardComponent :blockData="axeStore?.infoData"></BlockHeaderCardComponent>
     <PowerInfoCardComponent :powerData="axeStore?.infoData"></PowerInfoCardComponent>
   </q-page>
 </template>
@@ -311,6 +320,7 @@ import { useQuasar } from 'quasar'
 import HashRateCardComponent from '@/components/HashRateCardComponent.vue'
 import SharesCardComponent from '@/components/SharesCardComponent.vue'
 import PowerInfoCardComponent from '@/components/PowerInfoCardComponent.vue'
+import BlockHeaderCardComponent from '@/components/BlockHeaderCardComponent.vue'
 import { useAxeStore } from '@/stores/axe'
 import { useI18n } from 'vue-i18n';
 import { useRoute } from "vue-router";
@@ -319,7 +329,8 @@ export default defineComponent({
   components: {
     HashRateCardComponent,
     SharesCardComponent,
-    PowerInfoCardComponent
+    PowerInfoCardComponent,
+    BlockHeaderCardComponent
   },
 
   setup() {
@@ -332,6 +343,24 @@ export default defineComponent({
       const lang = route.query.lang || 'es';
       locale.value = lang;
     });
+
+    const miningRewardWarning = computed(() => {
+      const info = axeStore?.infoData;
+      if (info && info.coinbaseOutputs && info.coinbaseOutputs.length > 0) {
+        let percentage = -1;
+        if (info.coinbaseValueTotalSatoshis) {
+          percentage = (info.coinbaseValueUserSatoshis ?? 0) / info.coinbaseValueTotalSatoshis * 100;
+        }
+
+        if (percentage >= 0 && percentage < 95 && percentage > 0) {
+          return t("dashboardPage.alerts.notSoloMining", { percentage: percentage.toFixed(1) });
+        } else if (percentage === 0) {
+          return t("dashboardPage.alerts.noMiningReward");
+        }
+      }
+      return null;
+    });
+
     const shortenString = (value, visibleChars = 6) => {
       if (!value) return '-';
       const str = String(value);
@@ -414,7 +443,8 @@ export default defineComponent({
       mainStratumUser,
       fallbackStratumUser,
       responseTimeRounded,
-      responseTimeColor
+      responseTimeColor,
+      miningRewardWarning
     }
   }
 })

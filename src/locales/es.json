@@ -66,6 +66,16 @@
       "voltageMeasured": "Voltaje ASIC",
       "fanSpeed": "Velocidad ventilador",
       "chipTemperature": "Temperatura del chip"
+    },
+    "blockHeader": {
+      "title": "Cabecera de Bloque",
+      "height": "Altura",
+      "difficulty": "Dificultad",
+      "scriptsig": "Scriptsig"
+    },
+    "alerts": {
+      "notSoloMining": "Tu parte de la recompensa de minería es solo de {percentage}%",
+      "noMiningReward": "No tienes parte en la recompensa de minería"
     }
   },
   "swarmPage": {

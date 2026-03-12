@@ -1,4 +1,4 @@
-import { ref, computed } from 'vue'
+import { ref, computed } from 'vue' // eslint-disable-line no-unused-vars
 import { defineStore } from 'pinia'
 import axios from 'axios'
 import { Notify, Loading } from 'quasar'
@@ -78,7 +78,7 @@ export const useAxeStore = defineStore('axe', {
       var days = Math.floor(d / 86400)
       var h = Math.floor((d % 86400) / 3600)
       var m = Math.floor((d % 3600) / 60)
-      var s = Math.floor((d % 3600) % 60)
+      var s = Math.floor((d % 3600) % 60) // eslint-disable-line no-unused-vars
 
       return `${days}d:${h}h:${m}m`
     }

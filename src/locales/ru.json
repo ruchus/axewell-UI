@@ -66,6 +66,16 @@
       "voltageMeasured": "Напряжение ASIC",
       "fanSpeed": "Скорость вентилятора",
       "chipTemperature": "Температура чипа"
+    },
+    "blockHeader": {
+      "title": "Заголовок блока",
+      "height": "Высота",
+      "difficulty": "Сложность",
+      "scriptsig": "Scriptsig"
+    },
+    "alerts": {
+      "notSoloMining": "Ваша доля вознаграждения за майнинг составляет всего {percentage}%",
+      "noMiningReward": "У вас нет доли в вознаграждении за майнинг"
     }
   },
   "swarmPage": {

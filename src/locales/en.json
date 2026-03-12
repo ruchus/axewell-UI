@@ -32,7 +32,6 @@
     "activeTooltip": "Active pool",
     "inactiveTooltip": "Inactive pool"
   },
-
   "dashboardPage": {
     "title": "Dashboard",
     "subtitle": "Hello, let's look some performance data.",
@@ -67,6 +66,16 @@
       "voltageMeasured": "ASIC voltage",
       "fanSpeed": "Fan speed",
       "chipTemperature": "Chip temperature"
+    },
+    "blockHeader": {
+      "title": "Block Header",
+      "height": "Height",
+      "difficulty": "Difficulty",
+      "scriptsig": "Scriptsig"
+    },
+    "alerts": {
+      "notSoloMining": "Your share of the mining reward is only {percentage}%",
+      "noMiningReward": "You don't have a share in the mining reward"
     }
   },
   "swarmPage": {
